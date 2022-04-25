@@ -60,7 +60,7 @@
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\HingeJointAngleCalculator.cs" />
     <Compile Include="Assets\Scripts\Scripts\RobotManualInput.cs" />
     <Compile Include="Assets\Scripts\URMovement.cs" />
-    <Compile Include="Assets\Scripts\HandController.cs" />
+    <Compile Include="Assets\Scripts\Scripts_OLD\HandController.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\Timing\Timer.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\UrdfJointPlanar.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JointStatePatcher.cs" />
@@ -88,11 +88,13 @@
     <Compile Include="Assets\Scripts\RightControllerInput.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\RosConnector.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\Scripts\NewHand.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Extensions\HeaderExtensions.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfOrigin.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JointStateReader.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyAxisInputPasser.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyButtonReader.cs" />
+    <Compile Include="Assets\Scripts\NewHandController.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\UrdfJointPrismatic.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\UrdfJointFixed.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\TwistPublisher.cs" />
@@ -101,7 +103,7 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnitySubscriber.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\PoseStampedPublisher.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfLink.cs" />
-    <Compile Include="Assets\Scripts\Hand.cs" />
+    <Compile Include="Assets\Scripts\Scripts_OLD\Hand.cs" />
     <Compile Include="Assets\Scripts\Scripts\PincherController.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfCollision.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfRobot.cs" />

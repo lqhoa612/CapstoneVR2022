@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/URScene.unity
+- path: Assets/Scenes/SceneLoader.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
