@@ -27,9 +27,6 @@ public class URControllerInput : MonoBehaviour
             GetDevice();
     }
 
-
-
-
     void Update()
     {
         if (!device.isValid)
@@ -58,7 +55,6 @@ public class URControllerInput : MonoBehaviour
             //robotController.StopAllJointRotations();
             robotController.RotateJoint(indice, RotationDirection.None);
         }
-
 
 
         // Select Joints

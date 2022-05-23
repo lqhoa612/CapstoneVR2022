@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A946A95B-C283-EA4B-6885-4CC44B07F4ED}</ProjectGuid>
+    <ProjectGuid>{8EEE1358-A04D-07E5-6909-41ED3D437FFE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -73,6 +73,7 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyAxisReader.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\PoseStampedSubscriber.cs" />
     <Compile Include="Assets\Scripts\Scripts\RobotController.cs" />
+    <Compile Include="Assets\Scripts\HandDirectInteractor.cs" />
     <Compile Include="Assets\Scripts\LeftControllerInput.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\JointStateSubscriber.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\SensorDataVisualization\LaserScanVisualizer.cs" />
@@ -135,7 +136,7 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnityFibonacciActionClient.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\GetParamServiceProvider.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\LaserScanReader.cs" />
-    <Compile Include="Assets\HandDirectInteractor.cs" />
+    <Compile Include="Assets\Scripts\UGVControllerInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.dll" />
@@ -899,7 +900,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ControllerSample.csproj">
-      <Project>{93731C37-E5B3-9C81-0A86-5C2797620241}</Project>
+      <Project>{2F624870-0A90-6C88-7F7C-2EB55861B56A}</Project>
       <Name>ControllerSample</Name>
     </ProjectReference>
   </ItemGroup>
