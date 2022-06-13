@@ -3,9 +3,9 @@
 *.log
 
 #Customed
-/Library
-/Logs
-/obj
+MxLabSim2022/Library/
+Logs/
+obj/
 *.csproj
 *.sln
 *.vsconfig
