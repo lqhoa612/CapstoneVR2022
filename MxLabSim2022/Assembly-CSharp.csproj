@@ -63,11 +63,13 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\Timing\Timer.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\UrdfJointPlanar.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JointStatePatcher.cs" />
+    <Compile Include="Assets\Scripts\Player_Scripts\PlayerContinuousTurn.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfVisual.cs" />
     <Compile Include="Assets\Scripts\Scripts\ArticulationHandManualInput.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\JointStatePublisher.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\TwistSubscriber.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\HandPhysics.cs" />
+    <Compile Include="Assets\Scripts\Player_Scripts\PlayerContinuousMovement.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyAxisJointMotorWriter.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyButtonWriter.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyAxisReader.cs" />
@@ -136,28 +138,48 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnityFibonacciActionClient.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\GetParamServiceProvider.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\LaserScanReader.cs" />
-    <Compile Include="Assets\Scripts\Player_Scripts\PlayerContinuousMovement.cs" />
-    <Compile Include="Assets\Scripts\Player_Scripts\PlayerContinuousTurn.cs" />
+    <Compile Include="Assets\Scripts\WristUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Threading.Tasks.Extensions.xml" />
     <None Include="Assets\RosSharp\Plugins\RosBridgeClient.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Memory.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Threading.Channels.dll" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Threading.Tasks.Extensions.dll" />
     <None Include="Assets\RosSharp\Plugins\MessageGeneration.dll" />
     <None Include="Assets\RosSharp\Plugins\Urdf.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Text.Encodings.Web.dll" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Buffers.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\RosSharp\Plugins\External\websocket-sharp.dll" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\Microsoft.Bcl.AsyncInterfaces.dll" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Text.Json.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\RosSharp\Plugins\Microsoft\System.Runtime.CompilerServices.Unsafe.dll" />
     <None Include="Assets\RosSharp\Plugins\External\websocket-sharp.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.Bson.dll" />
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.Bson.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
