@@ -1,11 +1,13 @@
+Library/
+Logs/
+obj/
+
+
 # Unity3D generated meta files
 *.meta
 *.log
 
 #Customed
-MxLabSim2022/Library/
-Logs/
-obj/
 *.csproj
 *.sln
-*.vsconfig
+.ArtifactDB
