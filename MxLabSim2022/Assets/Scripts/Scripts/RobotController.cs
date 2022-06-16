@@ -13,8 +13,6 @@ public class RobotController : MonoBehaviour
     }
     public Joint[] joints;
 
-    public int indices;
-
 
     // CONTROL
 
@@ -29,7 +27,6 @@ public class RobotController : MonoBehaviour
 
     public void RotateJoint(int jointIndex, RotationDirection direction)
     {
-        indices = jointIndex;
         StopAllJointRotations();
         Joint joint = joints[jointIndex];
         UpdateRotationState(direction, joint.robotPart);
