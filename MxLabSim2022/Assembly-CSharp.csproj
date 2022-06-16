@@ -128,6 +128,7 @@
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfCollisions.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfJoints\UrdfJoint.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\JointLimitsManagers\HingeJointLimitsManager.cs" />
+    <Compile Include="Assets\Scripts\WristUI.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnityFibonacciActionSever.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JointStateWriter.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfPlugins.cs" />
@@ -138,7 +139,6 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnityFibonacciActionClient.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\GetParamServiceProvider.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\LaserScanReader.cs" />
-    <Compile Include="Assets\Scripts\WristUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.dll" />
