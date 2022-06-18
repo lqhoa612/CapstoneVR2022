@@ -69,14 +69,14 @@ public class HandDirectInteractor : MonoBehaviour
     private void UpdateHand()
     {
         //This will get the value for our trigger from the target device and output a flaot into triggerValue
-        /*if (_targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        if (_targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
             _handAnimator.SetFloat("Trigger", triggerValue);
         }
         else
         {
             _handAnimator.SetFloat("Trigger", 0);
-        }*/
+        }
 
         //This will get the value for our grip from the target device and output a flaot into gripValue
         if (_targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
