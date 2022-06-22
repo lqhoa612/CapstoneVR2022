@@ -2951,6 +2951,10 @@ PrefabInstance:
       propertyPath: _UR
       value: 
       objectReference: {fileID: 447174218}
+    - target: {fileID: 1561144677762306210, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
+      propertyPath: isUR
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1561144677762306237, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
       propertyPath: m_Camera
       value: 
