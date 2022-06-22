@@ -65,7 +65,6 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JointStatePatcher.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfVisual.cs" />
     <Compile Include="Assets\Scripts\Scripts\ArticulationHandManualInput.cs" />
-    <Compile Include="Assets\Scripts\Line.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\JointStatePublisher.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\TwistSubscriber.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\HandPhysics.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\JoyAxisReader.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\PoseStampedSubscriber.cs" />
     <Compile Include="Assets\Scripts\Scripts\RobotController.cs" />
+    <Compile Include="Assets\Scripts\DebugDisplay.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\HandDirectInteractor.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\JointStateSubscriber.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\SensorDataVisualization\LaserScanVisualizer.cs" />
@@ -140,7 +140,6 @@
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\UnityFibonacciActionClient.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\RosCommuncation\GetParamServiceProvider.cs" />
     <Compile Include="Assets\RosSharp\Scripts\RosBridgeClient\MessageHandling\LaserScanReader.cs" />
-    <Compile Include="Assets\Scripts\DebugDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.dll" />

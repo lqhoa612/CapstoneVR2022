@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class DebugDisplay : MonoBehaviour
 {
-    Dictionary<string, string> debugLogs = new Dictionary<string, string>();
+    readonly Dictionary<string, string> debugLogs = new Dictionary<string, string>();
     public Text display;
+    public URControllerInput _UR;
+    public UGVControllerInput _UGV;
+    public bool isUR = true;
 
     private void Update()
     {
         Debug.Log("Time: " + Time.time);
-        Debug.Log(gameObject.name);
+        if (isUR)
+            Debug.Log("Joint: " + _UR.GetControlledJoint());
+        if (!isUR)
+            Debug.Log("UGV Status: " + _UGV.GetPosition().x
+                                + "|" +_UGV.GetPosition().z);
     }
 
     private void OnEnable()
@@ -50,4 +57,5 @@ public class DebugDisplay : MonoBehaviour
         }
         display.text = displayText;
     }
+
 }

@@ -93,10 +93,12 @@ public class URControllerInput : MonoBehaviour
         if (indice > 6) indice = 0;
         if (indice < 0) indice = 6;
 
-
     }
 
-
+    public int GetControlledJoint()
+    {
+        return indice;
+    }
 
 
 }

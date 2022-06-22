@@ -51,4 +51,9 @@ public class UGVControllerInput : MonoBehaviour
             robot.transform.Translate(0.0f, 0.0f, 0.0f);
         }
     }
+
+    public Vector3 GetPosition()
+    {
+        return robot.transform.position;
+    }
 }
