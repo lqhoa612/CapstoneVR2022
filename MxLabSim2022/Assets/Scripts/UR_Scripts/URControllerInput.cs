@@ -17,7 +17,7 @@ public class URControllerInput : MonoBehaviour
     private readonly List<InputDevice> devices = new List<InputDevice>();
     private InputDevice device;
 
-    void GetDevice()
+    private void GetDevice()
     {
         InputDevices.GetDevicesAtXRNode(xRNode, devices);
         device = devices.FirstOrDefault();

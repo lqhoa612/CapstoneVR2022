@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ public class UGVControllerInput : MonoBehaviour
     private readonly XRNode ugvControlNode = XRNode.RightHand;
     private readonly List<InputDevice> ugv_devices = new List<InputDevice>();
     private InputDevice ugv_device;
-    
-    void GetDevice()
+
+    private void GetDevice()
     {
         InputDevices.GetDevicesAtXRNode(ugvControlNode, ugv_devices);
         ugv_device = ugv_devices.FirstOrDefault();
@@ -54,6 +55,10 @@ public class UGVControllerInput : MonoBehaviour
 
     public Vector3 GetPosition()
     {
-        return robot.transform.position;
+        Vector3 pos;
+        pos = robot.transform.localPosition * 10;
+        pos.x = (float)Math.Round(pos.x, 2);
+        pos.y = (float)Math.Round(pos.y, 2);
+        return pos;
     }
 }

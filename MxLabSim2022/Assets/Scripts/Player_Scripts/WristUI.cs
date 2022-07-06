@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WristUI : MonoBehaviour
 {
     public InputActionAsset inputActions;
+    public ActionBasedContinuousMoveProvider _move;
+    public ActionBasedContinuousTurnProvider _turn;
 
     private Canvas _UICanvas;
     private InputAction _menu;
@@ -28,5 +29,7 @@ public class WristUI : MonoBehaviour
     public void ToggleMenu(InputAction.CallbackContext context)
     {
         _UICanvas.enabled = !_UICanvas.enabled;
+        _move.enabled = !_move.enabled;
+        _turn.enabled = !_turn.enabled;
     }
 }

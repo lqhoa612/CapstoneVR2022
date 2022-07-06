@@ -17,8 +17,7 @@ public class DebugDisplay : MonoBehaviour
         if (isUR)
             Debug.Log("Joint: " + _UR.GetControlledJoint());
         if (!isUR)
-            Debug.Log("UGV Status: " + _UGV.GetPosition().x
-                                + "|" +_UGV.GetPosition().z);
+            Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" +_UGV.GetPosition().z);
     }
 
     private void OnEnable()

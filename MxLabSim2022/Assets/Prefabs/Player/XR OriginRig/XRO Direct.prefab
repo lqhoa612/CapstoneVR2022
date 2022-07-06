@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPrefab: {fileID: 100158, guid: 442d5b4503ed83c4897ef44659446587, type: 3}
   inputDeviceCharacteristics: 320
+  hideHand: 0
 --- !u!114 &5329460094870433389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPrefab: {fileID: 100048, guid: 88e2e1bfe11ec6c438b0ade27eaeded1, type: 3}
   inputDeviceCharacteristics: 576
+  hideHand: 0
 --- !u!114 &5329460095632202388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,13 +831,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5329460095932238098
 MonoBehaviour:
   m_ObjectHideFlags: 0
