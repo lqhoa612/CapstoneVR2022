@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -7,6 +8,8 @@ public class WristUI : MonoBehaviour
     public InputActionAsset inputActions;
     public ActionBasedContinuousMoveProvider _move;
     public ActionBasedContinuousTurnProvider _turn;
+
+    public GameObject defaultButton;
 
     private Canvas _UICanvas;
     private InputAction _menu;
@@ -31,5 +34,10 @@ public class WristUI : MonoBehaviour
         _UICanvas.enabled = !_UICanvas.enabled;
         _move.enabled = !_move.enabled;
         _turn.enabled = !_turn.enabled;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(defaultButton);
     }
+
+
 }
