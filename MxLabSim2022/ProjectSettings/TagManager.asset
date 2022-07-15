@@ -3,16 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Environment
+  - UR_upper
+  - UR_lower
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - UR
   - Water
   - UI
   - Hand
-  - 
+  - UGV
   - 
   - 
   - 

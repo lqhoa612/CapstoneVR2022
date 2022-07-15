@@ -18,7 +18,7 @@ public class RobotController : MonoBehaviour
 
     public void StopAllJointRotations()
     {
-        for (int i = 0; i < joints.Length; i++)
+        for (int i = 0; i < joints.Length; ++i)
         {
             GameObject robotPart = joints[i].robotPart;
             UpdateRotationState(RotationDirection.None, robotPart);

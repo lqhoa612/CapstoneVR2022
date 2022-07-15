@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class WristUI : MonoBehaviour
 {
     public InputActionAsset inputActions;
+    public bool LocomotionSwitch;
     public ActionBasedContinuousMoveProvider _move;
     public ActionBasedContinuousTurnProvider _turn;
 
@@ -32,12 +33,15 @@ public class WristUI : MonoBehaviour
     public void ToggleMenu(InputAction.CallbackContext context)
     {
         _UICanvas.enabled = !_UICanvas.enabled;
-        _move.enabled = !_move.enabled;
-        _turn.enabled = !_turn.enabled;
+        
+        if (LocomotionSwitch == true)
+        {
+            _move.enabled = !_move.enabled;
+            _turn.enabled = !_turn.enabled;
+        }
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(defaultButton);
     }
-
 
 }

@@ -416,6 +416,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  LocomotionSwitch: 0
+  _move: {fileID: 0}
+  _turn: {fileID: 0}
+  defaultButton: {fileID: 5662506982816671160}
 --- !u!1 &5662506983384327233
 GameObject:
   m_ObjectHideFlags: 0

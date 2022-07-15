@@ -104,12 +104,12 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: Vector3
-      m_Id: 
+      m_Id: 57b97430-739f-4c89-920e-f629ba17dec4
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: de4c0b93-434d-4097-84ef-8f30a8a26b57
         m_Path: <XRHMD>/centerEyePosition
         m_Interactions: 
         m_Processors: 
@@ -124,12 +124,12 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: Quaternion
-      m_Id: 
+      m_Id: 8ba0a51a-eb99-4d89-b4f7-6ca083a3bea5
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 
+        m_Id: 045f3b4b-e65e-4979-9582-5f53cd0042db
         m_Path: <XRHMD>/centerEyeRotation
         m_Interactions: 
         m_Processors: 
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 253e98a3be47df64db98ffb86684ddce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handPrefab: {fileID: 100158, guid: 442d5b4503ed83c4897ef44659446587, type: 3}
+  handPrefab: {fileID: 8402729284348222423, guid: 95eda9d324291f54d80770e479962db3, type: 3}
   inputDeviceCharacteristics: 320
   hideHand: 0
 --- !u!114 &5329460094870433389
@@ -831,13 +831,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.3
+  m_Height: 0.7
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &5329460095932238098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,8 +851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LocomotionProvider: {fileID: 0}
-  m_MinHeight: 1
-  m_MaxHeight: 2
+  m_MinHeight: 0.5
+  m_MaxHeight: 1
 --- !u!1 &5329460095978940591
 GameObject:
   m_ObjectHideFlags: 0

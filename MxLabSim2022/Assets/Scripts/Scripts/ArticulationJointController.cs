@@ -8,12 +8,8 @@ public enum RotationDirection { None = 0, Positive = 1, Negative = -1 };
 public class ArticulationJointController : MonoBehaviour
 {
     public RotationDirection rotationState = RotationDirection.None;
-    public float speed = 100.0f;
-
+    public float speed = 50.0f;
     private ArticulationBody articulation;
-
-
-    // LIFE CYCLE
 
     void Start()
     {
@@ -27,8 +23,6 @@ public class ArticulationJointController : MonoBehaviour
             float rotationGoal = CurrentPrimaryAxisRotation() + rotationChange;
             RotateTo(rotationGoal);
         }
-
-
     }
 
 
@@ -47,7 +41,5 @@ public class ArticulationJointController : MonoBehaviour
         drive.target = primaryAxisRotation;
         articulation.xDrive = drive;
     }
-
-
 
 }
