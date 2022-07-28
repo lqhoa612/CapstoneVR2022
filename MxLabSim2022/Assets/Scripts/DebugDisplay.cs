@@ -57,4 +57,9 @@ public class DebugDisplay : MonoBehaviour
         display.text = displayText;
     }
 
+    public void PrintInGame()
+    {
+
+    }
+
 }
