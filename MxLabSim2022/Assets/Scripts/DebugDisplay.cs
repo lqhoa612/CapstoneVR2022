@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +9,20 @@ public class DebugDisplay : MonoBehaviour
     public URControllerInput _UR;
     public UGVControllerInput _UGV;
     public bool isUR = true;
+    public URPosRot _urPosRot;
 
-    private void Update()
+    private string _jointName = "none";
+
+    private void FixedUpdate()
     {
         Debug.Log("Time: " + Time.time);
         if (isUR)
+        {
             Debug.Log("Joint: " + _UR.GetControlledJoint());
+            Debug.Log("Pos: " + _urPosRot.GetPosition());
+            Debug.Log("Rot: " + _urPosRot.GetRotation());
+            Debug.Log("Collision detected: " + _jointName);
+        }
         if (!isUR)
             Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" +_UGV.GetPosition().z);
     }
@@ -57,9 +64,12 @@ public class DebugDisplay : MonoBehaviour
         display.text = displayText;
     }
 
-    public void PrintInGame()
+    public void PrintURMessage(string jointName)
     {
-
+        if (jointName != "")
+            _jointName = "@ " + jointName;
+        else
+            _jointName = "none";
     }
 
 }

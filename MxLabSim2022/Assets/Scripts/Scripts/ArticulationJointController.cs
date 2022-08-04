@@ -10,7 +10,7 @@ public class ArticulationJointController : MonoBehaviour
     public RotationDirection rotationState = RotationDirection.None;
     private float speed = 50.0f;
     private ArticulationBody articulation;
-
+    public DebugDisplay debugDisplay;
     public List<string> tags;
 
 
@@ -34,7 +34,7 @@ public class ArticulationJointController : MonoBehaviour
         {
             if (collision.collider.CompareTag(item))
             {
-                Debug.LogWarning("Bruh!");
+                debugDisplay.PrintURMessage(this.name);
                 speed = 0f;
             }
         }
@@ -46,6 +46,7 @@ public class ArticulationJointController : MonoBehaviour
         {
             if (collision.collider.CompareTag(item))
             {
+                debugDisplay.PrintURMessage("");
                 speed = 50.0f;
             }
         }
