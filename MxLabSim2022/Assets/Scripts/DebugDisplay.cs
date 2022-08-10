@@ -20,7 +20,7 @@ public class DebugDisplay : MonoBehaviour
         {
             Debug.Log("Joint: " + _UR.GetControlledJoint());
             Debug.Log("Pos: " + _urPosRot.GetPosition());
-            Debug.Log("Rot: " + _urPosRot.GetRotation());
+            Debug.Log("Rot: " + _urPosRot.GetRotationEuler());
             Debug.Log("Collision detected: " + _jointName);
         }
         if (!isUR)

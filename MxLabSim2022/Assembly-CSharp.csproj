@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.33f1</UnityVersion>
@@ -56,46 +56,55 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Scripts\RobotManualInput.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\RobotManualInput.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\UnityColorMsg.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\HandController.cs" />
-    <Compile Include="Assets\URPosRot.cs" />
-    <Compile Include="Assets\Scripts\Scripts\ArticulationHandManualInput.cs" />
+    <Compile Include="Assets\Scripts\URPosRot.cs" />
+    <Compile Include="Assets\Scripts\Useless codes\IKManager.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\ArticulationHandManualInput.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\HandPhysics.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\ControllerAnimator.cs" />
-    <Compile Include="Assets\Scripts\Scripts\RobotController.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\RobotController.cs" />
     <Compile Include="Assets\Scripts\DebugDisplay.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\ObjectPoseServiceRequest.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\HandDirectInteractor.cs" />
-    <Compile Include="Assets\Scripts\Scripts\PincherFingerController.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\PincherFingerController.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\HandHider.cs" />
     <Compile Include="Assets\Scripts\UGV_Scripts\UGVControllerInput.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URControllerInput.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\NewHand.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\SceneSelector.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\GripperDemoManualInput.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\PosRotMsg.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\NewHandController.cs" />
-    <Compile Include="Assets\Scripts\Collision.cs" />
+    <Compile Include="Assets\Scripts\Useless codes\Collision.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\Hand.cs" />
-    <Compile Include="Assets\Scripts\Scripts\PincherController.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\PincherController.cs" />
     <Compile Include="Assets\Scripts\TCP_Scripts\PublishTest.cs" />
     <Compile Include="Assets\Scripts\TCP_Scripts\SubscribeTest.cs" />
+    <Compile Include="Assets\Scripts\Useless codes\JointManager.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\ButtonEvent.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\PositionServiceResponse.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\SceneLoader.cs" />
-    <Compile Include="Assets\Scripts\Scripts\ArticulationJointController.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\ArticulationJointController.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\ObjectPoseServiceResponse.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\PositionServiceRequest.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\WristUI.cs" />
     <Compile Include="Assets\Scripts\Scripts_OLD\NewHandPhysic.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\Scripts\GripperDemoController.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\XRControllerCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Meshes\UR\ur3_with_gripper\robotiq_2f_140_gripper_visualization\CMakeLists.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Meshes\UR\ur3_with_gripper\robotiq_2f_140_gripper_visualization\package.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Meshes\UR\ur3_with_gripper\ur_description\CMakeLists.txt" />
+    <None Include="Assets\Meshes\UR\ur3_with_gripper\ur_description\package.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />

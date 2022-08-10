@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1439160961308600497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2576286877600223601}
+  m_Layer: 0
+  m_Name: end_effector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2576286877600223601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439160961308600497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3881563751041144730}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2755830440835346289
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1 &2802267289044182999
 GameObject:
@@ -306,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1 &3515844241327005429
 GameObject:
@@ -460,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1 &3526825930102054328
 GameObject:
@@ -504,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a773265210a92744f96bb08e28255c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UR_TrackPoint: {fileID: 0}
 --- !u!1 &3854013577316892615
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1 &4487586778315987715
 GameObject:
@@ -987,6 +1022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1 &8944988732127077901
 GameObject:
@@ -1141,6 +1177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!1001 &3626713643508985969
 PrefabInstance:
@@ -1216,11 +1253,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ac9dd404130e9344a9d979a870c677b4, type: 3}
   m_PrefabInstance: {fileID: 3626713643508985969}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3881563751041144730 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac9dd404130e9344a9d979a870c677b4, type: 3}
-  m_PrefabInstance: {fileID: 3626713643508985969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8309532194398747690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4685378958838287451, guid: ac9dd404130e9344a9d979a870c677b4, type: 3}
@@ -1229,6 +1261,11 @@ GameObject:
 --- !u!1 &523551377231920197 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3823745078623030324, guid: ac9dd404130e9344a9d979a870c677b4, type: 3}
+  m_PrefabInstance: {fileID: 3626713643508985969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3881563751041144730 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac9dd404130e9344a9d979a870c677b4, type: 3}
   m_PrefabInstance: {fileID: 3626713643508985969}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &921507683
@@ -1362,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationState: 0
+  debugDisplay: {fileID: 0}
   tags: []
 --- !u!64 &921507684
 MeshCollider:
