@@ -388,6 +388,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
   m_PrefabInstance: {fileID: 110825173}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &110825175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9091295473725513580, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
+  m_PrefabInstance: {fileID: 110825173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &110825176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110825175}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d75367a50c332a448b55e36047d87f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RobotController: {fileID: 921507664}
+  m_XRCapture: {fileID: 110825177}
+  _index: 0
+--- !u!114 &110825177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110825175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b751c90477a2c3418b31d787c34d245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AisPressed: 0
+  BisPressed: 0
+  XisPressed: 0
+  YisPressed: 0
+  gripLeft: 0
+  gripRight: 0
+  triggerLeft: 0
+  triggerRight: 0
+  menuIsPressed: 0
+  timer1: 0
+  timer2: 0
+  timer3: 0
+  timer4: 0
+  index: 0
+  leftJoy: {x: 0, y: 0}
+  rightJoy: {x: 0, y: 0}
 --- !u!1 &243027159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5952210215612967072, guid: 59d57f10fcbe47044aa9894d36735fa5, type: 3}
@@ -972,6 +1020,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+--- !u!114 &921507664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1738634604, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+  m_PrefabInstance: {fileID: 921507663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d607ea46a579d44c4b19a6322ce4b9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &970424686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1797,7 +1856,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1559896672}
     - target: {fileID: 248195569, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 248195569, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
+      propertyPath: m_eventSystem
+      value: 
+      objectReference: {fileID: 1652137367}
+    - target: {fileID: 248195569, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
       propertyPath: LocomotionSwitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 458597234, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5662506983310331039, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
@@ -1854,6 +1925,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
+--- !u!114 &1652137367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5662506983001884190, guid: 4d8110bda019e6d4daf2fc7f0b7f994f, type: 3}
+  m_PrefabInstance: {fileID: 1652137366}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1735700560 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4328059160788887158, guid: 858e5eea981f76a45898939f14e8ffc5, type: 3}
@@ -1880,6 +1962,10 @@ PrefabInstance:
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Name
       value: RosTCP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder

@@ -8,7 +8,7 @@ public class WristUI : MonoBehaviour
     public InputActionAsset inputActions;
     public bool LocomotionSwitch;
     public ActionBasedContinuousMoveProvider _move;
-    public ActionBasedContinuousTurnProvider _turn;
+    //public ActionBasedContinuousTurnProvider _turn;
 
     public GameObject defaultButton;
 
@@ -37,7 +37,7 @@ public class WristUI : MonoBehaviour
         if (LocomotionSwitch == true)
         {
             _move.enabled = !_move.enabled;
-            _turn.enabled = !_turn.enabled;
+            //_turn.enabled = !_turn.enabled;
         }
 
         EventSystem.current.SetSelectedGameObject(null);

@@ -7,12 +7,10 @@ using Unity.Robotics;
 public class XRControllerCapture : MonoBehaviour
 {
     [HideInInspector]
-    public bool AisPressed, BisPressed, XisPressed, YisPressed, gripLeft, gripRight, triggerLeft, triggerRight;
+    public bool AisPressed, BisPressed, XisPressed, YisPressed, gripLeft, gripRight, triggerLeft, triggerRight, menuIsPressed;
     [HideInInspector]
     public float timer1, timer2, timer3, timer4;
     [HideInInspector] public int index;
-
-    public Unity.Robotics.UrdfImporter.Control.Controller manual;
 
     private InputDevice leftController;
     private InputDevice rightController;
@@ -23,11 +21,11 @@ public class XRControllerCapture : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        index = 2;
         if (!DevicesAreValid())
         {
             GetDevice();
         }
-
     }
 
     // Update is called once per frame
@@ -37,21 +35,15 @@ public class XRControllerCapture : MonoBehaviour
         {
             GetDevice();
         }
-        //manual.timerSI1 = timer4;
-        //manual.timerSI2 = timer2;
-        //manual.SelectionInput1 = BisPressed;
-        //manual.SelectionInput2 = AisPressed;
-        manual.moveDirection = rightJoy.x;
-        manual.selectedIndex = index;
 
 
         //Trigger
-        if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool leftTriggerValue) && leftTriggerValue  == true)
+        if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool leftTriggerValue))
         {
             triggerLeft = leftTriggerValue;
             //Debug.Log("Left Trigger: " + leftTriggerValue);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool rightTriggerValue) && rightTriggerValue == true)
+        if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool rightTriggerValue))
         {
             triggerRight = rightTriggerValue;
             //Debug.Log("Right Trigger: " + rightTriggerValue);
@@ -59,12 +51,12 @@ public class XRControllerCapture : MonoBehaviour
 
 
         //Grip
-        if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGripValue) && leftGripValue == true)
+        if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGripValue))
         {
             gripLeft = leftGripValue;
             //Debug.Log("Left Grip: " + leftGripValue);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGripValue) && rightGripValue == true)
+        if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGripValue))
         {
             gripRight = rightGripValue;
             //Debug.Log("Right Grip: " + rightGripValue);
@@ -79,13 +71,7 @@ public class XRControllerCapture : MonoBehaviour
         }
         if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed2))
         {
-            if (isPressed2 == false) timer2 = 0;
-            if (isPressed2 == true && timer2 == 0)
-            {
-                timer2 += Time.deltaTime;
-                index--;
-                AisPressed = isPressed2;
-            }
+            AisPressed = isPressed2;
             //Debug.Log("A button: " + isPressed2);
         }
 
@@ -98,13 +84,7 @@ public class XRControllerCapture : MonoBehaviour
         }
         if (rightController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isPressed4))
         {
-            if (isPressed4 == false) timer4 = 0;
-            if (isPressed4 == true && timer4 == 0)
-            {
-                timer4 += Time.deltaTime;
-                index++;
-                BisPressed = isPressed4;
-            }
+            BisPressed = isPressed4;
             //Debug.Log("B button: " + isPressed4);
         }
 
@@ -112,21 +92,20 @@ public class XRControllerCapture : MonoBehaviour
         //Joystick
         if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 leftJoyValue))
         {
-            //Debug.Log("Joystick Left: " + leftJoyValue);
+            Debug.Log("Joystick Left: " + leftJoyValue);
             leftJoy = leftJoyValue;
-        }
-        else
-        {
-            leftJoy = Vector2.zero;
         }
         if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 rightJoyValue))
         {
-            //Debug.Log("Joystick Right: " + rightJoyValue);
+            Debug.Log("Joystick Right: " + rightJoyValue);
             rightJoy = rightJoyValue;
         }
-        else
+
+
+        //Menu
+        if (leftController.TryGetFeatureValue(CommonUsages.menuButton, out bool menuValue))
         {
-            rightJoy = Vector2.zero;
+            menuIsPressed = menuValue;
         }
     }
 

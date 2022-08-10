@@ -6,22 +6,22 @@ public class DebugDisplay : MonoBehaviour
 {
     readonly Dictionary<string, string> debugLogs = new Dictionary<string, string>();
     public Text display;
-    public URControllerInput _UR;
+    public URController _UR;
     public UGVControllerInput _UGV;
     public bool isUR = true;
-    public URPosRot _urPosRot;
+    //public URPosRot _urPosRot;
 
     private string _jointName = "none";
 
     private void FixedUpdate()
     {
-        Debug.Log("Time: " + Time.time);
+        //Debug.Log("Time: " + Time.time);
         if (isUR)
         {
-            Debug.Log("Joint: " + _UR.GetControlledJoint());
-            Debug.Log("Pos: " + _urPosRot.GetPosition());
-            Debug.Log("Rot: " + _urPosRot.GetRotationEuler());
-            Debug.Log("Collision detected: " + _jointName);
+            Debug.Log("Joint: " + _UR.CurrentJointName(_UR._index));
+            //Debug.Log("Pos: " + _urPosRot.GetPosition());
+            //Debug.Log("Rot: " + _urPosRot.GetRotationEuler());
+            //Debug.Log("Collision detected: " + _jointName);
         }
         if (!isUR)
             Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" +_UGV.GetPosition().z);
