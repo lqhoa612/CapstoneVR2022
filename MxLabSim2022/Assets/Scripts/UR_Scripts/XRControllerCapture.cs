@@ -7,7 +7,7 @@ using Unity.Robotics;
 public class XRControllerCapture : MonoBehaviour
 {
     [HideInInspector]
-    public bool AisPressed, BisPressed, XisPressed, YisPressed, gripLeft, gripRight, triggerLeft, triggerRight, menuIsPressed;
+    public bool AisPressed, BisPressed, XisPressed, YisPressed, gripLeft, gripRight, triggerLeft, triggerRight, menuIsPressed, joyRightPressed, joyLeftPressed;
     [HideInInspector]
     public float timer1, timer2, timer3, timer4;
     [HideInInspector] public int index;
@@ -17,6 +17,8 @@ public class XRControllerCapture : MonoBehaviour
 
     [HideInInspector]
     public Vector2 leftJoy = Vector2.zero, rightJoy = Vector2.zero;
+
+    public SourceDestinationPublisher m_publisher;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -92,19 +94,37 @@ public class XRControllerCapture : MonoBehaviour
         //Joystick
         if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 leftJoyValue))
         {
-            Debug.Log("Joystick Left: " + leftJoyValue);
+            //Debug.Log("Joystick Left: " + leftJoyValue);
             leftJoy = leftJoyValue;
         }
         if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 rightJoyValue))
         {
-            Debug.Log("Joystick Right: " + rightJoyValue);
+            //Debug.Log("Joystick Right: " + rightJoyValue);
             rightJoy = rightJoyValue;
+        }
+
+
+        //Joystick Click
+        if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool leftJoyIsPressed))
+        {
+            //Debug.Log("Joystick Left: " + leftJoyValue);
+            joyLeftPressed = leftJoyIsPressed;
+        }
+        if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool rightJoyIsPressed))
+        {
+            //Debug.Log("Joystick Right: " + rightJoyValue);
+            joyRightPressed = rightJoyIsPressed;
+            if (rightJoyIsPressed == true)
+            {
+                m_publisher.Publish();
+            }
         }
 
 
         //Menu
         if (leftController.TryGetFeatureValue(CommonUsages.menuButton, out bool menuValue))
         {
+            //Debug.Log("Menu: " + menuValue);
             menuIsPressed = menuValue;
         }
     }

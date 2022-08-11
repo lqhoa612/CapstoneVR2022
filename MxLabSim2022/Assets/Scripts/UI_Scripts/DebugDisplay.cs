@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DebugDisplay : MonoBehaviour
@@ -8,25 +9,22 @@ public class DebugDisplay : MonoBehaviour
     public Text display;
     public URController _UR;
     public UGVControllerInput _UGV;
-    public bool isUR = true;
     //public URPosRot _urPosRot;
 
-    private string _jointName = "none";
 
+    // Update the messages in-game
     private void FixedUpdate()
     {
         //Debug.Log("Time: " + Time.time);
-        if (isUR)
-        {
-            Debug.Log("Joint: " + _UR.CurrentJointName(_UR._index));
-            //Debug.Log("Pos: " + _urPosRot.GetPosition());
-            //Debug.Log("Rot: " + _urPosRot.GetRotationEuler());
-            //Debug.Log("Collision detected: " + _jointName);
-        }
-        if (!isUR)
-            Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" +_UGV.GetPosition().z);
+        if (SceneManager.GetActiveScene().name == "URScene")
+            PrintURMessage();
+
+        if (SceneManager.GetActiveScene().name == "UGVScene")
+            PrintUGVMessage();
     }
 
+
+    // Subcribe and Unsubcribe on gameobject enabled and disable
     private void OnEnable()
     {
         Application.logMessageReceived += HandleLog;
@@ -37,6 +35,8 @@ public class DebugDisplay : MonoBehaviour
         Application.logMessageReceived -= HandleLog;
     }
 
+
+    // Printing helper
     void HandleLog(string logString, string stackTrace, LogType type)
     {
         if (type == LogType.Log)
@@ -64,12 +64,15 @@ public class DebugDisplay : MonoBehaviour
         display.text = displayText;
     }
 
-    public void PrintURMessage(string jointName)
+
+    // Robot messages
+    public void PrintURMessage()
     {
-        if (jointName != "")
-            _jointName = "@ " + jointName;
-        else
-            _jointName = "none";
+        Debug.Log("Joint: " + _UR.CurrentJointName(_UR.m_index));
     }
 
+    public void PrintUGVMessage()
+    {
+        Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" + _UGV.GetPosition().z);
+    }
 }
