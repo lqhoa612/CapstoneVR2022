@@ -10,7 +10,7 @@ public class URController : MonoBehaviour
     [HideInInspector] public int m_index;
 
     private float m_timerA, m_timerB;
-    private readonly int[] m_revolutionJoints = {2,3,4,5,6,7,10,11,13,15,16,18};
+    private readonly int[] m_revolutionJoints = {2,3,4,5,6,7,10};
 
     // Update is called once per frame
     void Update()
@@ -48,12 +48,12 @@ public class URController : MonoBehaviour
             5 => "Wrist 1",
             6 => "Wrist 2",
             7 => "Wrist 3",
-            10 => "Right Inner Knuckle",
-            11 => "Right Outer Knuckle",
-            13 => "Right Inner Finger",
-            15 => "Left Inner Knuckle",
-            16 => "Left Outer Knuckle",
-            18 => "Left Inner Finger",
+            10 => "Gripper",
+            //11 => "Right Outer Knuckle",
+            //13 => "Right Inner Finger",
+            //15 => "Left Inner Knuckle",
+            //16 => "Left Outer Knuckle",
+            //18 => "Left Inner Finger",
             _ => "Shoulder",
         };
     }
