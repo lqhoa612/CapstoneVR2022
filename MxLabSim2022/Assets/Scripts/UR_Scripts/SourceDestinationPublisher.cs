@@ -1,6 +1,6 @@
 using System;
 using RosMessageTypes.Geometry;
-using RosMessageTypes.NiryoMoveit;
+using RosMessageTypes.Ur3Moveit;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using Unity.Robotics.UrdfImporter;
@@ -35,7 +35,7 @@ public class SourceDestinationPublisher : MonoBehaviour
     {
         // Get ROS connection static instance
         m_Ros = ROSConnection.GetOrCreateInstance();
-        m_Ros.RegisterPublisher<NiryoMoveitJointsMsg>(m_TopicName);
+        m_Ros.RegisterPublisher<UR3MoveitJointsMsg>(m_TopicName);
 
         m_JointArticulationBodies = new UrdfJointRevolute[k_NumRobotJoints];
 
@@ -49,12 +49,18 @@ public class SourceDestinationPublisher : MonoBehaviour
 
     public void Publish()
     {
-        var sourceDestinationMessage = new NiryoMoveitJointsMsg();
+        var sourceDestinationMessage = new UR3MoveitJointsMsg();
 
-        for (var i = 0; i < k_NumRobotJoints; i++)
-        {
-            sourceDestinationMessage.joints[i] = m_JointArticulationBodies[i].GetPosition();
-        }
+        //for (var i = 0; i < k_NumRobotJoints; i++)
+        //{
+        //    sourceDestinationMessage.joints[i] = m_JointArticulationBodies[i].GetPosition();
+        //}
+        sourceDestinationMessage.joint_00 = m_JointArticulationBodies[0].GetPosition();
+        sourceDestinationMessage.joint_01 = m_JointArticulationBodies[1].GetPosition();
+        sourceDestinationMessage.joint_02 = m_JointArticulationBodies[2].GetPosition();
+        sourceDestinationMessage.joint_03 = m_JointArticulationBodies[3].GetPosition();
+        sourceDestinationMessage.joint_04 = m_JointArticulationBodies[4].GetPosition();
+        sourceDestinationMessage.joint_05 = m_JointArticulationBodies[5].GetPosition();
 
         // Pick Pose
         sourceDestinationMessage.pick_pose = new PoseMsg

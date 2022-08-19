@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using RosMessageTypes.Geometry;
-using RosMessageTypes.NiryoMoveit;
+using RosMessageTypes.Ur3Moveit;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class TrajectoryPlanner : MonoBehaviour
 
     // Variables required for ROS communication
     [SerializeField]
-    string m_RosServiceName = "niryo_moveit";
+    string m_RosServiceName = "ur3_moveit";
     public string RosServiceName { get => m_RosServiceName; set => m_RosServiceName = value; }
 
     [SerializeField]
@@ -61,8 +61,8 @@ public class TrajectoryPlanner : MonoBehaviour
         }
 
         // Find left and right fingers
-        var rightGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_right/right_gripper";
-        var leftGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_left/left_gripper";
+        var rightGripper = linkName + "/tool0/robotiq_arg2f_base_link/right_outer_knuckle";
+        var leftGripper = linkName + "/tool0/robotiq_arg2f_base_link/left_outer_knuckle";
 
         m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
         m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
@@ -76,8 +76,8 @@ public class TrajectoryPlanner : MonoBehaviour
         var leftDrive = m_LeftGripper.xDrive;
         var rightDrive = m_RightGripper.xDrive;
 
-        leftDrive.target = -0.01f;
-        rightDrive.target = 0.01f;
+        leftDrive.target = 38.0f;
+        rightDrive.target = 38.0f;
 
         m_LeftGripper.xDrive = leftDrive;
         m_RightGripper.xDrive = rightDrive;
@@ -91,8 +91,8 @@ public class TrajectoryPlanner : MonoBehaviour
         var leftDrive = m_LeftGripper.xDrive;
         var rightDrive = m_RightGripper.xDrive;
 
-        leftDrive.target = 0.01f;
-        rightDrive.target = -0.01f;
+        leftDrive.target = 38.0f;
+        rightDrive.target = 38.0f;
 
         m_LeftGripper.xDrive = leftDrive;
         m_RightGripper.xDrive = rightDrive;
@@ -102,14 +102,21 @@ public class TrajectoryPlanner : MonoBehaviour
     ///     Get the current values of the robot's joint angles.
     /// </summary>
     /// <returns>NiryoMoveitJoints</returns>
-    NiryoMoveitJointsMsg CurrentJointConfig()
+    UR3MoveitJointsMsg CurrentJointConfig()
     {
-        var joints = new NiryoMoveitJointsMsg();
+        var joints = new UR3MoveitJointsMsg();
 
-        for (var i = 0; i < k_NumRobotJoints; i++)
-        {
-            joints.joints[i] = m_JointArticulationBodies[i].jointPosition[0];
-        }
+        //for (var i = 0; i < k_NumRobotJoints; i++)
+        //{
+            //joints.joint_00 = m_JointArticulationBodies[i].jointPosition[0];
+        //}
+
+        joints.joint_00 = m_JointArticulationBodies[0].jointPosition[0];
+        joints.joint_01 = m_JointArticulationBodies[1].jointPosition[0];
+        joints.joint_02 = m_JointArticulationBodies[2].jointPosition[0];
+        joints.joint_03 = m_JointArticulationBodies[3].jointPosition[0];
+        joints.joint_04 = m_JointArticulationBodies[4].jointPosition[0];
+        joints.joint_05 = m_JointArticulationBodies[5].jointPosition[0];
 
         return joints;
     }
@@ -196,7 +203,7 @@ public class TrajectoryPlanner : MonoBehaviour
                 // Close the gripper if completed executing the trajectory for the Grasp pose
                 if (poseIndex == (int)Poses.Grasp)
                 {
-                    CloseGripper();
+                    //CloseGripper();
                 }
 
                 // Wait for the robot to achieve the final pose from joint assignment
@@ -204,7 +211,7 @@ public class TrajectoryPlanner : MonoBehaviour
             }
 
             // All trajectories have been executed, open the gripper to place the target cube
-            OpenGripper();
+            //OpenGripper();
         }
     }
 

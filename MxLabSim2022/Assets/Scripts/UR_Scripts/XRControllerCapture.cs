@@ -18,7 +18,7 @@ public class XRControllerCapture : MonoBehaviour
     [HideInInspector]
     public Vector2 leftJoy = Vector2.zero, rightJoy = Vector2.zero;
 
-    public SourceDestinationPublisher m_publisher;
+    public TrajectoryPlanner m_publisher;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -116,7 +116,7 @@ public class XRControllerCapture : MonoBehaviour
             joyRightPressed = rightJoyIsPressed;
             if (rightJoyIsPressed == true)
             {
-                m_publisher.Publish();
+                m_publisher.PublishJoints();
             }
         }
 

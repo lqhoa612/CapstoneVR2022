@@ -58,8 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\UnityColorMsg.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\URPosRot.cs" />
-    <Compile Include="Assets\RosMessages\NiryoMoveit\srv\MoverServiceResponse.cs" />
-    <Compile Include="Assets\RosMessages\NiryoMoveit\srv\MoverServiceRequest.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\DebugDisplay.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\SourceDestinationPublisher.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\ObjectPoseServiceRequest.cs" />
@@ -67,9 +65,7 @@
     <Compile Include="Assets\Scripts\UR_Scripts\XRControllerCapture.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\TrajectoryPlanner.cs" />
     <Compile Include="Assets\Scripts\UGV_Scripts\UGVControllerInput.cs" />
-    <Compile Include="Assets\RosMessages\NiryoMoveit\msg\NiryoMoveitJointsMsg.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URMover.cs" />
-    <Compile Include="Assets\RosMessages\NiryoMoveit\msg\NiryoTrajectoryMsg.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\PosRotMsg.cs" />
     <Compile Include="Assets\RosMessages\Moveit\msg\RobotTrajectoryMsg.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URController.cs" />
@@ -81,6 +77,10 @@
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\ObjectPoseServiceResponse.cs" />
     <Compile Include="Assets\RosMessages\UnityRoboticsDemo\srv\PositionServiceRequest.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\WristUI.cs" />
+    <Compile Include="Assets\RosMessages\Ur3Moveit\srv\MoverServiceRequest.cs" />
+    <Compile Include="Assets\RosMessages\Ur3Moveit\srv\MoverServiceResponse.cs" />
+    <Compile Include="Assets\RosMessages\Ur3Moveit\msg\UR3MoveitJointsMsg.cs" />
+    <Compile Include="Assets\RosMessages\Ur3Moveit\msg\UR3TrajectoryMsg.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

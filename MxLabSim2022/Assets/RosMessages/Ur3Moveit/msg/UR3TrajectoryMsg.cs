@@ -5,29 +5,29 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.Robotics.ROSTCPConnector.MessageGeneration;
 
-namespace RosMessageTypes.NiryoMoveit
+namespace RosMessageTypes.Ur3Moveit
 {
     [Serializable]
-    public class NiryoTrajectoryMsg : Message
+    public class UR3TrajectoryMsg : Message
     {
-        public const string k_RosMessageName = "niryo_moveit/NiryoTrajectory";
+        public const string k_RosMessageName = "ur3_moveit/UR3Trajectory";
         public override string RosMessageName => k_RosMessageName;
 
         public Moveit.RobotTrajectoryMsg[] trajectory;
 
-        public NiryoTrajectoryMsg()
+        public UR3TrajectoryMsg()
         {
             this.trajectory = new Moveit.RobotTrajectoryMsg[0];
         }
 
-        public NiryoTrajectoryMsg(Moveit.RobotTrajectoryMsg[] trajectory)
+        public UR3TrajectoryMsg(Moveit.RobotTrajectoryMsg[] trajectory)
         {
             this.trajectory = trajectory;
         }
 
-        public static NiryoTrajectoryMsg Deserialize(MessageDeserializer deserializer) => new NiryoTrajectoryMsg(deserializer);
+        public static UR3TrajectoryMsg Deserialize(MessageDeserializer deserializer) => new UR3TrajectoryMsg(deserializer);
 
-        private NiryoTrajectoryMsg(MessageDeserializer deserializer)
+        private UR3TrajectoryMsg(MessageDeserializer deserializer)
         {
             deserializer.Read(out this.trajectory, Moveit.RobotTrajectoryMsg.Deserialize, deserializer.ReadLength());
         }
@@ -40,7 +40,7 @@ namespace RosMessageTypes.NiryoMoveit
 
         public override string ToString()
         {
-            return "NiryoTrajectoryMsg: " +
+            return "UR3TrajectoryMsg: " +
             "\ntrajectory: " + System.String.Join(", ", trajectory.ToList());
         }
 

@@ -1894,6 +1894,7 @@ GameObject:
   - component: {fileID: 1853032600}
   - component: {fileID: 1853032599}
   - component: {fileID: 1853032601}
+  - component: {fileID: 1853032602}
   m_Layer: 0
   m_Name: XRControllerCapture
   m_TagString: Untagged
@@ -1931,7 +1932,7 @@ MonoBehaviour:
   index: 0
   leftJoy: {x: 0, y: 0}
   rightJoy: {x: 0, y: 0}
-  m_publisher: {fileID: 1853032601}
+  m_publisher: {fileID: 1853032602}
 --- !u!4 &1853032600
 Transform:
   m_ObjectHideFlags: 0
@@ -1953,12 +1954,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853032598}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7c33620efe788e488828f8c604ab3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_TopicName: /niryo_joints
+  m_NiryoOne: {fileID: 1449160984}
+  m_Target: {fileID: 36863423}
+  m_TargetPlacement: {fileID: 1581810476}
+--- !u!114 &1853032602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853032598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fbb2f35bda0084790dbec4640a5aa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RosServiceName: ur3_moveit
   m_NiryoOne: {fileID: 1449160984}
   m_Target: {fileID: 36863423}
   m_TargetPlacement: {fileID: 1581810476}
