@@ -6,5 +6,5 @@
         <param name="tcp_port" type="int" value="$(arg tcp_port)"/>
     </node>
 
-    <!--<node pkg="hoa_unity_ros" name="JointAngleSubscriber" type="JointAngleSubscriber" output="screen"/>-->
+    <node pkg="hoa_unity_ros" name="JointAngleSubscriber" type="JointAngleSubscriber" output="screen"/>
 </launch>
