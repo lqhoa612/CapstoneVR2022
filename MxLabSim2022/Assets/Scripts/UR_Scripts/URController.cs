@@ -34,8 +34,6 @@ public class URController : MonoBehaviour
             m_index--;
         }
         if (m_XRCapture.AisPressed == false) m_timerA = 0.00f;
-
-
     }
 
     public string CurrentJointName(int jointIndex)
