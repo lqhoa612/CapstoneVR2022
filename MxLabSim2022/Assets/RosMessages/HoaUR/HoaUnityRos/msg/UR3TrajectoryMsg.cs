@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.Robotics.ROSTCPConnector.MessageGeneration;
 
-namespace RosMessageTypes.Ur3Moveit
+namespace RosMessageTypes.HoaUnityRos
 {
     [Serializable]
     public class UR3TrajectoryMsg : Message
     {
-        public const string k_RosMessageName = "ur3_moveit/UR3Trajectory";
+        public const string k_RosMessageName = "hoa_unity_ros/UR3Trajectory";
         public override string RosMessageName => k_RosMessageName;
 
         public Moveit.RobotTrajectoryMsg[] trajectory;

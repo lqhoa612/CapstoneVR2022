@@ -1,42 +1,31 @@
-using System;
+using RosMessageTypes.Geometry;
+using RosMessageTypes.HoaUnityRos;
 using System.Collections;
 using System.Linq;
-using RosMessageTypes.Geometry;
-using RosMessageTypes.Ur3Moveit;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using UnityEngine;
 
-public class TrajectoryPlanner : MonoBehaviour
+public class UR3TrajectoryPlanner : MonoBehaviour
 {
     // Hardcoded variables
     const int k_NumRobotJoints = 6;
-    const float k_JointAssignmentWait = 0.1f;
-    const float k_PoseAssignmentWait = 0.5f;
+    const float k_JointAssignmentWait = .1f;
+    const float k_PoseAssignmentWait = .5f;
 
     // Variables required for ROS communication
-    [SerializeField]
-    string m_RosServiceName = "ur3_moveit";
-    public string RosServiceName { get => m_RosServiceName; set => m_RosServiceName = value; }
+    [SerializeField] string m_RosServiceName = "ur3_moveit";
 
-    [SerializeField]
-    GameObject m_NiryoOne;
-    public GameObject NiryoOne { get => m_NiryoOne; set => m_NiryoOne = value; }
-    [SerializeField]
-    GameObject m_Target;
-    public GameObject Target { get => m_Target; set => m_Target = value; }
-    [SerializeField]
-    GameObject m_TargetPlacement;
-    public GameObject TargetPlacement { get => m_TargetPlacement; set => m_TargetPlacement = value; }
+    public GameObject m_UR;
+    public GameObject m_Target;
+    public GameObject m_Goal;
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
+    readonly Vector3 m_PickPoseOffset = Vector3.up * .1f;
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
-    readonly Vector3 m_PickPoseOffset = Vector3.up * 0.1f;
 
     // Articulation Bodies
     ArticulationBody[] m_JointArticulationBodies;
-    ArticulationBody m_LeftGripper;
-    ArticulationBody m_RightGripper;
 
     // ROS Connector
     ROSConnection m_Ros;
@@ -57,45 +46,8 @@ public class TrajectoryPlanner : MonoBehaviour
         for (var i = 0; i < k_NumRobotJoints; i++)
         {
             linkName += SourceDestinationPublisher.LinkNames[i];
-            m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
+            m_JointArticulationBodies[i] = m_UR.transform.Find(linkName).GetComponent<ArticulationBody>();
         }
-
-        // Find left and right fingers
-        var rightGripper = linkName + "/tool0/robotiq_arg2f_base_link/right_outer_knuckle";
-        var leftGripper = linkName + "/tool0/robotiq_arg2f_base_link/left_outer_knuckle";
-
-        m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
-        m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
-    }
-
-    /// <summary>
-    ///     Close the gripper
-    /// </summary>
-    void CloseGripper()
-    {
-        var leftDrive = m_LeftGripper.xDrive;
-        var rightDrive = m_RightGripper.xDrive;
-
-        leftDrive.target = 38.0f;
-        rightDrive.target = 38.0f;
-
-        m_LeftGripper.xDrive = leftDrive;
-        m_RightGripper.xDrive = rightDrive;
-    }
-
-    /// <summary>
-    ///     Open the gripper
-    /// </summary>
-    void OpenGripper()
-    {
-        var leftDrive = m_LeftGripper.xDrive;
-        var rightDrive = m_RightGripper.xDrive;
-
-        leftDrive.target = 38.0f;
-        rightDrive.target = 38.0f;
-
-        m_LeftGripper.xDrive = leftDrive;
-        m_RightGripper.xDrive = rightDrive;
     }
 
     /// <summary>
@@ -106,17 +58,10 @@ public class TrajectoryPlanner : MonoBehaviour
     {
         var joints = new UR3MoveitJointsMsg();
 
-        //for (var i = 0; i < k_NumRobotJoints; i++)
-        //{
-            //joints.joint_00 = m_JointArticulationBodies[i].jointPosition[0];
-        //}
-
-        joints.joint_00 = m_JointArticulationBodies[0].jointPosition[0];
-        joints.joint_01 = m_JointArticulationBodies[1].jointPosition[0];
-        joints.joint_02 = m_JointArticulationBodies[2].jointPosition[0];
-        joints.joint_03 = m_JointArticulationBodies[3].jointPosition[0];
-        joints.joint_04 = m_JointArticulationBodies[4].jointPosition[0];
-        joints.joint_05 = m_JointArticulationBodies[5].jointPosition[0];
+        for (var i = 0; i < k_NumRobotJoints; i++)
+        {
+            joints.joints[i] = m_JointArticulationBodies[i].jointPosition[0];
+        }
 
         return joints;
     }
@@ -144,7 +89,7 @@ public class TrajectoryPlanner : MonoBehaviour
         // Place Pose
         request.place_pose = new PoseMsg
         {
-            position = (m_TargetPlacement.transform.position + m_PickPoseOffset).To<FLU>(),
+            position = (m_Goal.transform.position + m_PickPoseOffset).To<FLU>(),
             orientation = m_PickOrientation.To<FLU>()
         };
 
@@ -200,26 +145,9 @@ public class TrajectoryPlanner : MonoBehaviour
                     yield return new WaitForSeconds(k_JointAssignmentWait);
                 }
 
-                // Close the gripper if completed executing the trajectory for the Grasp pose
-                if (poseIndex == (int)Poses.Grasp)
-                {
-                    //CloseGripper();
-                }
-
                 // Wait for the robot to achieve the final pose from joint assignment
                 yield return new WaitForSeconds(k_PoseAssignmentWait);
             }
-
-            // All trajectories have been executed, open the gripper to place the target cube
-            //OpenGripper();
         }
-    }
-
-    enum Poses
-    {
-        PreGrasp,
-        Grasp,
-        PickUp,
-        Place
     }
 }

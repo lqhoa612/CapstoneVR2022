@@ -1,6 +1,6 @@
 using System;
 using RosMessageTypes.Geometry;
-using RosMessageTypes.Ur3Moveit;
+using RosMessageTypes.HoaUnityRos;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using Unity.Robotics.UrdfImporter;
@@ -11,14 +11,14 @@ public class SourceDestinationPublisher : MonoBehaviour
     const int k_NumRobotJoints = 6;
 
     public static readonly string[] LinkNames =
-        { "world/base_link/shoulder_link", "/upper_arm_link", "/forearm_link", "/wrist_1_link", "/wrist_2_link", "/wrist_3_link" };
+        { "/shoulder_link", "/upper_arm_link", "/forearm_link", "/wrist_1_link", "/wrist_2_link", "/wrist_3_link" };
 
     // Variables required for ROS communication
     [SerializeField]
     string m_TopicName = "/ur3";
 
     [SerializeField]
-    GameObject m_NiryoOne;
+    GameObject m_UR;
     [SerializeField]
     GameObject m_Target;
     [SerializeField]
@@ -43,7 +43,7 @@ public class SourceDestinationPublisher : MonoBehaviour
         for (var i = 0; i < k_NumRobotJoints; i++)
         {
             linkName += LinkNames[i];
-            m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<UrdfJointRevolute>();
+            m_JointArticulationBodies[i] = m_UR.transform.Find(linkName).GetComponent<UrdfJointRevolute>();
         }
     }
 
@@ -51,16 +51,10 @@ public class SourceDestinationPublisher : MonoBehaviour
     {
         var sourceDestinationMessage = new UR3MoveitJointsMsg();
 
-        //for (var i = 0; i < k_NumRobotJoints; i++)
-        //{
-        //    sourceDestinationMessage.joints[i] = m_JointArticulationBodies[i].GetPosition();
-        //}
-        sourceDestinationMessage.joint_00 = m_JointArticulationBodies[0].GetPosition();
-        sourceDestinationMessage.joint_01 = m_JointArticulationBodies[1].GetPosition();
-        sourceDestinationMessage.joint_02 = m_JointArticulationBodies[2].GetPosition();
-        sourceDestinationMessage.joint_03 = m_JointArticulationBodies[3].GetPosition();
-        sourceDestinationMessage.joint_04 = m_JointArticulationBodies[4].GetPosition();
-        sourceDestinationMessage.joint_05 = m_JointArticulationBodies[5].GetPosition();
+        for (var i = 0; i < k_NumRobotJoints; i++)
+        {
+            sourceDestinationMessage.joints[i] = m_JointArticulationBodies[i].GetPosition();
+        }
 
         // Pick Pose
         sourceDestinationMessage.pick_pose = new PoseMsg

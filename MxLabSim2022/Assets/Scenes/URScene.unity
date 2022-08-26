@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TopicName: /niryo_joints
-  m_NiryoOne: {fileID: 1449160984}
+  m_UR: {fileID: 0}
   m_Target: {fileID: 36863423}
   m_TargetPlacement: {fileID: 1581810476}
 --- !u!114 &1853032602
@@ -2024,13 +2024,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1853032598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fbb2f35bda0084790dbec4640a5aa5, type: 3}
+  m_Script: {fileID: 11500000, guid: ce2e29b2d1afd1843b7d69b58c951f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_RosServiceName: ur3_moveit
-  m_NiryoOne: {fileID: 1449160984}
-  m_Target: {fileID: 36863423}
-  m_TargetPlacement: {fileID: 1581810476}
+  m_UR: {fileID: 0}
+  m_Target: {fileID: 0}
+  m_Goal: {fileID: 0}
 --- !u!1 &1854681246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1603828488123738735, guid: 369a4c326614a5e4f83c92a682f8e070, type: 3}
