@@ -10,7 +10,12 @@ project(hoa_unity_ros)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  geometry_msgs
+  ros_tcp_endpoint
   message_generation
+  moveit_msgs
+  roslaunch
+  trajectory_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,6 +55,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   JointAngle.msg
+  UR3MoveitJoints.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -69,7 +75,10 @@ add_message_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
+  geometry_msgs
   std_msgs
+  moveit_msgs
+  trajectory_msgs
 )
 
 ################################################
@@ -131,6 +140,7 @@ include_directories(
 add_executable(talker src/talker.cpp)
 add_executable(listener src/listener.cpp)
 add_executable(JointAngleSubscriber src/JointAngleSubscriber.cpp)
+add_executable(TrajectorySubscriber src/TrajectorySubscriber.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -139,6 +149,7 @@ add_executable(JointAngleSubscriber src/JointAngleSubscriber.cpp)
 add_dependencies(talker ${PROJECT_NAME}_generate_messages_cpp)
 add_dependencies(listener ${PROJECT_NAME}_generate_messages_cpp)
 add_dependencies(JointAngleSubscriber ${PROJECT_NAME}_generate_messages_cpp)
+add_dependencies(TrajectorySubscriber ${PROJECT_NAME}_generate_messages_cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -154,6 +165,7 @@ add_dependencies(JointAngleSubscriber ${PROJECT_NAME}_generate_messages_cpp)
 target_link_libraries(talker ${catkin_LIBRARIES})
 target_link_libraries(listener ${catkin_LIBRARIES})
 target_link_libraries(JointAngleSubscriber ${catkin_LIBRARIES})
+target_link_libraries(TrajectorySubscriber ${catkin_LIBRARIES})
 
 #############
 ## Install ##
