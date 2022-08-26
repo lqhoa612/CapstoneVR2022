@@ -1701,7 +1701,7 @@ GameObject:
   - component: {fileID: 1581810478}
   - component: {fileID: 1581810477}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   index: 0
   leftJoy: {x: 0, y: 0}
   rightJoy: {x: 0, y: 0}
-  m_publisher: {fileID: 1853032602}
+  m_publisher: {fileID: 1853032601}
 --- !u!4 &1853032600
 Transform:
   m_ObjectHideFlags: 0
@@ -2006,13 +2006,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853032598}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7c33620efe788e488828f8c604ab3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TopicName: /niryo_joints
-  m_UR: {fileID: 0}
+  m_TopicName: /ur3_joints
+  m_UR: {fileID: 1449160984}
   m_Target: {fileID: 36863423}
   m_TargetPlacement: {fileID: 1581810476}
 --- !u!114 &1853032602
@@ -2022,15 +2022,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853032598}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2e29b2d1afd1843b7d69b58c951f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_RosServiceName: ur3_moveit
-  m_UR: {fileID: 0}
-  m_Target: {fileID: 0}
-  m_Goal: {fileID: 0}
+  m_UR: {fileID: 1449160984}
+  m_Target: {fileID: 36863423}
+  m_Goal: {fileID: 1581810476}
 --- !u!1 &1854681246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1603828488123738735, guid: 369a4c326614a5e4f83c92a682f8e070, type: 3}

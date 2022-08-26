@@ -11,11 +11,11 @@ public class SourceDestinationPublisher : MonoBehaviour
     const int k_NumRobotJoints = 6;
 
     public static readonly string[] LinkNames =
-        { "/shoulder_link", "/upper_arm_link", "/forearm_link", "/wrist_1_link", "/wrist_2_link", "/wrist_3_link" };
+        { "world/base_link/shoulder_link", "/upper_arm_link", "/forearm_link", "/wrist_1_link", "/wrist_2_link", "/wrist_3_link" };
 
     // Variables required for ROS communication
     [SerializeField]
-    string m_TopicName = "/ur3";
+    string m_TopicName = "ur3_joints";
 
     [SerializeField]
     GameObject m_UR;
@@ -31,6 +31,10 @@ public class SourceDestinationPublisher : MonoBehaviour
     // ROS Connector
     ROSConnection m_Ros;
 
+    // Publish every N seconds
+    public float publishMessageFrequency = .5f;
+    private float timeElapsed;
+
     void Start()
     {
         // Get ROS connection static instance
@@ -44,6 +48,16 @@ public class SourceDestinationPublisher : MonoBehaviour
         {
             linkName += LinkNames[i];
             m_JointArticulationBodies[i] = m_UR.transform.Find(linkName).GetComponent<UrdfJointRevolute>();
+        }
+    }
+
+    void Update()
+    {
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed > publishMessageFrequency)
+        {
+            Publish();
+            timeElapsed = 0;
         }
     }
 
