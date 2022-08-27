@@ -14,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   ros_tcp_endpoint
   message_generation
   moveit_msgs
+  sensor_msgs
+  controller_manager
   roslaunch
   trajectory_msgs
 )
@@ -52,18 +54,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  JointAngle.msg
-  UR3MoveitJoints.msg
-)
+add_message_files(DIRECTORY msg)
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(DIRECTORY srv)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -78,6 +72,7 @@ generate_messages(
   geometry_msgs
   std_msgs
   moveit_msgs
+  sensor_msgs
   trajectory_msgs
 )
 
