@@ -19,7 +19,8 @@ public class XRControllerCapture : MonoBehaviour
     public Vector2 leftJoy = Vector2.zero, rightJoy = Vector2.zero;
 
     //public UR3TrajectoryPlanner m_publisher;
-    public SourceDestinationPublisher m_publisher;
+    //public SourceDestinationPublisher m_publisher;
+    public IKSolver m_publisher;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -49,6 +50,11 @@ public class XRControllerCapture : MonoBehaviour
         if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool rightTriggerValue))
         {
             triggerRight = rightTriggerValue;
+
+            if (rightTriggerValue == true)
+            {
+                m_publisher.PublishJoints();
+            }
             //Debug.Log("Right Trigger: " + rightTriggerValue);
         }
 
@@ -115,10 +121,6 @@ public class XRControllerCapture : MonoBehaviour
         {
             //Debug.Log("Joystick Right: " + rightJoyValue);
             joyRightPressed = rightJoyIsPressed;
-            if (rightJoyIsPressed == true)
-            {
-                //m_publisher.PublishJoints();
-            }
         }
 
 

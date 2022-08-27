@@ -150,4 +150,12 @@ public class UR3TrajectoryPlanner : MonoBehaviour
             }
         }
     }
+
+    enum Poses
+    {
+        PreGraps,
+        Graps,
+        PickUp,
+        Place
+    }
 }

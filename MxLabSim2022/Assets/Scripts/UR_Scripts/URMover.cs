@@ -8,10 +8,15 @@ public class URMover : MonoBehaviour
     private readonly int[] m_revolutionJoints = { 2, 3, 4, 5, 6, 7, 10 };
     public float[] targetAngles;
 
-    
+    public IKSolver m_IK;
 
     private void Update()
     {
-        m_RobotController.SetTrajectory(targetAngles, m_revolutionJoints);
+        if (m_IK.m_jointAngles != null)
+        {
+            m_RobotController.SetTrajectory(m_IK.m_jointAngles, m_revolutionJoints);
+        }
+        else 
+            m_RobotController.SetTrajectory(targetAngles, m_revolutionJoints);
     }
 }
