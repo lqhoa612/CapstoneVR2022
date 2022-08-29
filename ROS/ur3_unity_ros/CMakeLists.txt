@@ -152,6 +152,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
+  src/Ur3Service.py
   src/JointAnglesSub.py
   src/talker.py
   src/rtb_test.py
