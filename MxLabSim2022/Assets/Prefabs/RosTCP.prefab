@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2762392197895022124}
   - component: {fileID: 2762392197895022099}
-  - component: {fileID: 2762392197895022125}
-  - component: {fileID: 2762392197895022126}
+  - component: {fileID: 816417201}
+  - component: {fileID: 816417202}
   m_Layer: 0
   m_Name: RosTCP
   m_TagString: Untagged
@@ -55,22 +55,7 @@ MonoBehaviour:
   m_TFTopics:
   - /tf
   listenForTFMessages: 1
---- !u!114 &2762392197895022125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2762392197895022098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c3f980550c1ea4c87233e838f6d934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topicName: pos_rot
-  cube: {fileID: 0}
-  publishMessageFrequency: 0.5
---- !u!114 &2762392197895022126
+--- !u!114 &816417201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +64,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2762392197895022098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e5fd9285a08e314fbebe366da7c4da6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8479c0f500a31ac499d67931c8e234f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 0}
+  m_RobotController: {fileID: 0}
+  topicName: joint_angles
+  publishMessageFrequency: 0.5
+--- !u!114 &816417202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762392197895022098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_serviceName: traj_planner
+  m_target: {fileID: 0}
+  new_q: []

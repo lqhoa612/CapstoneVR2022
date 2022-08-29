@@ -502,7 +502,7 @@ MonoBehaviour:
   gripInput: 0
   selectedIndex: 0
   selectedJoint: 
-  targetJointAngles:
+  t_JointAngles:
   - 0
   - 0
   - 0

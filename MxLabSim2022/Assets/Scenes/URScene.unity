@@ -279,7 +279,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -292,7 +292,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36863423}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -354,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36863423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.269, y: 0.944, z: 2.284}
+  m_LocalPosition: {x: -2.269, y: 0.799, z: 2.164}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
@@ -716,41 +716,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
---- !u!1 &816417200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-  m_PrefabInstance: {fileID: 2762392197925748556}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &816417201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816417200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8479c0f500a31ac499d67931c8e234f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RobotController: {fileID: 921507664}
-  topicName: joint_angles
-  publishMessageFrequency: 0.5
---- !u!114 &816417202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816417200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_serviceName: traj_planner
-  m_target: {fileID: 36863423}
-  new_q: []
 --- !u!1001 &876257748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2159,17 +2124,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 816417201, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_RobotController
+      value: 
+      objectReference: {fileID: 921507664}
+    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_target
+      value: 
+      objectReference: {fileID: 36863423}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Name
       value: RosTCP
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
@@ -2215,25 +2180,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022125, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: cube
-      value: 
-      objectReference: {fileID: 1854681246}
-    - target: {fileID: 2762392197895022125, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022126, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: cube
-      value: 
-      objectReference: {fileID: 1854681246}
-    - target: {fileID: 2762392197895022126, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2762392197895022125, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-    - {fileID: 2762392197895022126, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
 --- !u!1001 &3488127368479744470
 PrefabInstance:

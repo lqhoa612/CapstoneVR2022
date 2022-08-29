@@ -424,18 +424,19 @@ MonoBehaviour:
   BisPressed: 0
   XisPressed: 0
   YisPressed: 0
-  gripLeft: 0
-  gripRight: 0
-  triggerLeft: 0
-  triggerRight: 0
+  leftGrip: 0
+  rightGrip: 0
+  leftTrigger: 0
+  rightTrigger: 0
   menuIsPressed: 0
-  timer1: 0
-  timer2: 0
-  timer3: 0
-  timer4: 0
-  index: 0
+  joyRightPressed: 0
+  joyLeftPressed: 0
   leftJoy: {x: 0, y: 0}
   rightJoy: {x: 0, y: 0}
+  leftGripF: 0
+  rightGripF: 0
+  leftTriggerF: 0
+  rightTriggerF: 0
 --- !u!1 &243027159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5952210215612967072, guid: 59d57f10fcbe47044aa9894d36735fa5, type: 3}
@@ -1026,7 +1027,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 921507663}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d607ea46a579d44c4b19a6322ce4b9b2, type: 3}
   m_Name: 
@@ -2015,7 +2016,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2762392197895022125, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+    - {fileID: 2762392197895022126, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
 --- !u!1 &1774595748 stripped
 GameObject:
