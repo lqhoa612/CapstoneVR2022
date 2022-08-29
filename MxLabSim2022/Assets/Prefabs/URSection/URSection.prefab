@@ -536,7 +536,6 @@ MonoBehaviour:
   - 90
   - 0
   - 0
-  m_IK: {fileID: 0}
 --- !u!1001 &2353863610753748706
 PrefabInstance:
   m_ObjectHideFlags: 0

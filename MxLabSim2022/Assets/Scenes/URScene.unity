@@ -889,10 +889,6 @@ PrefabInstance:
       propertyPath: xrCapture
       value: 
       objectReference: {fileID: 1853032599}
-    - target: {fileID: 1449160988, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
-      propertyPath: m_IK
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5375124301332147866, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_Name
       value: URSection
@@ -1746,20 +1742,19 @@ MonoBehaviour:
   BisPressed: 0
   XisPressed: 0
   YisPressed: 0
-  gripLeft: 0
-  gripRight: 0
-  triggerLeft: 0
-  triggerRight: 0
+  leftGrip: 0
+  rightGrip: 0
+  leftTrigger: 0
+  rightTrigger: 0
   menuIsPressed: 0
   joyRightPressed: 0
   joyLeftPressed: 0
-  timer1: 0
-  timer2: 0
-  timer3: 0
-  timer4: 0
-  index: 0
   leftJoy: {x: 0, y: 0}
   rightJoy: {x: 0, y: 0}
+  leftGripF: 0
+  rightGripF: 0
+  leftTriggerF: 0
+  rightTriggerF: 0
 --- !u!4 &1853032600
 Transform:
   m_ObjectHideFlags: 0
@@ -2155,7 +2150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Enabled
@@ -2221,7 +2216,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2762392197895022125, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+    - {fileID: 2762392197895022126, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
 --- !u!1001 &3488127368479744470
 PrefabInstance:

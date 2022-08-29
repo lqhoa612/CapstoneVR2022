@@ -6,25 +6,21 @@ using Unity.Robotics;
 
 public class XRControllerCapture : MonoBehaviour
 {
-    [HideInInspector]
-    public bool AisPressed, BisPressed, XisPressed, YisPressed, gripLeft, gripRight, triggerLeft, triggerRight, menuIsPressed, joyRightPressed, joyLeftPressed;
-    [HideInInspector]
-    public float timer1, timer2, timer3, timer4;
-    [HideInInspector] public int index;
+    // Quest controller's properties
+    [HideInInspector] public bool AisPressed, BisPressed, XisPressed, YisPressed, 
+                                    leftGrip, rightGrip, leftTrigger, rightTrigger, 
+                                    menuIsPressed, joyRightPressed, joyLeftPressed;
+    [HideInInspector] public Vector2 leftJoy = Vector2.zero, rightJoy = Vector2.zero;
+    [HideInInspector] public float leftGripF, rightGripF, leftTriggerF, rightTriggerF;
 
     private InputDevice leftController;
     private InputDevice rightController;
 
-    [HideInInspector]
-    public Vector2 leftJoy = Vector2.zero, rightJoy = Vector2.zero;
-
     //public UR3TrajectoryPlanner m_publisher;
     //public SourceDestinationPublisher m_publisher;
 
-    // Start is called before the first frame update
     void OnEnable()
     {
-        index = 2;
         if (!DevicesAreValid())
         {
             GetDevice();
@@ -39,96 +35,123 @@ public class XRControllerCapture : MonoBehaviour
             GetDevice();
         }
 
-
+        //////////////////////////////////////////// Boolean //////////////////////////////////////////////////////
         //Trigger
-        if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool leftTriggerValue))
+        if (leftController.TryGetFeatureValue(CommonUsages.triggerButton, out bool leftTriggerPressed))
         {
-            triggerLeft = leftTriggerValue;
+            leftTrigger = leftTriggerPressed;
             //Debug.Log("Left Trigger: " + leftTriggerValue);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool rightTriggerValue))
+        if (rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool rightTriggerPressed))
         {
-            triggerRight = rightTriggerValue;
-
-            if (rightTriggerValue == true)
-            {
-                //m_publisher.PublishJoints();
-            }
+            rightTrigger = rightTriggerPressed;
             //Debug.Log("Right Trigger: " + rightTriggerValue);
         }
 
 
         //Grip
-        if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGripValue))
+        if (leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool leftGripPressed))
         {
-            gripLeft = leftGripValue;
+            leftGrip = leftGripPressed;
             //Debug.Log("Left Grip: " + leftGripValue);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGripValue))
+        if (rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGripPressed))
         {
-            gripRight = rightGripValue;
+            rightGrip = rightGripPressed;
             //Debug.Log("Right Grip: " + rightGripValue);
         }
 
 
         //A button
-        if (leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed1))
+        if (leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool xPressed))
         {
-            XisPressed = isPressed1;
+            XisPressed = xPressed;
             //Debug.Log("X button: " + isPressed1);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out bool isPressed2))
+        if (rightController.TryGetFeatureValue(CommonUsages.primaryButton, out bool aPressed))
         {
-            AisPressed = isPressed2;
+            AisPressed = aPressed;
             //Debug.Log("A button: " + isPressed2);
         }
 
 
         //B button
-        if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isPressed3))
+        if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool yPressed))
         {
-            YisPressed = isPressed3;
+            YisPressed = yPressed;
             //Debug.Log("Y button: " + isPressed3);
         }
-        if (rightController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isPressed4))
+        if (rightController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool bPressed))
         {
-            BisPressed = isPressed4;
+            BisPressed = bPressed;
             //Debug.Log("B button: " + isPressed4);
-        }
-
-
-        //Joystick
-        if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 leftJoyValue))
-        {
-            //Debug.Log("Joystick Left: " + leftJoyValue);
-            leftJoy = leftJoyValue;
-        }
-        if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 rightJoyValue))
-        {
-            //Debug.Log("Joystick Right: " + rightJoyValue);
-            rightJoy = rightJoyValue;
         }
 
 
         //Joystick Click
         if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool leftJoyIsPressed))
         {
-            //Debug.Log("Joystick Left: " + leftJoyValue);
             joyLeftPressed = leftJoyIsPressed;
+            //Debug.Log("Joystick Left: " + leftJoyValue);
         }
         if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out bool rightJoyIsPressed))
         {
-            //Debug.Log("Joystick Right: " + rightJoyValue);
             joyRightPressed = rightJoyIsPressed;
+            //Debug.Log("Joystick Right: " + rightJoyValue);
         }
 
 
         //Menu
-        if (leftController.TryGetFeatureValue(CommonUsages.menuButton, out bool menuValue))
+        if (leftController.TryGetFeatureValue(CommonUsages.menuButton, out bool menuPressed))
         {
+            menuIsPressed = menuPressed;
             //Debug.Log("Menu: " + menuValue);
-            menuIsPressed = menuValue;
         }
+        //////////////////////////////////////////// Boolean //////////////////////////////////////////////////////
+
+
+        //////////////////////////////////////////// Vector2 //////////////////////////////////////////////////////
+        //Joystick
+        if (leftController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 leftJoyValue))
+        {
+            leftJoy = leftJoyValue;
+            //Debug.Log("Joystick Left: " + leftJoyValue);
+        }
+        if (rightController.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 rightJoyValue))
+        {
+            rightJoy = rightJoyValue;
+            //Debug.Log("Joystick Right: " + rightJoyValue);
+        }
+        //////////////////////////////////////////// Vector2 //////////////////////////////////////////////////////
+
+
+        //////////////////////////////////////////// Float ///////////////////////////////////////////////////////
+        //Trigger
+        if (leftController.TryGetFeatureValue(CommonUsages.trigger, out float leftTriggerValue))
+        {
+            leftTriggerF = leftTriggerValue;
+            //Debug.Log("Left Trigger: " + leftTriggerValue);
+        }
+        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out float rightTriggerValue))
+        {
+            rightTriggerF = rightTriggerValue;
+            //Debug.Log("Right Trigger: " + rightTriggerValue);
+        }
+
+
+        //Grip
+        if (leftController.TryGetFeatureValue(CommonUsages.grip, out float leftGripValue))
+        {
+            leftGripF = leftGripValue;
+            //Debug.Log("Left Grip: " + leftGripValue);
+        }
+        if (rightController.TryGetFeatureValue(CommonUsages.grip, out float rightGripValue))
+        {
+            rightGripF = rightGripValue;
+            //Debug.Log("Right Grip: " + rightGripValue);
+        }
+        //////////////////////////////////////////// Float ///////////////////////////////////////////////////////
+        
     }
 
     void GetDevice()

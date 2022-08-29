@@ -11,10 +11,9 @@ public class URController : MonoBehaviour
     [HideInInspector] public float jointInput, gripInput;
     [HideInInspector] public int selectedIndex;
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
-    public float[] targetJointAngles = { 0, 0, 0, 0, 0, 0};
+    public float[] t_JointAngles = { 0, 0, 0, 0, 0, 0}; // target joint angles
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
-    private float targetGripper, timerA, timerB;
-    private readonly int gripperIndex = 10;
+    private float timerA, timerB;
     private ArticulationBody[] artiBodies;
 
     public ControlType control = ControlType.PositionControl;
@@ -44,6 +43,7 @@ public class URController : MonoBehaviour
     void Update()
     {
         jointInput = xrCapture.rightJoy.x;
+        gripInput = xrCapture.rightGripF;
         JointIndexNav();
         DisplaySelectedJoint(selectedIndex);
         JointMover(selectedIndex);
@@ -98,7 +98,7 @@ public class URController : MonoBehaviour
         URJointControl leftOuter = artiBodies[16].GetComponent<URJointControl>();
         URJointControl leftFinger = artiBodies[18].GetComponent<URJointControl>();
 
-        if (gripInput > 0)
+        if (gripInput >= 0.9)
         {
             rightInner.direction = RotationDirection.Positive;
             leftInner.direction = RotationDirection.Positive;
@@ -109,7 +109,7 @@ public class URController : MonoBehaviour
             rightFinger.direction = RotationDirection.Positive;
             leftFinger.direction = RotationDirection.Positive;
         }
-        else if (gripInput < 0)
+        else if (gripInput <= 0.1)
         {
             rightInner.direction = RotationDirection.Negative;
             leftInner.direction = RotationDirection.Negative;
