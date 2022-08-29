@@ -15,7 +15,13 @@ def plan(req):
     prev_q = ur3.q = [m.radians(-90), m.radians(-90), 0, 0, 0, 0]
     #Get the desired pose
     Tep = sm.SE3.Trans(req.x, req.y, req.x)
-    new_q = ur3.ikine_min(Tep)
+    sol = ur3.ikine_LM(Tep)
+    rs = [m.degrees(sol.q[0]), m.degrees(sol.q[1]), m.degrees(sol.q[2]),
+            m.degrees(sol.q[3]), m.degrees(sol.q[4]), m.degrees(sol.q[5])]
+
+    new_q = [np.round(rs[0],2), np.round(rs[1],2), np.round(rs[2],2),
+            np.round(rs[3],2), np.round(rs[4],2), np.round(rs[5],2)]
+
     print(new_q)
 
     return TrajPlannerResponse(new_q)
