@@ -892,7 +892,7 @@ PrefabInstance:
     - target: {fileID: 1449160988, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_IK
       value: 
-      objectReference: {fileID: 1853032603}
+      objectReference: {fileID: 0}
     - target: {fileID: 5375124301332147866, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_Name
       value: URSection
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
   m_PrefabInstance: {fileID: 921507663}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449160984}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad2304430fe292343bdac8f46e7b48f9, type: 3}
@@ -1345,11 +1345,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 4a8e946ed663e4a4db0f537e2965635d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b83018900d13bb4f8e0ad895cb004e5, type: 3}
---- !u!1 &1449160984 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1738634602, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
-  m_PrefabInstance: {fileID: 921507663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561390975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3896296574768111513, guid: 59d57f10fcbe47044aa9894d36735fa5, type: 3}
@@ -1728,9 +1723,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1853032600}
   - component: {fileID: 1853032599}
-  - component: {fileID: 1853032601}
-  - component: {fileID: 1853032602}
-  - component: {fileID: 1853032603}
   m_Layer: 0
   m_Name: XRControllerCapture
   m_TagString: Untagged
@@ -1768,7 +1760,6 @@ MonoBehaviour:
   index: 0
   leftJoy: {x: 0, y: 0}
   rightJoy: {x: 0, y: 0}
-  m_publisher: {fileID: 1853032603}
 --- !u!4 &1853032600
 Transform:
   m_ObjectHideFlags: 0
@@ -1783,54 +1774,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1853032601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853032598}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7c33620efe788e488828f8c604ab3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TopicName: /ur3_joints
-  m_UR: {fileID: 1449160984}
-  m_Target: {fileID: 36863423}
-  m_TargetPlacement: {fileID: 1581810476}
-  publishMessageFrequency: 0.5
---- !u!114 &1853032602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853032598}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2e29b2d1afd1843b7d69b58c951f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RosServiceName: ur3_moveit
-  m_UR: {fileID: 1449160984}
-  m_Target: {fileID: 36863423}
-  m_Goal: {fileID: 1581810476}
---- !u!114 &1853032603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853032598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f3c2347e299c941b45f085b67d8a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RosServiceName: ur3_trajectory
-  m_target: {fileID: 36863423}
-  m_jointAngles: []
 --- !u!1 &1854681246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1603828488123738735, guid: 369a4c326614a5e4f83c92a682f8e070, type: 3}

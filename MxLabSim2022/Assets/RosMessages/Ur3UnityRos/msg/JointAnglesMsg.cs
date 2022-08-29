@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.Robotics.ROSTCPConnector.MessageGeneration;
 
-namespace RosMessageTypes.HoaUnityRos
+namespace RosMessageTypes.Ur3UnityRos
 {
     [Serializable]
     public class JointAnglesMsg : Message
     {
-        public const string k_RosMessageName = "hoa_unity_ros/JointAngles";
+        public const string k_RosMessageName = "ur3_unity_ros/JointAngles";
         public override string RosMessageName => k_RosMessageName;
 
         public float[] joint_angles;

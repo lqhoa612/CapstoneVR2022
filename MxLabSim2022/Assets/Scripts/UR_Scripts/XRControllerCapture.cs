@@ -20,7 +20,6 @@ public class XRControllerCapture : MonoBehaviour
 
     //public UR3TrajectoryPlanner m_publisher;
     //public SourceDestinationPublisher m_publisher;
-    public IKSolver m_publisher;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -53,7 +52,7 @@ public class XRControllerCapture : MonoBehaviour
 
             if (rightTriggerValue == true)
             {
-                m_publisher.PublishJoints();
+                //m_publisher.PublishJoints();
             }
             //Debug.Log("Right Trigger: " + rightTriggerValue);
         }

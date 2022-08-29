@@ -1,6 +1,6 @@
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
-using RosMessageTypes.HoaUnityRos;
+using RosMessageTypes.Ur3UnityRos;
 
 public class JointAnglePublisher : MonoBehaviour
 {
