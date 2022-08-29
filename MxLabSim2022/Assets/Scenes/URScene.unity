@@ -736,6 +736,21 @@ MonoBehaviour:
   m_RobotController: {fileID: 921507664}
   topicName: joint_angles
   publishMessageFrequency: 0.5
+--- !u!114 &816417202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816417200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_serviceName: traj_planner
+  m_target: {fileID: 36863423}
+  new_q: []
 --- !u!1001 &876257748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2150,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Enabled

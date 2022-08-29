@@ -36,6 +36,7 @@ public class TrajPlanCaller : MonoBehaviour
     {
         awaitingResponseUntilTimestamp = -1;
         new_q = res.ros;
-        Debug.Log("New q:" + new_q);
+        Debug.Log("New q:" + new_q[0] + " | " + new_q[1] + " | " + new_q[2] + " | "
+                            + new_q[3] + " | " + new_q[4] + " | " + new_q[5]);
     }
 }
