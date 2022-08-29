@@ -7,7 +7,7 @@ public class DebugDisplay : MonoBehaviour
 {
     readonly Dictionary<string, string> debugLogs = new Dictionary<string, string>();
     public Text display;
-    public URController _UR;
+    //public URController _UR;
     public UGVControllerInput _UGV;
     //public URPosRot _urPosRot;
 
@@ -68,7 +68,7 @@ public class DebugDisplay : MonoBehaviour
     // Robot messages
     public void PrintURMessage()
     {
-        Debug.Log("Joint: " + _UR.CurrentJointName(_UR.m_index));
+        //Debug.Log("Joint: " + _UR.CurrentJointName(_UR.m_index));
     }
 
     public void PrintUGVMessage()

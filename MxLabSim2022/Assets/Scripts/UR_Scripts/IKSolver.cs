@@ -16,6 +16,8 @@ public class IKSolver : MonoBehaviour
     {
         m_Ros = ROSConnection.GetOrCreateInstance();
         m_Ros.RegisterRosService<TrajectoryRequest, TrajectoryResponse>(m_RosServiceName);
+
+        m_jointAngles = new float[] {0,0,0,0,0,0,0};
     }
 
     public void PublishJoints()

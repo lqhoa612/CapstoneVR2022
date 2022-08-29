@@ -4,7 +4,7 @@ using RosMessageTypes.HoaUnityRos;
 
 public class JointAnglePublisher : MonoBehaviour
 {
-    public Unity.Robotics.UrdfImporter.Control.Controller m_RobotController;
+    public URController m_RobotController;
 
     ROSConnection ros;
     public string topicName = "joint_angles";
@@ -17,7 +17,7 @@ public class JointAnglePublisher : MonoBehaviour
     {
         // Start ROS connection
         ros = ROSConnection.GetOrCreateInstance();
-        ros.RegisterPublisher<JointAngleMsg>(topicName);
+        ros.RegisterPublisher<JointAnglesMsg>(topicName);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class JointAnglePublisher : MonoBehaviour
         timeElapsed += Time.deltaTime;
         if (timeElapsed > publishMessageFrequency)
         {
-            JointAngleMsg angles = new JointAngleMsg(m_RobotController.GetJointAngle());
+            JointAnglesMsg angles = new JointAnglesMsg(m_RobotController.GetJointAngles());
             ros.Publish(topicName, angles);
             timeElapsed = 0;
         }
