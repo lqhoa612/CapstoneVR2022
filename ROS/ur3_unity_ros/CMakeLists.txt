@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(hoa_unity_ros)
+project(ur3_unity_ros)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -9,16 +9,8 @@ project(hoa_unity_ros)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
-  roscpp
   std_msgs
-  geometry_msgs
-  ros_tcp_endpoint
   message_generation
-  moveit_msgs
-  sensor_msgs
-  controller_manager
-  roslaunch
-  trajectory_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -70,11 +62,7 @@ add_service_files(DIRECTORY srv)
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  geometry_msgs
   std_msgs
-  moveit_msgs
-  sensor_msgs
-  trajectory_msgs
 )
 
 ################################################
@@ -108,10 +96,9 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-  LIBRARIES hoa_unity_ros
-  CATKIN_DEPENDS roscpp std_msgs
+#  LIBRARIES ur3_unity_ros
+  CATKIN_DEPENDS rospy std_msgs message_runtime
 #  DEPENDS system_lib
-  CATKIN_DEPENDS message_runtime
 )
 
 ###########
@@ -121,31 +108,24 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include ${catkin_INCLUDE_DIRS}
+# include
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/hoa_unity_ros.cpp
+#   src/${PROJECT_NAME}/ur3_unity_ros.cpp
 # )
-
-## Declare a C++ executable
-## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/hoa_unity_ros_node.cpp)
-add_executable(talker src/talker.cpp)
-add_executable(listener src/listener.cpp)
-add_executable(JointAngleSubscriber src/JointAngleSubscriber.cpp)
-add_executable(TrajectorySubscriber src/TrajectorySubscriber.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(talker ${PROJECT_NAME}_generate_messages_cpp)
-add_dependencies(listener ${PROJECT_NAME}_generate_messages_cpp)
-add_dependencies(JointAngleSubscriber ${PROJECT_NAME}_generate_messages_cpp)
-add_dependencies(TrajectorySubscriber ${PROJECT_NAME}_generate_messages_cpp)
+
+## Declare a C++ executable
+## With catkin_make all packages are built within a single CMake context
+## The recommended prefix ensures that target names across packages don't collide
+# add_executable(${PROJECT_NAME}_node src/ur3_unity_ros_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -158,10 +138,9 @@ add_dependencies(TrajectorySubscriber ${PROJECT_NAME}_generate_messages_cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(talker ${catkin_LIBRARIES})
-target_link_libraries(listener ${catkin_LIBRARIES})
-target_link_libraries(JointAngleSubscriber ${catkin_LIBRARIES})
-target_link_libraries(TrajectorySubscriber ${catkin_LIBRARIES})
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -173,6 +152,9 @@ target_link_libraries(TrajectorySubscriber ${catkin_LIBRARIES})
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
+  src/JointAnglesSub.py
+  src/talker.py
+  src/rtb_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -189,8 +171,6 @@ catkin_install_python(PROGRAMS
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 # )
-install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION} PATTERN "setup_assistant.launch" EXCLUDE)
-install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/
@@ -211,7 +191,7 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_hoa_unity_ros.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ur3_unity_ros.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
