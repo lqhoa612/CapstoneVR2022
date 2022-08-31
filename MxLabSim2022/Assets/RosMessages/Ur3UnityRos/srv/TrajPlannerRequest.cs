@@ -16,19 +16,22 @@ namespace RosMessageTypes.Ur3UnityRos
         public float x;
         public float y;
         public float z;
+        public float[] unity;
 
         public TrajPlannerRequest()
         {
             this.x = 0.0f;
             this.y = 0.0f;
             this.z = 0.0f;
+            this.unity = new float[0];
         }
 
-        public TrajPlannerRequest(float x, float y, float z)
+        public TrajPlannerRequest(float x, float y, float z, float[] unity)
         {
             this.x = x;
             this.y = y;
             this.z = z;
+            this.unity = unity;
         }
 
         public static TrajPlannerRequest Deserialize(MessageDeserializer deserializer) => new TrajPlannerRequest(deserializer);
@@ -38,6 +41,7 @@ namespace RosMessageTypes.Ur3UnityRos
             deserializer.Read(out this.x);
             deserializer.Read(out this.y);
             deserializer.Read(out this.z);
+            deserializer.Read(out this.unity, sizeof(float), deserializer.ReadLength());
         }
 
         public override void SerializeTo(MessageSerializer serializer)
@@ -45,6 +49,8 @@ namespace RosMessageTypes.Ur3UnityRos
             serializer.Write(this.x);
             serializer.Write(this.y);
             serializer.Write(this.z);
+            serializer.WriteLength(this.unity);
+            serializer.Write(this.unity);
         }
 
         public override string ToString()
@@ -52,7 +58,8 @@ namespace RosMessageTypes.Ur3UnityRos
             return "TrajPlannerRequest: " +
             "\nx: " + x.ToString() +
             "\ny: " + y.ToString() +
-            "\nz: " + z.ToString();
+            "\nz: " + z.ToString() +
+            "\nunity: " + System.String.Join(", ", unity.ToList());
         }
 
 #if UNITY_EDITOR

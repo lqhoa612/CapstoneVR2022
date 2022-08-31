@@ -24,6 +24,8 @@ public class URController : MonoBehaviour
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
+    public float[] q;
+
     void Start()
     {
         mode = ControlMode.Auto;
@@ -54,9 +56,12 @@ public class URController : MonoBehaviour
         }
         if (mode == ControlMode.Auto)
         {
-            float[] q = { -26, -105, -69, -100, 89, 153 };
-            q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
-            TrajExecute(q);
+            //float[] q = { -26, -105, -69, -100, 89, 153 };
+            //q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
+            if (q != null)
+                TrajExecute(q);
+            else 
+                q = new float[] { 1, 1, 1, 1, 1, 1 };
         }
     }
 

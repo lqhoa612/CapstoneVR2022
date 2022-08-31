@@ -34,11 +34,16 @@ public class TrajPlanCaller : MonoBehaviour
 
     void Callback(TrajPlannerResponse res)
     {
-        ready = false;
         res.ros[0] += 90;
         res.ros[1] += 90;
-        for (int i = 0; i < res.ros.Length; i++)
-            res.ros[i] = Mathf.RoundToInt(res.ros[i]);
-        controller.TrajExecute(res.ros);
+
+        ready = false;
+        if (ready == false)
+        {
+            controller.q = res.ros;
+            //controller.TrajExecute(res.ros);
+            if (controller.GetJointAngles() == res.ros)
+                ready = true;
+        }
     }
 }
