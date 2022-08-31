@@ -4,39 +4,41 @@ using Unity.Robotics.ROSTCPConnector;
 
 public class TrajPlanCaller : MonoBehaviour
 {
-    ROSConnection m_Ros;
-    public string m_serviceName = "traj_planner";
-    public GameObject m_target;
-    public float[] new_q;
+    ROSConnection ros;
+    public string serviceName = "traj_planner";
+    public GameObject target;
+    public URController controller;
+    bool ready = true;
 
-    float awaitingResponseUntilTimestamp = -1;
+    float delay = -1;
 
     private void Start()
     {
-        m_Ros = ROSConnection.GetOrCreateInstance();
-        m_Ros.RegisterRosService<TrajPlannerRequest, TrajPlannerResponse>(m_serviceName);
+        ros = ROSConnection.GetOrCreateInstance();
+        ros.RegisterRosService<TrajPlannerRequest, TrajPlannerResponse>(serviceName);
     }
 
     private void Update()
     {
-        if (Time.time > awaitingResponseUntilTimestamp)
+        if (Time.time > delay && ready == true)
         {
             TrajPlannerRequest req = new TrajPlannerRequest();
-            req.x = m_target.transform.position.x;
-            req.y = m_target.transform.position.y;
-            req.z = m_target.transform.position.z;
+            req.x = target.transform.localPosition.x;
+            req.y = target.transform.localPosition.y;
+            req.z = target.transform.localPosition.z;
 
-            // Send message to ROS and return the response
-            m_Ros.SendServiceMessage<TrajPlannerResponse>(m_serviceName, req, Callback);
-            awaitingResponseUntilTimestamp = Time.time + 1.0f;// don't send again for 1 second, or until we receive a response
+            ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
+            delay = Time.time + 1.0f;
         }
     }
 
     void Callback(TrajPlannerResponse res)
     {
-        awaitingResponseUntilTimestamp = -1;
-        new_q = res.ros;
-        Debug.Log("New q:" + new_q[0] + " | " + new_q[1] + " | " + new_q[2] + " | "
-                            + new_q[3] + " | " + new_q[4] + " | " + new_q[5]);
+        ready = false;
+        res.ros[0] += 90;
+        res.ros[1] += 90;
+        for (int i = 0; i < res.ros.Length; i++)
+            res.ros[i] = Mathf.RoundToInt(res.ros[i]);
+        controller.TrajExecute(res.ros);
     }
 }

@@ -11,7 +11,7 @@ public class URController : MonoBehaviour
     [HideInInspector] public float jointInput, gripInput;
     [HideInInspector] public int selectedIndex;
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
-    public float[] t_JointAngles = { 0, 0, 0, 0, 0, 0}; // target joint angles
+    public ControlMode mode;
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
     private ArticulationBody[] artiBodies;
@@ -26,6 +26,7 @@ public class URController : MonoBehaviour
 
     void Start()
     {
+        mode = ControlMode.Auto;
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -42,13 +43,21 @@ public class URController : MonoBehaviour
 
     void Update()
     {
-        jointInput = xrCapture.rightJoy.x;
-        gripInput = xrCapture.rightGripF;
-        JointIndexNav();
-        DisplaySelectedJoint(selectedIndex);
-        JointMover(selectedIndex);
-        GripMover();
-        //TrajExecute(targetJointAngles);
+        if (mode == ControlMode.Manual)
+        {
+            jointInput = xrCapture.rightJoy.x;
+            gripInput = xrCapture.rightGripF;
+            JointIndexNav();
+            DisplaySelectedJoint(selectedIndex);
+            JointMover(selectedIndex);
+            GripMover();
+        }
+        if (mode == ControlMode.Auto)
+        {
+            float[] q = { -26, -105, -69, -100, 89, 153 };
+            q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
+            TrajExecute(q);
+        }
     }
 
     void JointIndexNav()
@@ -133,8 +142,9 @@ public class URController : MonoBehaviour
         }
     }
 
-    void AutoMove(URJointControl joint, float current, float target)
+    void AutoMove(int jointIndex, float current, float target)
     {
+        URJointControl joint = artiBodies[revoluteJoints[jointIndex]].GetComponent<URJointControl>();
         if (current < target)
             joint.direction = RotationDirection.Positive;
         else if (current > target)
@@ -147,8 +157,7 @@ public class URController : MonoBehaviour
     {
         for (int i = 0; i < revoluteJoints.Length; i++)
         {
-            URJointControl joint = artiBodies[revoluteJoints[i]].GetComponent<URJointControl>();
-            AutoMove(joint, artiBodies[revoluteJoints[i]].xDrive.target, targets[i]);
+            AutoMove(i, GetJointAngles()[i], targets[i]);
         }
     }
 
@@ -173,6 +182,23 @@ public class URController : MonoBehaviour
             drive.damping = damping;
             joint.joint.xDrive = drive;
         }
+    }
+
+    public void StopAll()
+    {
+        for (int index = 0; index < revoluteJoints.Length; index++)
+        {
+            if (index < 0 || index >= revoluteJoints.Length) return;
+            URJointControl joint = artiBodies[revoluteJoints[index]].GetComponent<URJointControl>();
+            joint.direction = RotationDirection.None;
+        }
+    }
+
+    public enum ControlMode
+    {
+        Manual,
+        Auto,
+        Slide
     }
 
 }
