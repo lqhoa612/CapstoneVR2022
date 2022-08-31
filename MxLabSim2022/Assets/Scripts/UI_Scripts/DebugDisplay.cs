@@ -7,15 +7,11 @@ public class DebugDisplay : MonoBehaviour
 {
     readonly Dictionary<string, string> debugLogs = new Dictionary<string, string>();
     public Text display;
-    //public URController _UR;
-    public UGVControllerInput _UGV;
-    //public URPosRot _urPosRot;
+    public URController ur;
+    public UGVControllerInput ugv;
 
-
-    // Update the messages in-game
     private void FixedUpdate()
     {
-        //Debug.Log("Time: " + Time.time);
         if (SceneManager.GetActiveScene().name == "URScene")
             PrintURMessage();
 
@@ -68,11 +64,13 @@ public class DebugDisplay : MonoBehaviour
     // Robot messages
     public void PrintURMessage()
     {
-        //Debug.Log("Joint: " + _UR.CurrentJointName(_UR.m_index));
+        float[] q = ur.GetJointAngles();
+        Debug.Log("Joint: " + ur.GetJointName());
+        Debug.Log("Q: " + q[0] + ", " + q[1] + ", " + q[2] + ", " + q[3] + ", " + q[4] + ", " + q[5]);
     }
 
     public void PrintUGVMessage()
     {
-        Debug.Log("UGV Pos: " + _UGV.GetPosition().x + "|" + _UGV.GetPosition().z);
+        Debug.Log("UGV Pos: " + ugv.GetPosition().x + "|" + ugv.GetPosition().z);
     }
 }

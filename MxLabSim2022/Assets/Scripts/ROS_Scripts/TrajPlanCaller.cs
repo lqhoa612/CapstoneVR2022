@@ -34,6 +34,8 @@ public class TrajPlanCaller : MonoBehaviour
 
     void Callback(TrajPlannerResponse res)
     {
+        if (res.ros == null) res.ros = controller.GetJointAngles();
+
         res.ros[0] += 90;
         res.ros[1] += 90;
 

@@ -6,8 +6,6 @@ TagManager:
   tags:
   - robot
   - Environment
-  - UR_upper
-  - UR_lower
   layers:
   - Default
   - TransparentFX

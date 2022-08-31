@@ -60,8 +60,6 @@ public class URController : MonoBehaviour
             //q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
             if (q != null)
                 TrajExecute(q);
-            else 
-                q = new float[] { 1, 1, 1, 1, 1, 1 };
         }
     }
 
@@ -160,6 +158,7 @@ public class URController : MonoBehaviour
 
     public void TrajExecute(float[] targets)
     {
+        if (targets == null) targets = new float[] { 1, 1, 1, 1, 1, 1 };
         for (int i = 0; i < revoluteJoints.Length; i++)
         {
             AutoMove(i, GetJointAngles()[i], targets[i]);
@@ -197,6 +196,11 @@ public class URController : MonoBehaviour
             URJointControl joint = artiBodies[revoluteJoints[index]].GetComponent<URJointControl>();
             joint.direction = RotationDirection.None;
         }
+    }
+
+    public string GetJointName()
+    {
+        return artiBodies[revoluteJoints[selectedIndex]].name;
     }
 
     public enum ControlMode
