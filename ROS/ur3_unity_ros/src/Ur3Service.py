@@ -12,13 +12,13 @@ def plan(req):
     #Initial joint angles coordinate
     ur3.q = [m.radians(-90), m.radians(-90), m.radians(-90), m.radians(-90), m.radians(90), m.radians(0)]
     #Target pose
-    Tep = sm.SE3.Trans(-0.25, 0.25, 0.35) * sm.SE3.Eul([0, m.radians(90), m.radians(0)])
+    Tep = sm.SE3.Trans(req.x, req.y, req.z) * sm.SE3.Eul([0, m.radians(90), m.radians(0)])
     #Get IK solution
     sol = ur3.ikine_LMS(Tep, ur3.q)
     #Convert rad to deg and round to int
     rs = [  np.round(m.degrees(sol[0][0])), np.round(m.degrees(sol[0][1])), 
             np.round(m.degrees(sol[0][2])), np.round(m.degrees(sol[0][3])),     
-            np.round(m.degrees(sol[0][4])), np.round(m.degrees(sol[0][5]))]
+            np.round(m.degrees(sol[0][4])), np.round(m.degrees(sol[0][5]))  ]
     # ok = rtb.jtraj(ur3.q, sol[0], 4)
     print(rs)
     #Send response to unity
