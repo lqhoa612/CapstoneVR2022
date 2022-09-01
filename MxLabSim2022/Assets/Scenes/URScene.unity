@@ -901,6 +901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 243660016, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: m_XDrive.targetVelocity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 776690394, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: -0.00000008202052
@@ -908,6 +912,10 @@ PrefabInstance:
     - target: {fileID: 901940903, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: 0.00000014854432
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072761794, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: m_XDrive.targetVelocity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: mode
@@ -932,6 +940,10 @@ PrefabInstance:
     - target: {fileID: 2038619809, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: -0.000000117346644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063142825, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: m_XDrive.targetVelocity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132148195016849, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_IsActive

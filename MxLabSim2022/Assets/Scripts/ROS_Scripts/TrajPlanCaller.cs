@@ -22,12 +22,15 @@ public class TrajPlanCaller : MonoBehaviour
     {
         //if (Time.time > delay && ready == true)
         //{
-            TrajPlannerRequest req = new TrajPlannerRequest();
-            req.x = target.transform.localPosition.x;
-            req.y = target.transform.localPosition.y;
-            req.z = target.transform.localPosition.z;
+        TrajPlannerRequest req = new TrajPlannerRequest();
+        req.x = target.transform.localPosition.x;
+        req.y = target.transform.localPosition.y;
+        req.z = target.transform.localPosition.z;
+        //req.unity = controller.GetJointAngles();
+        //req.unity[0] -= 90;
+        //req.unity[1] -= 90;
 
-            ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
+        ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
         //    delay = Time.time + 1.0f;
         //}
     }
@@ -42,7 +45,7 @@ public class TrajPlanCaller : MonoBehaviour
         //ready = false;
         //if (ready == false)
         //{
-            controller.q = res.ros;
+        controller.q = res.ros;
         //    if (controller.GetJointAngles() == res.ros)
         //        ready = true;
         //}
