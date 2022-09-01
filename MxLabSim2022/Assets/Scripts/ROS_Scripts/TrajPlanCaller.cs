@@ -18,18 +18,18 @@ public class TrajPlanCaller : MonoBehaviour
         ros.RegisterRosService<TrajPlannerRequest, TrajPlannerResponse>(serviceName);
     }
 
-    private void Update()
+    public void CallService()
     {
-        if (Time.time > delay && ready == true)
-        {
+        //if (Time.time > delay && ready == true)
+        //{
             TrajPlannerRequest req = new TrajPlannerRequest();
             req.x = target.transform.localPosition.x;
             req.y = target.transform.localPosition.y;
             req.z = target.transform.localPosition.z;
 
             ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
-            delay = Time.time + 1.0f;
-        }
+        //    delay = Time.time + 1.0f;
+        //}
     }
 
     void Callback(TrajPlannerResponse res)
@@ -39,13 +39,12 @@ public class TrajPlanCaller : MonoBehaviour
         res.ros[0] += 90;
         res.ros[1] += 90;
 
-        ready = false;
-        if (ready == false)
-        {
+        //ready = false;
+        //if (ready == false)
+        //{
             controller.q = res.ros;
-            //controller.TrajExecute(res.ros);
-            if (controller.GetJointAngles() == res.ros)
-                ready = true;
-        }
+        //    if (controller.GetJointAngles() == res.ros)
+        //        ready = true;
+        //}
     }
 }

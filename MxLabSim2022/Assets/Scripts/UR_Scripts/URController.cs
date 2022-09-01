@@ -7,6 +7,7 @@ using Unity.Robotics.UrdfImporter.Control;
 public class URController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
+    public TrajPlanCaller service;
 
     [HideInInspector] public float jointInput, gripInput;
     [HideInInspector] public int selectedIndex;
@@ -24,7 +25,7 @@ public class URController : MonoBehaviour
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
-    public float[] q;
+    [InspectorReadOnly(hideInEditMode = true)] public float[] q;
 
     void Start()
     {
@@ -56,10 +57,13 @@ public class URController : MonoBehaviour
         }
         if (mode == ControlMode.Auto)
         {
+            if (xrCapture.rightTrigger == true) service.CallService();
             //float[] q = { -26, -105, -69, -100, 89, 153 };
             //q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
             if (q != null)
                 TrajExecute(q);
+            else
+                TrajExecute(GetJointAngles());
         }
     }
 

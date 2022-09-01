@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &98516896
 Transform:
   m_ObjectHideFlags: 0
@@ -637,6 +637,17 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &263388790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+  m_PrefabInstance: {fileID: 2762392197925748556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &364332459 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9091295472932487933, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
@@ -902,6 +913,10 @@ PrefabInstance:
       propertyPath: mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: service
+      value: 
+      objectReference: {fileID: 263388790}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: xrCapture
       value: 
@@ -2261,6 +2276,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1561144677762306210, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
+      propertyPath: ur
+      value: 
+      objectReference: {fileID: 921507664}
+    - target: {fileID: 1561144677762306210, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
       propertyPath: _UR
       value: 
       objectReference: {fileID: 0}
@@ -2278,7 +2297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1561144677762306210, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1561144677762306237, guid: c76512c0c8dde1c4f89856eeab8d81d2, type: 3}
       propertyPath: m_Camera
