@@ -16,19 +16,20 @@ ur3.q = [m.radians(-90), m.radians(-90), m.radians(-90), m.radians(-90), m.radia
 
 # add ur to swift
 env.add(ur3)
-Tep = sm.SE3.Trans(-0.25, 0.25, 0.2) * sm.SE3.Eul([m.radians(0), m.radians(90), m.radians(0)])
+Tep = sm.SE3.Trans(-.3, -.1, 0.3) * sm.SE3.Eul([m.radians(0), m.radians(90), m.radians(0)])
 axes = sg.Axes(length=0.1, pose=Tep)
 env.add(axes)
 
 q = ur3.ikine_LMS(Tep, ur3.q)
 ok = rtb.jtraj(ur3.q, q[0], 5)
-print(ok.q[1])
+print(q)
 
-# env.remove(ur3)
-# ur3.q = q[0]
-# env.add(ur3)
-# rs = [  m.degrees(q[0][0]), m.degrees(q[0][1]), 
-#             m.degrees(q[0][2]), m.degrees(q[0][3]),     
-#             m.degrees(q[0][4]), m.degrees(q[0][5])]
-# print(rs)
+env.remove(ur3)
+ur3.q = q[0]
+env.add(ur3)
+rs = [  m.degrees(q[0][0]), m.degrees(q[0][1]), 
+            m.degrees(q[0][2]), m.degrees(q[0][3]),     
+            m.degrees(q[0][4]), m.degrees(q[0][5])]
+print(rs)
+
 env.hold()
