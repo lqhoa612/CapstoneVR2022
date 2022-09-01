@@ -62,7 +62,7 @@
     <Compile Include="Assets\Scripts\UR_Scripts\XRControllerCapture.cs" />
     <Compile Include="Assets\Scripts\UGV_Scripts\UGVControllerInput.cs" />
     <Compile Include="Assets\RosMessages\Ur3UnityRos\srv\TrajPlannerResponse.cs" />
-    <Compile Include="Assets\Scripts\UR_Scripts\URMover.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\CollisionDetector.cs" />
     <Compile Include="Assets\RosMessages\Ur3UnityRos\srv\TrajPlannerRequest.cs" />
     <Compile Include="Assets\RosMessages\Ur3UnityRos\msg\JointAnglesMsg.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URController.cs" />

@@ -28,7 +28,7 @@ public class URController : MonoBehaviour
 
     void Start()
     {
-        mode = ControlMode.Auto;
+        //mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -158,10 +158,10 @@ public class URController : MonoBehaviour
 
     public void TrajExecute(float[] targets)
     {
-        if (targets == null) targets = new float[] { 1, 1, 1, 1, 1, 1 };
         for (int i = 0; i < revoluteJoints.Length; i++)
         {
             AutoMove(i, GetJointAngles()[i], targets[i]);
+                
         }
     }
 
@@ -190,12 +190,13 @@ public class URController : MonoBehaviour
 
     public void StopAll()
     {
-        for (int index = 0; index < revoluteJoints.Length; index++)
-        {
-            if (index < 0 || index >= revoluteJoints.Length) return;
-            URJointControl joint = artiBodies[revoluteJoints[index]].GetComponent<URJointControl>();
-            joint.direction = RotationDirection.None;
-        }
+        speed = 0;
+        //for (int index = 0; index < revoluteJoints.Length; index++)
+        //{
+        //    if (index < 0 || index >= revoluteJoints.Length) return;
+        //    URJointControl joint = artiBodies[revoluteJoints[index]].GetComponent<URJointControl>();
+        //    joint.direction = RotationDirection.None;
+        //}
     }
 
     public string GetJointName()
