@@ -215,4 +215,19 @@ public class URController : MonoBehaviour
         Slide
     }
 
+    public void SetControlMode(string modeName)
+    {
+        switch (modeName)
+        {
+            case "Manual":
+                mode = ControlMode.Manual;
+                break;
+            case "Auto":
+                mode = ControlMode.Auto;
+                break;
+            default:
+                mode = ControlMode.Manual;
+                break;
+        }
+    }
 }

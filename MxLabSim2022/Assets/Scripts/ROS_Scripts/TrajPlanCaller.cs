@@ -8,9 +8,9 @@ public class TrajPlanCaller : MonoBehaviour
     public string serviceName = "traj_planner";
     public GameObject target;
     public URController controller;
-    bool ready = true;
+    //bool ready = true;
 
-    float delay = -1;
+    //float delay = -1;
 
     private void Start()
     {
