@@ -27,7 +27,7 @@ public class URController : MonoBehaviour
 
     [InspectorReadOnly(hideInEditMode = true)] public float[] q;
 
-    void Start()
+    void Awake()
     {
         //mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
@@ -42,6 +42,7 @@ public class URController : MonoBehaviour
             currentDrive.forceLimit = forceLimit;
             joint.xDrive = currentDrive;
         }
+        if (q == null) q = GetJointAngles();
     }
 
     void Update()
@@ -58,8 +59,6 @@ public class URController : MonoBehaviour
         if (mode == ControlMode.Auto)
         {
             if (xrCapture.rightTrigger == true) service.CallService();
-            //float[] q = { -26, -105, -69, -100, 89, 153 };
-            //q = new float[] { -26 + 90, -105 + 90, -69, -100, 89, 153 };
             if (q != null)
                 TrajExecute(q);
             else
@@ -165,7 +164,6 @@ public class URController : MonoBehaviour
         for (int i = 0; i < revoluteJoints.Length; i++)
         {
             AutoMove(i, GetJointAngles()[i], targets[i]);
-                
         }
     }
 
@@ -194,13 +192,7 @@ public class URController : MonoBehaviour
 
     public void StopAll()
     {
-        speed = 0;
-        //for (int index = 0; index < revoluteJoints.Length; index++)
-        //{
-        //    if (index < 0 || index >= revoluteJoints.Length) return;
-        //    URJointControl joint = artiBodies[revoluteJoints[index]].GetComponent<URJointControl>();
-        //    joint.direction = RotationDirection.None;
-        //}
+        speed = 0.5f;
     }
 
     public string GetJointName()
@@ -211,8 +203,7 @@ public class URController : MonoBehaviour
     public enum ControlMode
     {
         Manual,
-        Auto,
-        Slide
+        Auto
     }
 
     public void SetControlMode(string modeName)
