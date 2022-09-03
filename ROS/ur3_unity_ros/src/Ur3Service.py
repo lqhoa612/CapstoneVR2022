@@ -11,6 +11,7 @@ def plan(req):
     ur3 = rtb.models.UR3()
     #Initial joint angles coordinate
     ur3.q = [m.radians(-90), m.radians(-90), m.radians(-90), m.radians(-90), m.radians(90), m.radians(0)]
+    # ur3.q = [m.radians(req.unity), m.radians(req.unity), m.radians(req.unity), m.radians(req.unity), m.radians(req.unity), m.radians(req.unity)]
     #Target pose
     Tep = sm.SE3.Trans(req.x, req.z, req.y) * sm.SE3.Eul([0, m.radians(90), m.radians(0)])
     #Get IK solution
@@ -40,7 +41,7 @@ def Ur3Service():
     # rs = [  m.degrees(sol[0][0]), m.degrees(sol[0][1]), 
     #         m.degrees(sol[0][2]), m.degrees(sol[0][3]),     
     #         m.degrees(sol[0][4]), m.degrees(sol[0][5])]
-    # print(rs)
+    # ur3.plot(sol[0])
 
     rospy.spin()
 
