@@ -8,6 +8,7 @@ public class URController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
     public TrajPlanCaller service;
+    public CloneController cloneController;
 
     [HideInInspector] public float jointInput, gripInput;
     [HideInInspector] public int selectedIndex;
@@ -59,10 +60,13 @@ public class URController : MonoBehaviour
         if (mode == ControlMode.Auto)
         {
             if (xrCapture.rightTrigger == true) service.CallService();
-            if (q != null)
-                TrajExecute(q);
-            else
-                TrajExecute(GetJointAngles());
+            if (cloneController.ready == true)
+            {
+                if (q != null)
+                    TrajExecute(q);
+                else
+                    TrajExecute(GetJointAngles());
+            }
         }
     }
 
