@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\UI_Scripts\WristUI.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URJointControl.cs" />
     <Compile Include="Assets\Scripts\ROS_Scripts\JointAnglePublisher.cs" />
+    <Compile Include="Assets\Scripts\UR_Scripts\CloneJointControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

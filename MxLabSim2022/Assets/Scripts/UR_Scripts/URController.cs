@@ -30,7 +30,7 @@ public class URController : MonoBehaviour
 
     void Start()
     {
-        //mode = ControlMode.Auto; //for testing
+        mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -59,14 +59,11 @@ public class URController : MonoBehaviour
         }
         if (mode == ControlMode.Auto)
         {
-            if (xrCapture.rightTrigger == true) service.CallService();
-            //if (cloneController.ready == true)
-            //{
-                if (q != null)
-                    TrajExecute(q);
-                else
-                    TrajExecute(GetJointAngles());
-            //}
+            //if (xrCapture.rightTrigger == true) service.CallService();
+            if (cloneController.q != null && cloneController.ready == true)
+                TrajExecute(cloneController.q);
+            else
+                TrajExecute(GetJointAngles());
         }
     }
 

@@ -7,7 +7,8 @@ public class TrajPlanCaller : MonoBehaviour
     ROSConnection ros;
     public string serviceName = "traj_planner";
     public GameObject target;
-    public URController controller;
+    //public URController controller;
+    public CloneController clone;
     //bool ready = true;
 
     //float delay = -1;
@@ -37,7 +38,8 @@ public class TrajPlanCaller : MonoBehaviour
 
     void Callback(TrajPlannerResponse res)
     {
-        if (res.ros == null) res.ros = controller.GetJointAngles();
+        if (res.ros == null) res.ros = clone.GetJointAngles();
+        //if (res.ros == null) res.ros = controller.GetJointAngles();
 
         res.ros[0] += 90;
         res.ros[1] += 90;
@@ -45,7 +47,10 @@ public class TrajPlanCaller : MonoBehaviour
         //ready = false;
         //if (ready == false)
         //{
-        controller.q = res.ros;
+
+        clone.q = res.ros;
+        //controller.q = res.ros;
+
         //    if (controller.GetJointAngles() == res.ros)
         //        ready = true;
         //}
