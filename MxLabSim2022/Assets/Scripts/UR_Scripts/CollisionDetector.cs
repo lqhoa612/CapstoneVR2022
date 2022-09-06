@@ -9,7 +9,10 @@ public class CollisionDetector : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("robot")) return;
-        control.StopAll();
+        if (control.mode == URController.ControlMode.Auto)
+            control.q = control.GetJointAngles();
+        else
+            control.StopAll();
         Debug.LogWarning("Hit");
     }
 

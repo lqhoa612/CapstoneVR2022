@@ -45,16 +45,17 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        if (mode == ControlMode.Auto)
+        if (xrCapture.rightTrigger == true) service.CallService();
+        if (q != null)
         {
-            if (xrCapture.rightTrigger == true) service.CallService();
-            if (q != null)
-                TrajExecute(q);
-            else
-                TrajExecute(GetJointAngles());
-
-            if (GetJointAngles() == q) ready = true; 
+            TrajExecute(q);
+            if (GetJointAngles() == q) ready = true;
         }
+        else
+        {
+            TrajExecute(GetJointAngles());
+        }
+
     }
 
     void AutoMove(int jointIndex, float current, float target)

@@ -28,7 +28,7 @@ public class URController : MonoBehaviour
 
     [InspectorReadOnly(hideInEditMode = true)] public float[] q;
 
-    void Awake()
+    void Start()
     {
         //mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
@@ -60,13 +60,13 @@ public class URController : MonoBehaviour
         if (mode == ControlMode.Auto)
         {
             if (xrCapture.rightTrigger == true) service.CallService();
-            if (cloneController.ready == true)
-            {
+            //if (cloneController.ready == true)
+            //{
                 if (q != null)
                     TrajExecute(q);
                 else
                     TrajExecute(GetJointAngles());
-            }
+            //}
         }
     }
 
