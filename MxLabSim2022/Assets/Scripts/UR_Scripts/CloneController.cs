@@ -12,7 +12,6 @@ public class CloneController : MonoBehaviour
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
     public ControlMode mode;
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
-    private float timerA, timerB;
     private ArticulationBody[] artiBodies;
 
     public ControlType control = ControlType.PositionControl;
@@ -122,6 +121,6 @@ public class CloneController : MonoBehaviour
                 jointReached++;
             }
         }
-        return jointReached == 5;
+        return jointReached == 6;
     }
 }
