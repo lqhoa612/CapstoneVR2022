@@ -32,7 +32,7 @@ public class DebugDisplay : MonoBehaviour
     }
 
 
-    // Printing helper
+    // Print helper
     void HandleLog(string logString, string stackTrace, LogType type)
     {
         if (type == LogType.Log)

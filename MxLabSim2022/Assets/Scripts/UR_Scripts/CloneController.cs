@@ -5,14 +5,9 @@ public class CloneController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
     public TrajPlanCaller service;
-    public bool ready = false;
 
-    [HideInInspector] public float jointInput, gripInput;
+    [HideInInspector] public bool ready = false;
     [HideInInspector] public int selectedIndex;
-    [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
-    public ControlMode mode;
-    private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
-    private ArticulationBody[] artiBodies;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;
@@ -24,11 +19,15 @@ public class CloneController : MonoBehaviour
 
     [InspectorReadOnly(hideInEditMode = true)] public float[] q;
 
-    void Start()
+    private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
+    private ArticulationBody[] artiBodies;
+    private MeshRenderer[] meshRenderers;
+
+    void Awake()
     {
-        mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
+        meshRenderers = this.GetComponentsInChildren<MeshRenderer>();
         int defDynamicVal = 10;
         foreach (ArticulationBody joint in artiBodies)
         {
@@ -39,16 +38,28 @@ public class CloneController : MonoBehaviour
             currentDrive.forceLimit = forceLimit;
             joint.xDrive = currentDrive;
         }
-        if (q == null) q = GetJointAngles();
+        ToggleCloneMesh(false);
     }
 
     void Update()
     {
-        if (xrCapture.rightTrigger == true) service.CallService();
+        if (xrCapture.rightTrigger == true && ready == false)
+        {
+            service.CallService();
+        }
+        
         if (q != null)
         {
             TrajExecute(q);
-            if (CompairJointAngles(q) == true) ready = true;
+            if (CompareJointAngles(q) == true)
+            {
+                ready = true;
+                //ToggleCloneMesh(false);
+            }
+            else
+            {
+                ToggleCloneMesh(true);
+            }
         }
         else
             TrajExecute(GetJointAngles());
@@ -63,6 +74,29 @@ public class CloneController : MonoBehaviour
             joint.direction = RotationDirection.Negative;
         else
             joint.direction = RotationDirection.None;
+    }
+
+    bool CompareJointAngles(float[] q)
+    {
+        int jointReached = 0;
+        bool[] rotCompleted = { false, false, false, false, false, false };
+        for (int i = 0; i < q.Length; i++)
+        {
+            if (q[i] - GetJointAngles()[i] <= 0.2)
+            {
+                rotCompleted[i] = true;
+            }
+        }
+
+        for (int i = 0; i < rotCompleted.Length; i++)
+        {
+            if (rotCompleted[i] == true)
+            {
+                jointReached++;
+            }
+        }
+
+        return jointReached == 6;
     }
 
     public void TrajExecute(float[] targets)
@@ -96,31 +130,22 @@ public class CloneController : MonoBehaviour
         }
     }
 
-    public void StopAll()
+    public void ToggleCloneMesh(bool toggle)
     {
-        speed = 0.5f;
-    }
-
-    public string GetJointName()
-    {
-        return artiBodies[revoluteJoints[selectedIndex]].name;
-    }
-
-    public enum ControlMode
-    {
-        Auto
-    }
-
-    bool CompairJointAngles(float[] q)
-    {
-        int jointReached = 0;
-        for (int i = 0; i < q.Length; i++)
+        if (toggle == true)
         {
-            if (q[i] - GetJointAngles()[i] <= 0.5)
+            for (int i = 0; i < meshRenderers.Length; i++)
             {
-                jointReached++;
+                meshRenderers[i].enabled = true;
             }
         }
-        return jointReached == 6;
+
+        if (toggle == false)
+        {
+            for (int i = 0; i < meshRenderers.Length; i++)
+            {
+                meshRenderers[i].enabled = false;
+            }
+        }
     }
 }

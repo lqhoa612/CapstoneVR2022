@@ -10,6 +10,7 @@ public class URController : MonoBehaviour
     [HideInInspector] public float jointInput, gripInput;
     [HideInInspector] public int selectedIndex;
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
+    [HideInInspector] public bool qRecieved = false;
     public ControlMode mode;
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
@@ -19,7 +20,7 @@ public class URController : MonoBehaviour
     public float stiffness = 10000;
     public float damping = 1000;
     public float forceLimit = 1000;
-    public float speed = 5f; // Units: degree/s
+    public float speed = 20f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
@@ -54,11 +55,19 @@ public class URController : MonoBehaviour
             JointMover(selectedIndex);
             GripMover();
         }
+
         if (mode == ControlMode.Auto)
         {
             //if (xrCapture.rightTrigger == true) service.CallService();
             if (cloneController.q != null && cloneController.ready == true)
+            {
                 TrajExecute(cloneController.q);
+                if (CompareJointAngles(cloneController.q) == true)
+                {
+                    cloneController.ready = false;
+                    cloneController.ToggleCloneMesh(false);
+                }
+            }
             else
                 TrajExecute(GetJointAngles());
         }
@@ -157,6 +166,29 @@ public class URController : MonoBehaviour
             joint.direction = RotationDirection.None;
     }
 
+    bool CompareJointAngles(float[] q)
+    {
+        int jointReached = 0;
+        bool[] rotCompleted = { false, false, false, false, false, false };
+        for (int i = 0; i < q.Length; i++)
+        {
+            if (q[i] - GetJointAngles()[i] <= 0.2)
+            {
+                rotCompleted[i] = true;
+            }
+        }
+
+        for (int i = 0; i < rotCompleted.Length; i++)
+        {
+            if (rotCompleted[i] == true)
+            {
+                jointReached++;
+            }
+        }
+
+        return jointReached == 6;
+    }
+
     public void TrajExecute(float[] targets)
     {
         for (int i = 0; i < revoluteJoints.Length; i++)
@@ -219,4 +251,5 @@ public class URController : MonoBehaviour
                 break;
         }
     }
+
 }

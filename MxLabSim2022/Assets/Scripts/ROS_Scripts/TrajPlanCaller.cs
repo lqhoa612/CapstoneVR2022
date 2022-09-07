@@ -8,10 +8,7 @@ public class TrajPlanCaller : MonoBehaviour
     public string serviceName = "traj_planner";
     public GameObject target;
     //public URController controller;
-    public CloneController clone;
-    //bool ready = true;
-
-    //float delay = -1;
+    public CloneController ctrlClone;
 
     private void Start()
     {
@@ -21,38 +18,25 @@ public class TrajPlanCaller : MonoBehaviour
 
     public void CallService()
     {
-        //if (Time.time > delay && ready == true)
-        //{
+        ctrlClone.ToggleCloneMesh(true);
+
         TrajPlannerRequest req = new TrajPlannerRequest();
         req.x = target.transform.localPosition.x;
         req.y = target.transform.localPosition.y;
         req.z = target.transform.localPosition.z;
-        //req.unity = controller.GetJointAngles();
-        //req.unity[0] -= 90;
-        //req.unity[1] -= 90;
 
         ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
-        //    delay = Time.time + 1.0f;
-        //}
     }
 
     void Callback(TrajPlannerResponse res)
     {
-        if (res.ros == null) res.ros = clone.GetJointAngles();
+        if (res.ros == null) res.ros = ctrlClone.GetJointAngles();
         //if (res.ros == null) res.ros = controller.GetJointAngles();
 
         res.ros[0] += 90;
         res.ros[1] += 90;
 
-        //ready = false;
-        //if (ready == false)
-        //{
-
-        clone.q = res.ros;
+        ctrlClone.q = res.ros;
         //controller.q = res.ros;
-
-        //    if (controller.GetJointAngles() == res.ros)
-        //        ready = true;
-        //}
     }
 }
