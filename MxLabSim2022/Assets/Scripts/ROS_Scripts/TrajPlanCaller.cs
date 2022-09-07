@@ -7,7 +7,7 @@ public class TrajPlanCaller : MonoBehaviour
     ROSConnection ros;
     public string serviceName = "traj_planner";
     public GameObject target;
-    //public URController controller;
+    public URController controller;
     public CloneController ctrlClone;
 
     private void Start()

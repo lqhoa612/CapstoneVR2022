@@ -24,11 +24,11 @@ public class URController : MonoBehaviour
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
-    [InspectorReadOnly(hideInEditMode = true)] public float[] q;
+    [HideInInspector] public float[] q;
 
     void Start()
     {
-        mode = ControlMode.Auto; //for testing
+        //mode = ControlMode.Auto; //for testing
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -46,30 +46,33 @@ public class URController : MonoBehaviour
 
     void Update()
     {
-        if (mode == ControlMode.Manual)
+        switch (mode)
         {
-            jointInput = xrCapture.rightJoy.x;
-            gripInput = xrCapture.rightGripF;
-            JointIndexNav();
-            DisplaySelectedJoint(selectedIndex);
-            JointMover(selectedIndex);
-            GripMover();
-        }
+            case ControlMode.Manual:
+                jointInput = xrCapture.rightJoy.x;
+                gripInput = xrCapture.rightGripF;
+                JointIndexNav();
+                DisplaySelectedJoint(selectedIndex);
+                JointMover(selectedIndex);
+                GripMover();
+                break;
 
-        if (mode == ControlMode.Auto)
-        {
-            //if (xrCapture.rightTrigger == true) service.CallService();
-            if (cloneController.q != null && cloneController.ready == true)
-            {
-                TrajExecute(cloneController.q);
-                if (CompareJointAngles(cloneController.q) == true)
+            case ControlMode.Auto:
+                if (cloneController.q != null && cloneController.ready == true)
                 {
-                    cloneController.ready = false;
-                    cloneController.ToggleCloneMesh(false);
+                    TrajExecute(cloneController.q);
+                    if (CompareJointAngles(cloneController.q) == true)
+                    {
+                        cloneController.ready = false;
+                        //cloneController.ToggleCloneMesh(false);
+                    }
                 }
-            }
-            else
-                TrajExecute(GetJointAngles());
+                else
+                    TrajExecute(GetJointAngles());
+                break;
+
+            default:
+                break;
         }
     }
 

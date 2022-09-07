@@ -13,17 +13,17 @@ public class CloneController : MonoBehaviour
     public float stiffness = 10000;
     public float damping = 1000;
     public float forceLimit = 1000;
-    public float speed = 5f; // Units: degree/s
+    public float speed = 30f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
-    [InspectorReadOnly(hideInEditMode = true)] public float[] q;
+    [HideInInspector] public float[] q;
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private ArticulationBody[] artiBodies;
     private MeshRenderer[] meshRenderers;
 
-    void Awake()
+    void Start()
     {
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
@@ -48,17 +48,13 @@ public class CloneController : MonoBehaviour
             service.CallService();
         }
         
-        if (q != null)
+        if (q != null && ready == false)
         {
             TrajExecute(q);
             if (CompareJointAngles(q) == true)
             {
                 ready = true;
                 //ToggleCloneMesh(false);
-            }
-            else
-            {
-                ToggleCloneMesh(true);
             }
         }
         else
@@ -82,7 +78,7 @@ public class CloneController : MonoBehaviour
         bool[] rotCompleted = { false, false, false, false, false, false };
         for (int i = 0; i < q.Length; i++)
         {
-            if (q[i] - GetJointAngles()[i] <= 0.2)
+            if (q[i] - GetJointAngles()[i] <= 0.3)
             {
                 rotCompleted[i] = true;
             }
