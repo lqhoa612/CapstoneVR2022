@@ -15,6 +15,9 @@ public class DebugDisplay : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "URScene")
             PrintURMessage();
 
+        if (SceneManager.GetActiveScene().name == "URAutoScene")
+            PrintURAutoMessage();
+
         if (SceneManager.GetActiveScene().name == "UGVScene")
             PrintUGVMessage();
     }
@@ -67,20 +70,23 @@ public class DebugDisplay : MonoBehaviour
         float[] q = ur.GetJointAngles();
         Debug.Log("Joint: " + ur.GetJointName());
         Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
-        if (ur.mode == URController.ControlMode.Auto)
-        {
-            Debug.Log("Right trigger: move EE to target position");
-            Debug.Log("Target: " + ur.service.target.transform.localPosition);
-        }
-        else
-        {
-            Debug.Log("");
-            Debug.Log("");
-        }
-        Debug.Log("Right joystick: rotate joint");
-        Debug.Log("B: next joint | A: previous joint");
-        Debug.Log("Left Menu: call menu");
-        Debug.Log("Left trigger: select mode/scene");
+        //if (ur.mode == URController.ControlMode.Auto)
+        //{
+        //    Debug.Log("Right trigger: move EE to target position");
+        //    Debug.Log("Target: " + ur.service.target.transform.localPosition);
+        //}
+        //Debug.Log("Right joystick: rotate joint");
+        //Debug.Log("B: next joint | A: previous joint");
+        //Debug.Log("Left Menu: call menu");
+        //Debug.Log("Left trigger: select mode/scene");
+    }
+
+    public void PrintURAutoMessage()
+    {
+        float[] q = ur.GetJointAngles();
+        Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
+        Debug.Log("Target: " + ur.service.target.transform.localPosition);
+
     }
 
     public void PrintUGVMessage()

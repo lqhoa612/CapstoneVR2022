@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Robotics.UrdfImporter.Control;
+using UnityEngine.SceneManagement;
 
 public class URController : MonoBehaviour
 {
@@ -7,14 +8,11 @@ public class URController : MonoBehaviour
     public TrajPlanCaller service;
     public CloneController cloneController;
 
-    [HideInInspector] public float jointInput, gripInput;
+    [HideInInspector] public float jointInput; //, gripInput;
     [HideInInspector] public int selectedIndex;
+    [HideInInspector] public float[] q = { 0, 0, 0, 0, 0, 0 };
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
-    [HideInInspector] public bool qRecieved = false;
-    public ControlMode mode;
-    private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
-    private float timerA, timerB;
-    private ArticulationBody[] artiBodies;
+    [HideInInspector]  public ControlMode mode;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;
@@ -24,11 +22,14 @@ public class URController : MonoBehaviour
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
-    [HideInInspector] public float[] q;
+    private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
+    private float timerA, timerB;
+    private ArticulationBody[] artiBodies;
 
     void Start()
     {
-        //mode = ControlMode.Auto; //for testing
+        if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
+        if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -42,6 +43,7 @@ public class URController : MonoBehaviour
             joint.xDrive = currentDrive;
         }
         if (q == null) q = GetJointAngles();
+
     }
 
     void Update()
@@ -50,21 +52,22 @@ public class URController : MonoBehaviour
         {
             case ControlMode.Manual:
                 jointInput = xrCapture.rightJoy.x;
-                gripInput = xrCapture.rightGripF;
+                //gripInput = xrCapture.rightGripF;
                 JointIndexNav();
                 DisplaySelectedJoint(selectedIndex);
                 JointMover(selectedIndex);
-                GripMover();
+                //GripMover();
                 break;
 
             case ControlMode.Auto:
-                if (cloneController.q != null && cloneController.ready == true)
+                if (cloneController.ready == true)
                 {
                     TrajExecute(cloneController.q);
                     if (CompareJointAngles(cloneController.q) == true)
                     {
                         cloneController.ready = false;
-                        //cloneController.ToggleCloneMesh(false);
+                        service.qSent = false;
+                        Debug.LogWarning(cloneController.ready);
                     }
                 }
                 else
@@ -112,51 +115,51 @@ public class URController : MonoBehaviour
         else joint.direction = RotationDirection.None;
     }
 
-    void GripMover()
-    {
-        // Get right gripper parts
-        URJointControl rightInner = artiBodies[10].GetComponent<URJointControl>();
-        URJointControl rightOuter = artiBodies[11].GetComponent<URJointControl>();
-        URJointControl rightFinger = artiBodies[13].GetComponent<URJointControl>();
-        // Get left gripper parts
-        URJointControl leftInner = artiBodies[15].GetComponent<URJointControl>();
-        URJointControl leftOuter = artiBodies[16].GetComponent<URJointControl>();
-        URJointControl leftFinger = artiBodies[18].GetComponent<URJointControl>();
+    //void GripMover()
+    //{
+    //    // Get right gripper parts
+    //    URJointControl rightInner = artiBodies[10].GetComponent<URJointControl>();
+    //    URJointControl rightOuter = artiBodies[11].GetComponent<URJointControl>();
+    //    URJointControl rightFinger = artiBodies[13].GetComponent<URJointControl>();
+    //    // Get left gripper parts
+    //    URJointControl leftInner = artiBodies[15].GetComponent<URJointControl>();
+    //    URJointControl leftOuter = artiBodies[16].GetComponent<URJointControl>();
+    //    URJointControl leftFinger = artiBodies[18].GetComponent<URJointControl>();
 
-        if (gripInput >= 0.9)
-        {
-            rightInner.direction = RotationDirection.Positive;
-            leftInner.direction = RotationDirection.Positive;
+    //    if (gripInput >= 0.9)
+    //    {
+    //        rightInner.direction = RotationDirection.Positive;
+    //        leftInner.direction = RotationDirection.Positive;
 
-            rightOuter.direction = RotationDirection.Positive;
-            leftOuter.direction = RotationDirection.Positive;
+    //        rightOuter.direction = RotationDirection.Positive;
+    //        leftOuter.direction = RotationDirection.Positive;
 
-            rightFinger.direction = RotationDirection.Positive;
-            leftFinger.direction = RotationDirection.Positive;
-        }
-        else if (gripInput <= 0.1)
-        {
-            rightInner.direction = RotationDirection.Negative;
-            leftInner.direction = RotationDirection.Negative;
+    //        rightFinger.direction = RotationDirection.Positive;
+    //        leftFinger.direction = RotationDirection.Positive;
+    //    }
+    //    else if (gripInput <= 0.1)
+    //    {
+    //        rightInner.direction = RotationDirection.Negative;
+    //        leftInner.direction = RotationDirection.Negative;
 
-            rightOuter.direction = RotationDirection.Negative;
-            leftOuter.direction = RotationDirection.Negative;
+    //        rightOuter.direction = RotationDirection.Negative;
+    //        leftOuter.direction = RotationDirection.Negative;
 
-            rightFinger.direction = RotationDirection.Negative;
-            leftFinger.direction = RotationDirection.Negative;
-        }
-        else
-        {
-            rightInner.direction = RotationDirection.None;
-            leftInner.direction = RotationDirection.None;
+    //        rightFinger.direction = RotationDirection.Negative;
+    //        leftFinger.direction = RotationDirection.Negative;
+    //    }
+    //    else
+    //    {
+    //        rightInner.direction = RotationDirection.None;
+    //        leftInner.direction = RotationDirection.None;
 
-            rightOuter.direction = RotationDirection.None;
-            leftOuter.direction = RotationDirection.None;
+    //        rightOuter.direction = RotationDirection.None;
+    //        leftOuter.direction = RotationDirection.None;
 
-            rightFinger.direction = RotationDirection.None;
-            leftFinger.direction = RotationDirection.None;
-        }
-    }
+    //        rightFinger.direction = RotationDirection.None;
+    //        leftFinger.direction = RotationDirection.None;
+    //    }
+    //}
 
     void AutoMove(int jointIndex, float current, float target)
     {
@@ -172,18 +175,9 @@ public class URController : MonoBehaviour
     bool CompareJointAngles(float[] q)
     {
         int jointReached = 0;
-        bool[] rotCompleted = { false, false, false, false, false, false };
         for (int i = 0; i < q.Length; i++)
         {
-            if (q[i] - GetJointAngles()[i] <= 0.2)
-            {
-                rotCompleted[i] = true;
-            }
-        }
-
-        for (int i = 0; i < rotCompleted.Length; i++)
-        {
-            if (rotCompleted[i] == true)
+            if (q[i] - GetJointAngles()[i] <= 0.3)
             {
                 jointReached++;
             }

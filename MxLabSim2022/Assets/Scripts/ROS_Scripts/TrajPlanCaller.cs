@@ -9,6 +9,7 @@ public class TrajPlanCaller : MonoBehaviour
     public GameObject target;
     public URController controller;
     public CloneController ctrlClone;
+    [HideInInspector] public bool qSent;
 
     private void Start()
     {
@@ -18,8 +19,6 @@ public class TrajPlanCaller : MonoBehaviour
 
     public void CallService()
     {
-        ctrlClone.ToggleCloneMesh(true);
-
         TrajPlannerRequest req = new TrajPlannerRequest();
         req.x = target.transform.localPosition.x;
         req.y = target.transform.localPosition.y;
@@ -30,13 +29,12 @@ public class TrajPlanCaller : MonoBehaviour
 
     void Callback(TrajPlannerResponse res)
     {
-        if (res.ros == null) res.ros = ctrlClone.GetJointAngles();
-        //if (res.ros == null) res.ros = controller.GetJointAngles();
-
         res.ros[0] += 90;
         res.ros[1] += 90;
 
         ctrlClone.q = res.ros;
+        qSent = true;
+        Debug.LogWarning("Q recieved");
         //controller.q = res.ros;
     }
 }

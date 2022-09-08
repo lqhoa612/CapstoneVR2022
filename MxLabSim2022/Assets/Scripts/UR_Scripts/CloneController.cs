@@ -13,11 +13,11 @@ public class CloneController : MonoBehaviour
     public float stiffness = 10000;
     public float damping = 1000;
     public float forceLimit = 1000;
-    public float speed = 30f; // Units: degree/s
+    public float speed = 50f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
-    [HideInInspector] public float[] q;
+    [HideInInspector] public float[] q = { 0, 0, 0, 0, 0, 0 };
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private ArticulationBody[] artiBodies;
@@ -38,26 +38,23 @@ public class CloneController : MonoBehaviour
             currentDrive.forceLimit = forceLimit;
             joint.xDrive = currentDrive;
         }
-        ToggleCloneMesh(false);
+        //ToggleCloneMesh(false);
     }
 
     void Update()
     {
-        if (xrCapture.rightTrigger == true && ready == false)
-        {
-            service.CallService();
-        }
-        
-        if (q != null && ready == false)
+        if (xrCapture.rightTrigger == true && ready == false) service.CallService();
+
+        if (ready == false && service.qSent == true)
         {
             TrajExecute(q);
             if (CompareJointAngles(q) == true)
             {
                 ready = true;
-                //ToggleCloneMesh(false);
+                Debug.LogWarning(ready);
             }
         }
-        else
+        else if (ready == true)
             TrajExecute(GetJointAngles());
     }
 
@@ -75,18 +72,9 @@ public class CloneController : MonoBehaviour
     bool CompareJointAngles(float[] q)
     {
         int jointReached = 0;
-        bool[] rotCompleted = { false, false, false, false, false, false };
         for (int i = 0; i < q.Length; i++)
         {
             if (q[i] - GetJointAngles()[i] <= 0.3)
-            {
-                rotCompleted[i] = true;
-            }
-        }
-
-        for (int i = 0; i < rotCompleted.Length; i++)
-        {
-            if (rotCompleted[i] == true)
             {
                 jointReached++;
             }
