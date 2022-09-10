@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 import sys
 import math as m
+import numpy as np  
 
 import rospy
 import actionlib
 from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 from trajectory_msgs.msg import JointTrajectoryPoint
+from sensor_msgs.msg import JointState
 
 
 # If your robot description is created with a tf_prefix, those would have to be adapted
@@ -20,7 +22,6 @@ JOINT_NAMES = [
 
 
 def send_joint_trajectory():
-    rospy.loginfo("Getting ready...")
     # Make sure the controller is loaded and activated
     trajectory_client = actionlib.SimpleActionClient("/scaled_pos_joint_traj_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
 
@@ -50,14 +51,20 @@ def send_joint_trajectory():
 
     result = trajectory_client.get_result()
     rospy.loginfo("Trajectory execution finished in state {}".format(result.error_code))
-    if result == None:
-        rospy.loginfo("Nothing")
+
+def JointPosCallback(data):
+    dp = data.position
+    temp = [ m.degrees(dp[0]), m.degrees(dp[1]), m.degrees(dp[2]), m.degrees(dp[3]), m.degrees(dp[4]), m.degrees(dp[5]) ]
+    temp_rd = [ np.round(temp[0]), np.round(temp[1]), np.round(temp[2]), np.round(temp[3]), np.round(temp[4]), np.round(temp[5]) ]
+    rospy.loginfo(temp_rd)
+
+def GetJointPosition():
+    trajectory_sub = rospy.Subscriber("joint_states", JointState, JointPosCallback) 
 
 if __name__ == "__main__":
     rospy.init_node("test_move")
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
-        send_joint_trajectory()
+        # send_joint_trajectory()
+        GetJointPosition()
         rate.sleep()
-
-# read join_states, 
