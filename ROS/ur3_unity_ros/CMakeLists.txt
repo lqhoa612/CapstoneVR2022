@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
+find_package(catkin REQUIRED genmsg actionlib_msgs actionlib)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -53,16 +55,13 @@ add_message_files(DIRECTORY msg)
 add_service_files(DIRECTORY srv)
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(DIRECTORY action)
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
   std_msgs
+  actionlib_msgs
 )
 
 ################################################
@@ -156,6 +155,7 @@ catkin_install_python(PROGRAMS
   src/JointAnglesSub.py
   src/talker.py
   src/rtb_test.py
+  src/test_move_mod.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
