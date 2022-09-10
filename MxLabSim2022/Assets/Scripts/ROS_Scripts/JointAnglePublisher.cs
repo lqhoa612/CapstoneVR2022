@@ -28,6 +28,7 @@ public class JointAnglePublisher : MonoBehaviour
         {
             JointAnglesMsg angles = new JointAnglesMsg(m_RobotController.GetJointAngles());
             ros.Publish(topicName, angles);
+            Debug.LogWarning("OK");
             timeElapsed = 0;
         }
     }

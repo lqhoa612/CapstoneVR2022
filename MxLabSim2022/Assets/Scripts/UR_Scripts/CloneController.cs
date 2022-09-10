@@ -5,8 +5,9 @@ public class CloneController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
     public TrajPlanCaller service;
+    public URController urController;
 
-    [HideInInspector] public bool ready = false;
+    [HideInInspector] public bool ready = true;
     [HideInInspector] public int selectedIndex;
 
     public ControlType control = ControlType.PositionControl;
@@ -43,19 +44,21 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        if (xrCapture.rightTrigger == true && ready == false) service.CallService();
+        if (xrCapture.rightTrigger == true) service.CallService();
 
-        if (ready == false && service.qSent == true)
+        if (ready == true && urController.ready == true)
         {
             TrajExecute(q);
             if (CompareJointAngles(q) == true)
             {
-                ready = true;
-                Debug.LogWarning(ready);
+                ready = false;
             }
         }
-        else if (ready == true)
+        else
+        {
             TrajExecute(GetJointAngles());
+        }
+            
     }
 
     void AutoMove(int jointIndex, float current, float target)
@@ -69,7 +72,7 @@ public class CloneController : MonoBehaviour
             joint.direction = RotationDirection.None;
     }
 
-    bool CompareJointAngles(float[] q)
+    public bool CompareJointAngles(float[] q)
     {
         int jointReached = 0;
         for (int i = 0; i < q.Length; i++)

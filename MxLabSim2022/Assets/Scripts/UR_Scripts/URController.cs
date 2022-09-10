@@ -12,7 +12,8 @@ public class URController : MonoBehaviour
     [HideInInspector] public int selectedIndex;
     [HideInInspector] public float[] q = { 0, 0, 0, 0, 0, 0 };
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
-    [HideInInspector]  public ControlMode mode;
+    [HideInInspector] public ControlMode mode;
+    [HideInInspector] public bool ready = true;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;
@@ -51,27 +52,30 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                jointInput = xrCapture.rightJoy.x;
-                //gripInput = xrCapture.rightGripF;
-                JointIndexNav();
-                DisplaySelectedJoint(selectedIndex);
-                JointMover(selectedIndex);
-                //GripMover();
+                //jointInput = xrCapture.rightJoy.x;
+                ////gripInput = xrCapture.rightGripF;
+                //JointIndexNav();
+                //DisplaySelectedJoint(selectedIndex);
+                //JointMover(selectedIndex);
+                ////GripMover();
+                ///
+                TrajExecute(new float[] {90,0,0,0,0,0});
                 break;
 
             case ControlMode.Auto:
-                if (cloneController.ready == true)
+                if (ready == true && cloneController.ready == false)
                 {
                     TrajExecute(cloneController.q);
                     if (CompareJointAngles(cloneController.q) == true)
                     {
-                        cloneController.ready = false;
-                        service.qSent = false;
-                        Debug.LogWarning(cloneController.ready);
+                        ready = false;
+                        cloneController.ready = true;
                     }
                 }
                 else
+                {
                     TrajExecute(GetJointAngles());
+                }
                 break;
 
             default:
@@ -172,7 +176,7 @@ public class URController : MonoBehaviour
             joint.direction = RotationDirection.None;
     }
 
-    bool CompareJointAngles(float[] q)
+    public bool CompareJointAngles(float[] q)
     {
         int jointReached = 0;
         for (int i = 0; i < q.Length; i++)
