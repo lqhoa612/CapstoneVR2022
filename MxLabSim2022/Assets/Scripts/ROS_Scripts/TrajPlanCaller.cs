@@ -1,15 +1,18 @@
 using RosMessageTypes.Ur3UnityRos;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
+using System.Collections;
 
 public class TrajPlanCaller : MonoBehaviour
 {
     ROSConnection ros;
     public string serviceName = "traj_planner";
     public GameObject target;
-    public URController controller;
+    public URController ctrlUR3;
     public CloneController ctrlClone;
     [HideInInspector] public bool qSent;
+
+    bool ready = true;
 
     private void Start()
     {
@@ -19,22 +22,36 @@ public class TrajPlanCaller : MonoBehaviour
 
     public void CallService()
     {
-        TrajPlannerRequest req = new TrajPlannerRequest();
-        req.x = target.transform.localPosition.x;
-        req.y = target.transform.localPosition.y;
-        req.z = target.transform.localPosition.z;
+        if (ready == true)
+        {
+            TrajPlannerRequest req = new TrajPlannerRequest();
+            req.x = target.transform.localPosition.x;
+            req.y = target.transform.localPosition.y;
+            req.z = target.transform.localPosition.z;
 
-        ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
+            ros.SendServiceMessage<TrajPlannerResponse>(serviceName, req, Callback);
+        }
+        
     }
 
     void Callback(TrajPlannerResponse res)
     {
-        res.ros[0] += 90;
-        res.ros[1] += 90;
+        ready = false; // don't send again until ready
+        if (res.ros != null)
+        {
+            res.ros[0] += 90;
+            res.ros[1] += 90;
+            ctrlUR3.ready = true;
 
-        ctrlClone.q = res.ros;
-        qSent = true;
-        Debug.LogWarning("Q recieved");
-        //controller.q = res.ros;
+            if (ctrlClone.ready == true && ctrlUR3.ready == true)
+            {
+                ctrlClone.q = res.ros;
+            }else if (ctrlClone.ready == true && ctrlUR3.ready == false)
+            {
+                ready = true;
+            }
+
+        }
     }
+
 }

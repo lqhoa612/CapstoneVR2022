@@ -543,7 +543,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2762392197925748556}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
   m_Name: 
@@ -1970,7 +1970,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 816417201, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 816417201, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RobotController
@@ -1998,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 680240187}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: controller
@@ -2010,7 +2010,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_RosIPAddress
+      value: 172.19.124.62
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
