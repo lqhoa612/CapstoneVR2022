@@ -52,14 +52,14 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                //jointInput = xrCapture.rightJoy.x;
-                ////gripInput = xrCapture.rightGripF;
-                //JointIndexNav();
-                //DisplaySelectedJoint(selectedIndex);
-                //JointMover(selectedIndex);
-                ////GripMover();
-                ///
-                TrajExecute(new float[] {90,0,0,0,0,0});
+                jointInput = xrCapture.rightJoy.x;
+                //gripInput = xrCapture.rightGripF;
+                JointIndexNav();
+                DisplaySelectedJoint(selectedIndex);
+                JointMover(selectedIndex);
+                //GripMover();
+                
+                //TrajExecute(new float[] {90,0,0,0,0,0});
                 break;
 
             case ControlMode.Auto:
