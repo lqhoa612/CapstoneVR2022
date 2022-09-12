@@ -2,9 +2,9 @@ using RosMessageTypes.Ur3UnityRos;
 using Unity.Robotics.ROSTCPConnector;
 using UnityEngine;
 
-public class JointPosPub : MonoBehaviour
+public class JointStatePub : MonoBehaviour
 {
-    [InspectorReadOnly]public string topicName = "joint_pos";
+    [InspectorReadOnly] public string topicName = "unity_joint_state";
     public URController urCtrl;
     public float publishMessageFrequency = .5f;
 

@@ -2010,7 +2010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RosIPAddress
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe437d24974a2f4ca30517b550defca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topicName: joint_pos
+  topicName: unity_joint_state
   urCtrl: {fileID: 921507664}
   publishMessageFrequency: 0.5
 --- !u!1001 &3488127368479744470
