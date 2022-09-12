@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class JointPosPub : MonoBehaviour
 {
-    public URController ctrlUR;
     [InspectorReadOnly]public string topicName = "joint_pos";
+    public URController urCtrl;
     public float publishMessageFrequency = .5f;
 
     ROSConnection ros;
@@ -22,7 +22,7 @@ public class JointPosPub : MonoBehaviour
         timeElapsed += Time.deltaTime;
         if (timeElapsed > publishMessageFrequency)
         {
-            JointPositionMsg jPos = new JointPositionMsg(ctrlUR.GetJointAngles());
+            JointPositionMsg jPos = new JointPositionMsg(urCtrl.GetJointAngles());
             ros.Publish(topicName, jPos);
             print("Message published.");
             timeElapsed = 0;

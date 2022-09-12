@@ -43,8 +43,7 @@ public class URController : MonoBehaviour
             currentDrive.forceLimit = forceLimit;
             joint.xDrive = currentDrive;
         }
-        if (q == null) q = GetJointAngles();
-
+        
     }
 
     void Update()
@@ -52,14 +51,14 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                jointInput = xrCapture.rightJoy.x;
-                //gripInput = xrCapture.rightGripF;
-                JointIndexNav();
-                DisplaySelectedJoint(selectedIndex);
-                JointMover(selectedIndex);
-                //GripMover();
+                //jointInput = xrCapture.rightJoy.x;
+                ////gripInput = xrCapture.rightGripF;
+                //JointIndexNav();
+                //DisplaySelectedJoint(selectedIndex);
+                //JointMover(selectedIndex);
+                ////GripMover();
                 
-                //TrajExecute(new float[] {90,0,0,0,0,0});
+                TrajExecute(new float[] {0,-10,0,0,0,0});
                 break;
 
             case ControlMode.Auto:
@@ -169,9 +168,27 @@ public class URController : MonoBehaviour
     {
         URJointControl joint = artiBodies[revoluteJoints[jointIndex]].GetComponent<URJointControl>();
         if (current < target)
+        {
             joint.direction = RotationDirection.Positive;
+        }
+            
         else if (current > target)
+        {
             joint.direction = RotationDirection.Negative;
+            switch (jointIndex)
+            {
+                case 1:
+                    if (current < -90)
+                    {
+                        joint.direction = RotationDirection.None;
+                        Debug.LogWarning("At limit.");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+            
         else
             joint.direction = RotationDirection.None;
     }
