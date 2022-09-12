@@ -58,7 +58,7 @@ public class URController : MonoBehaviour
                 //JointMover(selectedIndex);
                 ////GripMover();
                 
-                TrajExecute(new float[] {0,-10,0,0,0,0});
+                TrajExecute(new float[] {0,0,0,-90,0,0});
                 break;
 
             case ControlMode.Auto:

@@ -23,8 +23,10 @@ public class JointStatePub : MonoBehaviour
         if (timeElapsed > publishMessageFrequency)
         {
             JointPositionMsg jPos = new JointPositionMsg(urCtrl.GetJointAngles());
+            jPos.joint_position[1] += 90;
+            jPos.joint_position[3] += 90;
             ros.Publish(topicName, jPos);
-            print("Message published.");
+            Debug.LogWarning("Message published.");
             timeElapsed = 0;
         }
     }
