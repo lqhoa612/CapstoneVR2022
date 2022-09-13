@@ -25,7 +25,7 @@ public class URController : MonoBehaviour
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
-    private ArticulationBody[] artiBodies;
+    public ArticulationBody[] artiBodies;
 
     void Start()
     {
@@ -62,19 +62,19 @@ public class URController : MonoBehaviour
                 break;
 
             case ControlMode.Auto:
-                if (ready == true && cloneController.ready == false)
-                {
-                    TrajExecute(cloneController.q);
-                    if (CompareJointAngles(cloneController.q) == true)
-                    {
-                        ready = false;
-                        cloneController.ready = true;
-                    }
-                }
-                else
-                {
-                    TrajExecute(GetJointAngles());
-                }
+                //if (ready == true && cloneController.ready == false)
+                //{
+                //    TrajExecute(cloneController.q);
+                //    if (CompareJointAngles(cloneController.q) == true)
+                //    {
+                //        ready = false;
+                //        cloneController.ready = true;
+                //    }
+                //}
+                //else
+                //{
+                //    TrajExecute(GetJointAngles());
+                //}
                 break;
 
             default:

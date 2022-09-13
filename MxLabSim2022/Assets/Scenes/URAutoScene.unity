@@ -2003,6 +2003,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 36863423}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: ctrlUR3
+      value: 
+      objectReference: {fileID: 921507664}
+    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_target
       value: 
       objectReference: {fileID: 36863423}
@@ -2014,6 +2018,10 @@ PrefabInstance:
       propertyPath: ctrlClone
       value: 
       objectReference: {fileID: 680240187}
+    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: controller
       value: 
@@ -2064,6 +2072,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197925748558, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
