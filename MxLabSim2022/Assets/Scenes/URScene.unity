@@ -542,7 +542,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
   m_PrefabInstance: {fileID: 2762392197925748556}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2762392197925748557}
+  m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
@@ -609,17 +609,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683ef653b4b09b94993b7fd393c95978, type: 3}
---- !u!1 &680240186 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 662520023697884579, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
-  m_PrefabInstance: {fileID: 921507663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &680240187 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 680240187, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
   m_PrefabInstance: {fileID: 921507663}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680240186}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35832616772cb304ea2c34247154b63d, type: 3}
@@ -1968,53 +1963,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 816417201, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 816417201, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_RobotController
-      value: 
-      objectReference: {fileID: 921507664}
-    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: clone
-      value: 
-      objectReference: {fileID: 680240187}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 36863423}
     - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_target
-      value: 
-      objectReference: {fileID: 36863423}
-    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: objClone
-      value: 
-      objectReference: {fileID: 680240186}
-    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: ctrlClone
       value: 
       objectReference: {fileID: 680240187}
-    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 921507664}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_Name
       value: RosTCP
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-      propertyPath: m_RosIPAddress
-      value: 192.168.0.159
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
@@ -2060,28 +2019,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2762392197925748558, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: urCtrl
+      value: 
+      objectReference: {fileID: 921507664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
---- !u!1 &2762392197925748557 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-  m_PrefabInstance: {fileID: 2762392197925748556}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2762392197925748558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2762392197925748557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe437d24974a2f4ca30517b550defca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topicName: unity_joint_state
-  urCtrl: {fileID: 921507664}
-  publishMessageFrequency: 0.1
 --- !u!1001 &3488127368479744470
 PrefabInstance:
   m_ObjectHideFlags: 0
