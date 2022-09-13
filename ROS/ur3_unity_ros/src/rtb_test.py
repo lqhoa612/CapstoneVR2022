@@ -22,15 +22,15 @@ env.add(axes)
 
 q = ur3.ikine_LMS(Tep, ur3.q)
 ok = rtb.jtraj(ur3.q, q[0], 5)
-# print(q)
+print(ok.q)
 
-env.remove(ur3)
-ur3.q = q[0]
-env.add(ur3)
-rs = [  m.degrees(q[0][0]), m.degrees(q[0][1]), 
-            m.degrees(q[0][2]), m.degrees(q[0][3]),     
-            m.degrees(q[0][4]), m.degrees(q[0][5])]
-# print(rs)
-print(m.degrees(ur3.qlim[0][0]))
+# env.remove(ur3)
+# ur3.q = q[0]
+# env.add(ur3)
+# rs = [  m.degrees(q[0][0]), m.degrees(q[0][1]), 
+#             m.degrees(q[0][2]), m.degrees(q[0][3]),     
+#             m.degrees(q[0][4]), m.degrees(q[0][5])]
+# # print(rs)
+# print(m.degrees(ur3.qlim[0][0]))
 
 env.hold()

@@ -8,6 +8,7 @@ import actionlib
 from control_msgs.msg import FollowJointTrajectoryAction, FollowJointTrajectoryGoal
 from trajectory_msgs.msg import JointTrajectoryPoint
 from sensor_msgs.msg import JointState
+from ur3_unity_ros.msg import JointPosition
 
 
 # If your robot description is created with a tf_prefix, those would have to be adapted
@@ -21,7 +22,7 @@ JOINT_NAMES = [
 ]
 
 
-def send_joint_trajectory():
+def send_joint_trajectory(dp):
     # Make sure the controller is loaded and activated
     trajectory_client = actionlib.SimpleActionClient("/scaled_pos_joint_traj_controller/follow_joint_trajectory", FollowJointTrajectoryAction)
 
@@ -35,8 +36,9 @@ def send_joint_trajectory():
     goal = FollowJointTrajectoryGoal()
     goal.trajectory.joint_names = JOINT_NAMES
 
-    # joint position:  [3, 2, 1, 4, 5, 6]
-    position = [0, -m.pi/2, 0, -m.pi/2, 0, -m.pi/2] # rad
+    # Note the joint position:  [3, 2, 1, 4, 5, 6]
+    # position = [0, -m.pi/2, 0, -m.pi/2, 0, -m.pi/2] # rad
+    position = [dp[2], dp[1], dp[0], dp[3], dp[4], dp[5]]
     duration = 3.0
 
     point = JointTrajectoryPoint()
@@ -58,13 +60,27 @@ def JointPosCallback(data):
     temp_rd = [ np.round(temp[0]), np.round(temp[1]), np.round(temp[2]), np.round(temp[3]), np.round(temp[4]), np.round(temp[5]) ]
     rospy.loginfo(temp_rd)
 
-def GetJointPosition():
-    trajectory_sub = rospy.Subscriber("joint_states", JointState, JointPosCallback) 
+def UnityJSCallback(data):
+    dp = data.joint_position
+    rospy.loginfo(RoundData(dp))
+
+def GetUnityJPos():
+    trajectory_sub = rospy.Subscriber("unity_joint_state", JointPosition, UnityJSCallback) 
+
+def RoundData(dp):
+    rounded_dp = [np.round(dp[0], 2), np.round(dp[1], 2), np.round(dp[2], 2), np.round(dp[3], 2), np.round(dp[4], 2), np.round(dp[5], 2)]
+    return rounded_dp
+
+def Deg2RadData(dp):
+    return np.radians(dp)
+
+def Rad2DegData(dp):
+    return np.degrees(dp)
 
 if __name__ == "__main__":
     rospy.init_node("test_move")
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(20)
     while not rospy.is_shutdown():
         # send_joint_trajectory()
-        GetJointPosition()
+        GetUnityJPos()
         rate.sleep()

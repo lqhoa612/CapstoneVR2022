@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  trajectory_msgs
 )
 
 find_package(catkin REQUIRED genmsg actionlib_msgs actionlib)
@@ -62,6 +63,7 @@ generate_messages(
   DEPENDENCIES
   std_msgs
   actionlib_msgs
+  trajectory_msgs
 )
 
 ################################################
@@ -96,7 +98,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ur3_unity_ros
-  CATKIN_DEPENDS rospy std_msgs message_runtime
+  CATKIN_DEPENDS rospy std_msgs message_runtime trajectory_msgs
 #  DEPENDS system_lib
 )
 
