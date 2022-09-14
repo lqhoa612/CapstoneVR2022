@@ -62,6 +62,8 @@ public class URController : MonoBehaviour
                 break;
 
             case ControlMode.Auto:
+                if (xrCapture.rightTrigger == true) go = -1;
+
                 if (go < 0)
                 {
                     service.CallService();
@@ -75,7 +77,6 @@ public class URController : MonoBehaviour
                     if (CompareJointAngles(cloneController.q) == true)
                     {
                         cloneController.q = null;
-                        service.q = null;
                     }
                 }
                 else
@@ -248,7 +249,9 @@ public class URController : MonoBehaviour
 
     public void StopAll()
     {
-        speed = 0.5f;
+        speed = 0.0f;
+        cloneController.q = null;
+        service.q = null;
     }
 
     public string GetJointName()
