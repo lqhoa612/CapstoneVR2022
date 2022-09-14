@@ -4,7 +4,6 @@ import spatialmath as sm
 import numpy as np
 import rospy
 from ur3_unity_ros.srv import *
-from trajectory_msgs.msg import JointTrajectoryPoint
 
 def plan(req):
     #Initial robot model
@@ -16,17 +15,12 @@ def plan(req):
     Tep = sm.SE3.Trans(req.x, req.z, req.y) * sm.SE3.Eul(np.radians([0, 90, 0]))
     #Get IK solution
     sol = ur3.ikine_LMS(Tep, ur3.q)
-    #Get trajectory
-    traj = rtb.jtraj(ur3.q, sol[0], 5)
-    # traj.q = np.degrees(traj.q)
-    print(traj.q)
+    #Convert to degree
+    temp = np.degrees(sol[0])
+    print(temp)
     #Send response to unity
     res = TrajectoryPlannerResponse()
-    for i, q in enumerate(traj.q):
-        temp = JointTrajectoryPoint()
-        temp.positions = q
-        res.trajectory.append(temp)
-
+    res.q = temp
     return res
 
 def Ur3Service():
