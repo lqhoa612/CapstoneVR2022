@@ -27,6 +27,7 @@ public class URController : MonoBehaviour
     private float timerA, timerB;
     public ArticulationBody[] artiBodies;
 
+    int go = -1;
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
@@ -62,6 +63,12 @@ public class URController : MonoBehaviour
                 break;
 
             case ControlMode.Auto:
+                
+                if (go < 0)
+                {
+                    service.CallService();
+                    go++;
+                }
                 //if (ready == true && cloneController.ready == false)
                 //{
                 //    TrajExecute(cloneController.q);

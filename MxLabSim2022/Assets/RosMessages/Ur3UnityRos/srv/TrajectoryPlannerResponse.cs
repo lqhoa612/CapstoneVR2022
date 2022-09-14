@@ -13,35 +13,35 @@ namespace RosMessageTypes.Ur3UnityRos
         public const string k_RosMessageName = "ur3_unity_ros/TrajectoryPlanner";
         public override string RosMessageName => k_RosMessageName;
 
-        public Trajectory.JointTrajectoryPointMsg[] trajectory;
+        public float[] q;
 
         public TrajectoryPlannerResponse()
         {
-            this.trajectory = new Trajectory.JointTrajectoryPointMsg[0];
+            this.q = new float[0];
         }
 
-        public TrajectoryPlannerResponse(Trajectory.JointTrajectoryPointMsg[] trajectory)
+        public TrajectoryPlannerResponse(float[] q)
         {
-            this.trajectory = trajectory;
+            this.q = q;
         }
 
         public static TrajectoryPlannerResponse Deserialize(MessageDeserializer deserializer) => new TrajectoryPlannerResponse(deserializer);
 
         private TrajectoryPlannerResponse(MessageDeserializer deserializer)
         {
-            deserializer.Read(out this.trajectory, Trajectory.JointTrajectoryPointMsg.Deserialize, deserializer.ReadLength());
+            deserializer.Read(out this.q, sizeof(float), deserializer.ReadLength());
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
-            serializer.WriteLength(this.trajectory);
-            serializer.Write(this.trajectory);
+            serializer.WriteLength(this.q);
+            serializer.Write(this.q);
         }
 
         public override string ToString()
         {
             return "TrajectoryPlannerResponse: " +
-            "\ntrajectory: " + System.String.Join(", ", trajectory.ToList());
+            "\nq: " + System.String.Join(", ", q.ToList());
         }
 
 #if UNITY_EDITOR

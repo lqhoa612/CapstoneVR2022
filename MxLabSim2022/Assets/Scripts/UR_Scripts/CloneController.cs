@@ -44,20 +44,6 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        if (xrCapture.rightTrigger == true) service.CallService();
-
-        if (ready == true && urController.ready == true)
-        {
-            TrajExecute(q);
-            if (CompareJointAngles(q) == true)
-            {
-                ready = false;
-            }
-        }
-        else
-        {
-            TrajExecute(GetJointAngles());
-        }
             
     }
 
