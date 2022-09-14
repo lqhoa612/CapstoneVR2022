@@ -5,10 +5,10 @@ public class CloneController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
     public TrajPlanCaller service;
-    public URController urController;
 
     [HideInInspector] public bool ready = true;
     [HideInInspector] public int selectedIndex;
+    [HideInInspector] public float[] q = null;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;
@@ -17,8 +17,6 @@ public class CloneController : MonoBehaviour
     public float speed = 50f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
-
-    [HideInInspector] public float[] q = { 0, 0, 0, 0, 0, 0 };
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private ArticulationBody[] artiBodies;
@@ -44,7 +42,20 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-            
+        if (service.q != null)
+        {
+            TrajExecute(service.q);
+
+            if (CompareJointAngles(service.q) == true)
+            {
+                q = service.q;
+                service.q = null;
+            }
+        }
+        else
+        {
+            TrajExecute(GetJointAngles());
+        }
     }
 
     void AutoMove(int jointIndex, float current, float target)

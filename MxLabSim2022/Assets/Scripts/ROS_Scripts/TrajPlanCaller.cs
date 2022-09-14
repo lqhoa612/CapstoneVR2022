@@ -7,9 +7,8 @@ public class TrajPlanCaller : MonoBehaviour
     ROSConnection ros;
     public string serviceName = "traj_planner";
     public GameObject target;
-    public URController ctrlUR3;
-    public CloneController ctrlClone;
     [HideInInspector] public bool qSent;
+    [HideInInspector] public float[] q = null;
 
     bool ready = true;
 
@@ -40,17 +39,8 @@ public class TrajPlanCaller : MonoBehaviour
         {
             res.q[0] += 90;
             res.q[1] += 90;
-            ctrlUR3.ready = true;
 
-            if (ctrlClone.ready == true && ctrlUR3.ready == true)
-            {
-                ctrlClone.q = res.q;
-            }
-            else if (ctrlClone.ready == true && ctrlUR3.ready == false)
-            {
-                ready = true;
-            }
-
+            q = res.q;
         }
     }
 

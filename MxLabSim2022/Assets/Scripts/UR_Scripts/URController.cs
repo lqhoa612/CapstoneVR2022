@@ -10,7 +10,6 @@ public class URController : MonoBehaviour
 
     [HideInInspector] public float jointInput; //, gripInput;
     [HideInInspector] public int selectedIndex;
-    [HideInInspector] public float[] q = { 0, 0, 0, 0, 0, 0 };
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
     [HideInInspector] public ControlMode mode;
     [HideInInspector] public bool ready = true;
@@ -25,9 +24,9 @@ public class URController : MonoBehaviour
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
-    public ArticulationBody[] artiBodies;
+    private ArticulationBody[] artiBodies;
+    private int go = -1;
 
-    int go = -1;
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
@@ -52,36 +51,38 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                //jointInput = xrCapture.rightJoy.x;
-                ////gripInput = xrCapture.rightGripF;
-                //JointIndexNav();
-                //DisplaySelectedJoint(selectedIndex);
-                //JointMover(selectedIndex);
-                ////GripMover();
-                
-                TrajExecute(new float[] {0,0,0,-90,0,0});
+                jointInput = xrCapture.rightJoy.x;
+                //gripInput = xrCapture.rightGripF;
+                JointIndexNav();
+                DisplaySelectedJoint(selectedIndex);
+                JointMover(selectedIndex);
+                //GripMover();
+
+                //TrajExecute(new float[] {0,0,0,-90,0,0});
                 break;
 
             case ControlMode.Auto:
-                
                 if (go < 0)
                 {
                     service.CallService();
                     go++;
                 }
-                //if (ready == true && cloneController.ready == false)
-                //{
-                //    TrajExecute(cloneController.q);
-                //    if (CompareJointAngles(cloneController.q) == true)
-                //    {
-                //        ready = false;
-                //        cloneController.ready = true;
-                //    }
-                //}
-                //else
-                //{
-                //    TrajExecute(GetJointAngles());
-                //}
+
+                if (cloneController.q != null)
+                {
+                    TrajExecute(cloneController.q);
+
+                    if (CompareJointAngles(cloneController.q) == true)
+                    {
+                        cloneController.q = null;
+                        service.q = null;
+                    }
+                }
+                else
+                {
+                    TrajExecute(GetJointAngles());
+                }
+
                 break;
 
             default:
