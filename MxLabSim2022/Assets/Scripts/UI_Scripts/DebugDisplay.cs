@@ -8,6 +8,7 @@ public class DebugDisplay : MonoBehaviour
     readonly Dictionary<string, string> debugLogs = new Dictionary<string, string>();
     public Text display;
     public URController ur;
+    public GameObject target;
     public UGVControllerInput ugv;
 
     private void FixedUpdate()
@@ -85,7 +86,7 @@ public class DebugDisplay : MonoBehaviour
     {
         float[] q = ur.GetJointAngles();
         Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
-        Debug.Log("Target: " + ur.service.target.transform.localPosition);
+        Debug.Log("Target: " + target.transform.localPosition);
 
     }
 

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2762392197895022124}
   - component: {fileID: 2762392197895022099}
-  - component: {fileID: 816417202}
   - component: {fileID: 2762392197925748558}
+  - component: {fileID: 3995056005858798777}
   m_Layer: 0
   m_Name: RosTCP
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_TFTopics:
   - /tf
   listenForTFMessages: 1
---- !u!114 &816417202
+--- !u!114 &2762392197925748558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,15 +64,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2762392197895022098}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
+  m_Script: {fileID: 11500000, guid: dbe437d24974a2f4ca30517b550defca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serviceName: traj_planner
-  target: {fileID: 0}
-  ctrlUR3: {fileID: 0}
-  ctrlClone: {fileID: 0}
-  qSent: 0
---- !u!114 &2762392197925748558
+  topicName: unity_joint_state
+  urCtrl: {fileID: 0}
+  publishMessageFrequency: 0.1
+--- !u!114 &3995056005858798777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,9 +79,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2762392197895022098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe437d24974a2f4ca30517b550defca, type: 3}
+  m_Script: {fileID: 11500000, guid: 7be6bd08659d0b14a835b8507c0f0d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topicName: unity_joint_state
-  urCtrl: {fileID: 0}
-  publishMessageFrequency: 0.1
+  serviceName: traj_planner
+  target: {fileID: 0}
+  q: []

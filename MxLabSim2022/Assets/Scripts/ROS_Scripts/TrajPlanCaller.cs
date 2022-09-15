@@ -34,7 +34,7 @@ public class TrajPlanCaller : MonoBehaviour
 
     void Callback(TrajectoryPlannerResponse res)
     {
-        ready = false; // don't send again until ready
+        //ready = false; // don't send again until ready
         if (res.q != null)
         {
             res.q[0] += 90;

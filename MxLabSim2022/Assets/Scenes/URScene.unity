@@ -1975,6 +1975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RosTCP
       objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
       value: 6

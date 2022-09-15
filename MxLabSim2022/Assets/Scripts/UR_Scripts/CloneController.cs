@@ -4,7 +4,7 @@ using Unity.Robotics.UrdfImporter.Control;
 public class CloneController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
-    public TrajPlanCaller service;
+    public TrajectoryServiceClient srv;
 
     [HideInInspector] public bool ready = true;
     [HideInInspector] public int selectedIndex;
@@ -42,15 +42,9 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        if (service.q != null)
+        if (xrCapture.rightTrigger == true)
         {
-            TrajExecute(service.q);
-
-            if (CompareJointAngles(service.q) == true)
-            {
-                q = service.q;
-                service.q = null;
-            }
+            TrajExecute(srv.q);
         }
         else
         {

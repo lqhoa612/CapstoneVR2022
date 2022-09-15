@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class URController : MonoBehaviour
 {
     public XRControllerCapture xrCapture;
-    public TrajPlanCaller service;
     public CloneController cloneController;
 
     [HideInInspector] public float jointInput; //, gripInput;
@@ -25,7 +24,6 @@ public class URController : MonoBehaviour
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
     private ArticulationBody[] artiBodies;
-    private int go = -1;
 
     void Start()
     {
@@ -58,32 +56,28 @@ public class URController : MonoBehaviour
                 JointMover(selectedIndex);
                 //GripMover();
 
-                //TrajExecute(new float[] {0,0,0,-90,0,0});
+                //for testing
+                //TrajExecute(new float[] { 90, -90, 0, 0, 0, 0 });
                 break;
 
             case ControlMode.Auto:
-                if (xrCapture.rightTrigger == true) go = -1;
-
-                if (go < 0)
+                if (xrCapture.AisPressed == true)
                 {
-                    service.CallService();
-                    go++;
-                }
-
-                if (cloneController.q != null)
-                {
-                    TrajExecute(cloneController.q);
-
-                    if (CompareJointAngles(cloneController.q) == true)
-                    {
-                        cloneController.q = null;
-                    }
+                    TrajExecute(cloneController.GetJointAngles());
                 }
                 else
                 {
                     TrajExecute(GetJointAngles());
                 }
 
+                break;
+
+            case ControlMode.Stopped:
+                StopAll();
+                if (xrCapture.AisPressed == true)
+                {
+                    ResetRobot();
+                }
                 break;
 
             default:
@@ -202,6 +196,12 @@ public class URController : MonoBehaviour
             joint.direction = RotationDirection.None;
     }
 
+    void ResetRobot()
+    {
+        speed = 20f;
+        TrajExecute(new float[] { 0, 0, 0, 0, 0, 0 });
+    }
+
     public bool CompareJointAngles(float[] q)
     {
         int jointReached = 0;
@@ -249,9 +249,7 @@ public class URController : MonoBehaviour
 
     public void StopAll()
     {
-        speed = 0.0f;
-        cloneController.q = null;
-        service.q = null;
+        speed = 0;
     }
 
     public string GetJointName()
@@ -262,7 +260,8 @@ public class URController : MonoBehaviour
     public enum ControlMode
     {
         Manual,
-        Auto
+        Auto,
+        Stopped
     }
 
     public void SetControlMode(string modeName)
