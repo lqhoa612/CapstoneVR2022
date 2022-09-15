@@ -11,16 +11,16 @@ env.launch(realtime=True)
 
 #init the model
 ur3 = rtb.models.UR3()
-ur3.q = [m.radians(-90), m.radians(-90), m.radians(-0), m.radians(-0), m.radians(0), m.radians(0)]
+ur3.q = np.radians([0, 0, 0, -0, 0, 0])
 # prev_q = [m.radians(-90), m.radians(-90), 0, 0, 0, 0]
 
 # add ur to swift
 env.add(ur3)
-# Tep = sm.SE3.Trans(0.25, 0, 0.1) * sm.SE3.Eul([m.radians(0), m.radians(90), m.radians(0)])
-# axes = sg.Axes(length=0.1, pose=Tep)
-# env.add(axes)
+Tep = sm.SE3.Trans(0.25, 0, 0.1) * sm.SE3.Eul([m.radians(0), m.radians(90), m.radians(0)])
+axes = sg.Axes(length=0.1, pose=Tep)
+env.add(axes)
 
-# q = ur3.ikine_LMS(Tep, ur3.q)
+q = ur3.ikine_LMS(Tep, ur3.q)
 # ok = rtb.jtraj(ur3.q, q[0], 5)
 # print(ok.q)
 

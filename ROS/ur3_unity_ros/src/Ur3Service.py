@@ -17,6 +17,7 @@ def plan(req):
     sol = ur3.ikine_LMS(Tep, ur3.q)
     #Convert to degree
     temp = np.degrees(sol[0])
+    temp[5] = 0
     print(temp)
     #Send response to unity
     res = TrajectoryPlannerResponse()
