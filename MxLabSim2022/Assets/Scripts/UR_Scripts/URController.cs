@@ -49,6 +49,7 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
+                speed = 20f;
                 jointInput = xrCapture.rightJoy.x;
                 //gripInput = xrCapture.rightGripF;
                 JointIndexNav();
@@ -77,6 +78,11 @@ public class URController : MonoBehaviour
                 if (xrCapture.AisPressed == true)
                 {
                     ResetRobot();
+                }
+                if (xrCapture.BisPressed == true)
+                {
+                    if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
+                    if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
                 }
                 break;
 

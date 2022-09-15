@@ -69,7 +69,7 @@ public class DebugDisplay : MonoBehaviour
     public void PrintURMessage()
     {
         float[] q = ur.GetJointAngles();
-        Debug.Log("Joint: " + ur.GetJointName());
+        Debug.Log("Joint: " + ur.selectedJoint);
         Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
         //if (ur.mode == URController.ControlMode.Auto)
         //{

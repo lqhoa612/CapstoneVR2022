@@ -18,7 +18,6 @@ public class CollisionDetector : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("robot")) return;
-        control.mode = prev_mode;
         Debug.LogWarning("No Collision.");
     }
 }
