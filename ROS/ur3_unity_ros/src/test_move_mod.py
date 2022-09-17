@@ -38,7 +38,7 @@ def send_joint_trajectory(dp):
 
     # Note the joint position:  [3, 2, 1, 4, 5, 6]
     # position = [0, -m.pi/2, 0, -m.pi/2, 0, -m.pi/2] # rad
-    position = [dp[2], dp[1], dp[0], dp[3], dp[4], dp[5]]
+    position = [dp[0], dp[1], dp[2], dp[3], dp[4], dp[5]]
     duration = 3.0
 
     point = JointTrajectoryPoint()
@@ -62,10 +62,11 @@ def JointPosCallback(data):
 
 def UnityJSCallback(data):
     dp = data.joint_position
-    rospy.loginfo(RoundData(dp))
+    rospy.loginfo(Deg2RadData(dp))
+    send_joint_trajectory(Deg2RadData(dp))
 
 def GetUnityJPos():
-    trajectory_sub = rospy.Subscriber("unity_joint_state", JointPosition, UnityJSCallback) 
+    trajectory_sub = rospy.Subscriber("unity_joint_state", JointPosition, UnityJSCallback, queue_size=1) 
 
 def RoundData(dp):
     rounded_dp = [np.round(dp[0], 2), np.round(dp[1], 2), np.round(dp[2], 2), np.round(dp[3], 2), np.round(dp[4], 2), np.round(dp[5], 2)]
@@ -79,8 +80,8 @@ def Rad2DegData(dp):
 
 if __name__ == "__main__":
     rospy.init_node("test_move")
+    GetUnityJPos()
     rate = rospy.Rate(20)
     while not rospy.is_shutdown():
         # send_joint_trajectory()
-        GetUnityJPos()
         rate.sleep()
