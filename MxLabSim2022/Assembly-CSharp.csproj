@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\ROS_Scripts\JointStatePub.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\CloneController.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\CloneJointControl.cs" />
+    <Compile Include="Assets\Scripts\ROS_Scripts\TrajectoryServiceClient.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\ButtonEvent.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\ROS_Scripts\TrajPlanCaller.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Assets\RosMessages\Ur3UnityRos\srv\TrajectoryPlannerRequest.cs" />
     <Compile Include="Assets\Scripts\UR_Scripts\URJointControl.cs" />
     <Compile Include="Assets\Scripts\ROS_Scripts\JointAnglePublisher.cs" />
-    <Compile Include="Assets\Scripts\ROS_Scripts\TrajectoryServiceClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

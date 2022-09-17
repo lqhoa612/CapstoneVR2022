@@ -6,10 +6,10 @@ public class JointStatePub : MonoBehaviour
 {
     [InspectorReadOnly] public string topicName = "unity_joint_state";
     public URController urCtrl;
-    public float publishMessageFrequency = .5f;
+    //public float publishMessageFrequency = .5f;
 
     ROSConnection ros;
-    float timeElapsed;
+    //float timeElapsed;
 
     private void Start()
     {
@@ -19,15 +19,14 @@ public class JointStatePub : MonoBehaviour
 
     private void Update()
     {
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed > publishMessageFrequency)
-        {
+        //timeElapsed += Time.deltaTime;
+        //if (timeElapsed > publishMessageFrequency)
+        //{
             JointPositionMsg jPos = new JointPositionMsg(urCtrl.GetJointAngles());
-            jPos.joint_position[1] += 90;
-            jPos.joint_position[3] += 90;
+            jPos.joint_position[1] -= 90;
             ros.Publish(topicName, jPos);
-            Debug.LogWarning("Message published.");
-            timeElapsed = 0;
-        }
+            //Debug.LogWarning("Message published.");
+            //timeElapsed = 0;
+        //}
     }
 }

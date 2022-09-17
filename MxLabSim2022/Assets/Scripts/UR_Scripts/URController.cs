@@ -17,13 +17,15 @@ public class URController : MonoBehaviour
     public float stiffness = 10000;
     public float damping = 1000;
     public float forceLimit = 1000;
-    public float speed = 20f; // Units: degree/s
+    public float speed = 10f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
     private readonly int[] revoluteJoints = { 2, 3, 4, 5, 6, 7 };
     private float timerA, timerB;
     private ArticulationBody[] artiBodies;
+
+    //public float[] test_q = { 0, 0, 0, 0, 0, 0 };
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                speed = 20f;
+                speed = 10f;
                 jointInput = xrCapture.rightJoy.x;
                 //gripInput = xrCapture.rightGripF;
                 JointIndexNav();
@@ -58,7 +60,8 @@ public class URController : MonoBehaviour
                 //GripMover();
 
                 //for testing
-                //TrajExecute(new float[] { 90, -90, 0, 0, 0, 0 });
+                //TrajExecute(test_q);
+                //selectedIndex = 5;
                 break;
 
             case ControlMode.Auto:

@@ -811,7 +811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6608565995593440334, guid: 9d64d57c678a53c46a1c0d13e6b90cf3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6608565995593440335, guid: 9d64d57c678a53c46a1c0d13e6b90cf3, type: 3}
       propertyPath: m_RootOrder
@@ -841,7 +841,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 36863428, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.235
+      value: -0.279
       objectReference: {fileID: 0}
     - target: {fileID: 36863428, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -849,7 +849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 36863428, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.149
+      value: 0.148
       objectReference: {fileID: 0}
     - target: {fileID: 680240187, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: srv
@@ -870,6 +870,10 @@ PrefabInstance:
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: service
@@ -1983,6 +1987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RosTCP
       objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_RosIPAddress
+      value: 192.168.0.105
+      objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2031,10 +2039,18 @@ PrefabInstance:
       propertyPath: urCtrl
       value: 
       objectReference: {fileID: 921507664}
+    - target: {fileID: 2762392197925748558, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3995056005858798777, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 36863423}
+    - target: {fileID: 3995056005858798777, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
 --- !u!114 &2762392197925748558 stripped

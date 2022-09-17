@@ -537,17 +537,6 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &263388790 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 816417202, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
-  m_PrefabInstance: {fileID: 2762392197925748556}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8452492fdbed3ee48951e9f932cbdf31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &650633980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,6 +820,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 6608565995593440334, guid: 9d64d57c678a53c46a1c0d13e6b90cf3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6608565995593440335, guid: 9d64d57c678a53c46a1c0d13e6b90cf3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -863,7 +856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 98516895, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 98516896, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -880,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 680240187, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: service
       value: 
-      objectReference: {fileID: 263388790}
+      objectReference: {fileID: 0}
     - target: {fileID: 680240187, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: xrCapture
       value: 
@@ -890,9 +883,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: service
       value: 
-      objectReference: {fileID: 263388790}
+      objectReference: {fileID: 0}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: xrCapture
       value: 
@@ -1977,7 +1974,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022098, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_RosPort
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_RosIPAddress
+      value: 192.168.0.105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762392197895022099, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_SleepTimeSeconds
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2762392197895022124, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
       propertyPath: m_RootOrder
@@ -2027,6 +2036,14 @@ PrefabInstance:
       propertyPath: urCtrl
       value: 
       objectReference: {fileID: 921507664}
+    - target: {fileID: 2762392197925748558, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995056005858798777, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7552afd5a7b7547a638cfc959b1eec, type: 3}
 --- !u!1001 &3488127368479744470
