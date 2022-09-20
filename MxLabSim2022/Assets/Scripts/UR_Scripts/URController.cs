@@ -54,16 +54,16 @@ public class URController : MonoBehaviour
         {
             case ControlMode.Manual:
                 //speed = 10f;
-                //jointInput = xrCapture.rightJoy.x;
-                //JointIndexNav();
-                //DisplaySelectedJoint(selectedIndex);
-                //JointMover(selectedIndex);
+                jointInput = xrCapture.rightJoy.x;
+                JointIndexNav();
+                DisplaySelectedJoint(selectedIndex);
+                JointMover(selectedIndex);
 
                 //gripInput = xrCapture.rightGripF;
                 //GripMover();
 
                 //for testing
-                TrajExecute(test_q);
+                //TrajExecute(test_q);
                 //selectedIndex = 5;
                 break;
 
@@ -204,7 +204,7 @@ public class URController : MonoBehaviour
             if (Mathf.Abs(current - target) > 30f) speed = 50f;
             else speed = 10f;
             joint.direction = RotationDirection.Negative;
-
+            // q lim
             switch (jointIndex)
             {
                 case 1:

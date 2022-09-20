@@ -44,15 +44,15 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        TrajExecute(test_q);
-        //if (xrCapture.rightTrigger == true)
-        //{
-        //    TrajExecute(srv.q);
-        //}
-        //else
-        //{
-        //    TrajExecute(GetJointAngles());
-        //}
+        //TrajExecute(test_q);
+        if (xrCapture.rightTrigger == true)
+        {
+            TrajExecute(srv.q);
+        }
+        else
+        {
+            TrajExecute(GetJointAngles());
+        }
     }
 
     void AutoMove(int jointIndex, float current, float target)
