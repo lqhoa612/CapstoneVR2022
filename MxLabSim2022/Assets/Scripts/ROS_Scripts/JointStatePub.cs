@@ -19,7 +19,7 @@ public class JointStatePub : MonoBehaviour
 
     private void Update()
     {
-        Debug.LogWarning(safeToPublish);
+        //Debug.LogWarning(safeToPublish);
         if (xrCapture.AisPressed == true && safeToPublish == true)
         {
             JointPositionMsg jPos = new JointPositionMsg(cloneCtrl.GetJointAngles());

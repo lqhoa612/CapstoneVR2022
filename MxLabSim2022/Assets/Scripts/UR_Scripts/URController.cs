@@ -72,7 +72,6 @@ public class URController : MonoBehaviour
                 //{
                 //    TrajExecute(cloneController.GetJointAngles());
                 //}
-                q = test_q;
                 if (q != null)
                 {
                     TrajExecute(q);
