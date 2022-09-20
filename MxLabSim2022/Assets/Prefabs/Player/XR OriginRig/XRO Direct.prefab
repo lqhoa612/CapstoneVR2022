@@ -59,7 +59,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -105,12 +105,12 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: Vector3
-      m_Id: 57b97430-739f-4c89-920e-f629ba17dec4
+      m_Id: b03186b5-69ee-45a6-826a-46ac89be829e
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: de4c0b93-434d-4097-84ef-8f30a8a26b57
+        m_Id: 5d67a495-49e5-45a3-837d-88411b4c2450
         m_Path: <XRHMD>/centerEyePosition
         m_Interactions: 
         m_Processors: 
@@ -125,12 +125,12 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: Quaternion
-      m_Id: 8ba0a51a-eb99-4d89-b4f7-6ca083a3bea5
+      m_Id: 92ab031e-199e-4a23-85d4-94a11bb61a09
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: 045f3b4b-e65e-4979-9582-5f53cd0042db
+        m_Id: 39124436-0e53-4413-9b88-a4c30e5cdf09
         m_Path: <XRHMD>/centerEyeRotation
         m_Interactions: 
         m_Processors: 
@@ -1238,7 +1238,6 @@ LineRenderer:
   m_SortingOrder: 5
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.02
@@ -1255,7 +1254,7 @@ LineRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
+        time: 0.57347655
         value: 1
         inSlope: 0
         outSlope: 0
@@ -1315,7 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.005
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
@@ -1420,10 +1419,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3709237313043710010, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3709237313180457634, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
@@ -1442,10 +1437,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3709237314005424990, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709237314005424990, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3709237314104282056, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
@@ -1504,10 +1495,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3709237314148238732, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3709237314238398193, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1530,10 +1517,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3709237314756230103, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709237314756230103, guid: ae1905f2c65df5142b09685cf350d3e5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []

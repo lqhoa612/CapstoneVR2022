@@ -12,12 +12,13 @@ public class URController : MonoBehaviour
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
     [HideInInspector] public ControlMode mode;
     [HideInInspector] public bool ready = true;
+    [HideInInspector] public float[] q = null;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;
     public float damping = 1000;
     public float forceLimit = 1000;
-    public float speed = 10f; // Units: degree/s
+    public float speed = 20f; // Units: degree/s
     public float torque = 100f; // Units: Nm or N
     public float acceleration = 5f;// Units: m/s^2 / degree/s^2
 
@@ -25,12 +26,13 @@ public class URController : MonoBehaviour
     private float timerA, timerB;
     private ArticulationBody[] artiBodies;
 
-    //public float[] test_q = { 0, 0, 0, 0, 0, 0 };
+    public float[] test_q = { 0, 0, 0, 0, 0, 0 };
 
     void Start()
     {
         if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
-        if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
+        else if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
+        else mode = ControlMode.Immovable;
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -65,9 +67,14 @@ public class URController : MonoBehaviour
                 break;
 
             case ControlMode.Auto:
-                if (xrCapture.AisPressed == true)
+                //if (xrCapture.AisPressed == true)
+                //{
+                //    TrajExecute(cloneController.GetJointAngles());
+                //}
+                q = test_q;
+                if (q != null)
                 {
-                    TrajExecute(cloneController.GetJointAngles());
+                    TrajExecute(q);
                 }
                 else
                 {
@@ -87,6 +94,10 @@ public class URController : MonoBehaviour
                     if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
                     if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
                 }
+                break;
+
+            case ControlMode.Immovable:
+                StopAll();
                 break;
 
             default:
@@ -270,7 +281,8 @@ public class URController : MonoBehaviour
     {
         Manual,
         Auto,
-        Stopped
+        Stopped,
+        Immovable
     }
 
     public void SetControlMode(string modeName)

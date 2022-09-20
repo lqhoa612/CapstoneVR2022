@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI_Scripts\URPosRot.cs" />
     <Compile Include="Assets\RosMessages\Ur3UnityRos\srv\TrajectoryPlannerResponse.cs" />
+    <Compile Include="Assets\Scripts\ROS_Scripts\JointStateSub.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\DebugDisplay.cs" />
     <Compile Include="Assets\Scripts\Player_Scripts\HandDirectInteractor.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\UICaller.cs" />
