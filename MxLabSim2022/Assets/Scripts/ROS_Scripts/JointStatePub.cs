@@ -7,6 +7,7 @@ public class JointStatePub : MonoBehaviour
     [InspectorReadOnly] public string topicName = "unity_joint_state";
     public CloneController cloneCtrl;
     public XRControllerCapture xrCapture;
+    [HideInInspector] public bool safeToPublish = true;
 
     ROSConnection ros;
 
@@ -18,7 +19,8 @@ public class JointStatePub : MonoBehaviour
 
     private void Update()
     {
-        if (xrCapture.AisPressed == true)
+        Debug.LogWarning(safeToPublish);
+        if (xrCapture.AisPressed == true && safeToPublish == true)
         {
             JointPositionMsg jPos = new JointPositionMsg(cloneCtrl.GetJointAngles());
             jPos.joint_position[1] -= 90;

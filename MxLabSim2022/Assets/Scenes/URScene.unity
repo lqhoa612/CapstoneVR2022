@@ -886,12 +886,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1853032599}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
+      propertyPath: acceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: test_q.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1449160986, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: test_q.Array.data[5]
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 662520023697884579, guid: 8c9fdc4f1cb0f3946a0a2fe7b840b3ff, type: 3}
       propertyPath: m_IsActive

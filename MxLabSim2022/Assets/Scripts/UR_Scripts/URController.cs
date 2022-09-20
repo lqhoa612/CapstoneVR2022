@@ -53,16 +53,17 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                speed = 10f;
-                jointInput = xrCapture.rightJoy.x;
+                //speed = 10f;
+                //jointInput = xrCapture.rightJoy.x;
+                //JointIndexNav();
+                //DisplaySelectedJoint(selectedIndex);
+                //JointMover(selectedIndex);
+
                 //gripInput = xrCapture.rightGripF;
-                JointIndexNav();
-                DisplaySelectedJoint(selectedIndex);
-                JointMover(selectedIndex);
                 //GripMover();
 
                 //for testing
-                //TrajExecute(test_q);
+                TrajExecute(test_q);
                 //selectedIndex = 5;
                 break;
 
@@ -190,18 +191,24 @@ public class URController : MonoBehaviour
     void AutoMove(int jointIndex, float current, float target)
     {
         URJointControl joint = artiBodies[revoluteJoints[jointIndex]].GetComponent<URJointControl>();
+
         if (current < target)
         {
+            if (Mathf.Abs(target - current) > 30f) speed = 50f;
+            else speed = 10f;
             joint.direction = RotationDirection.Positive;
         }
             
         else if (current > target)
         {
+            if (Mathf.Abs(current - target) > 30f) speed = 50f;
+            else speed = 10f;
             joint.direction = RotationDirection.Negative;
+
             switch (jointIndex)
             {
                 case 1:
-                    if (current < -90)
+                    if (current < -90 || current > 90)
                     {
                         joint.direction = RotationDirection.None;
                         Debug.LogWarning("At limit.");

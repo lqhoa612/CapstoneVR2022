@@ -20,6 +20,8 @@ public class JointStateSub : MonoBehaviour
         q[1] += 90;
         q[2] = -q_raw[0];
         urController.q = q;
+
+        //for testing
         //Debug.LogWarning(q[0] + " | " + q[1] + " | " + q[2] + " | " + q[3] + " | " + q[4] + " | " + q[5]);
     }
 }

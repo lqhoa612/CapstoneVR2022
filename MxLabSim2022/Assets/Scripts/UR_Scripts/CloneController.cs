@@ -22,6 +22,8 @@ public class CloneController : MonoBehaviour
     private ArticulationBody[] artiBodies;
     private MeshRenderer[] meshRenderers;
 
+    public float[] test_q = { 0, 0, 0, 0, 0, 0 };
+
     void Start()
     {
         this.gameObject.AddComponent<FKRobot>();
@@ -42,14 +44,15 @@ public class CloneController : MonoBehaviour
 
     void Update()
     {
-        if (xrCapture.rightTrigger == true)
-        {
-            TrajExecute(srv.q);
-        }
-        else
-        {
-            TrajExecute(GetJointAngles());
-        }
+        TrajExecute(test_q);
+        //if (xrCapture.rightTrigger == true)
+        //{
+        //    TrajExecute(srv.q);
+        //}
+        //else
+        //{
+        //    TrajExecute(GetJointAngles());
+        //}
     }
 
     void AutoMove(int jointIndex, float current, float target)
