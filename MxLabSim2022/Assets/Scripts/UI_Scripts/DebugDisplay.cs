@@ -13,13 +13,16 @@ public class DebugDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (SceneManager.GetActiveScene().name == "URScene")
-            PrintURMessage();
+        if (ur != null)
+        {
+            if (SceneManager.GetActiveScene().name == "URScene")
+                PrintURMessage();
 
-        if (SceneManager.GetActiveScene().name == "URAutoScene")
-            PrintURAutoMessage();
-
-        if (SceneManager.GetActiveScene().name == "UGVScene")
+            if (SceneManager.GetActiveScene().name == "URAutoScene")
+                PrintURAutoMessage();
+        }
+        
+        if (SceneManager.GetActiveScene().name == "UGVScene" && ugv != null)
             PrintUGVMessage();
     }
 
