@@ -74,6 +74,17 @@ public class DebugDisplay : MonoBehaviour
         float[] q = ur.GetJointAngles();
         Debug.Log("Joint: " + ur.selectedJoint);
         Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
+
+        if (ur.collisionMsg != null)
+        {
+            Debug.Log("\nCollision check: " + ur.collisionMsg);
+        }
+        else
+        {
+            Debug.Log("\nCollision check: ");
+        }
+
+        // Control instruction
         //if (ur.mode == URController.ControlMode.Auto)
         //{
         //    Debug.Log("Right trigger: move EE to target position");
@@ -90,6 +101,15 @@ public class DebugDisplay : MonoBehaviour
         float[] q = ur.GetJointAngles();
         Debug.Log("Q: " + Mathf.Round(q[0]) + ", " + Mathf.Round(q[1]) + ", " + Mathf.Round(q[2]) + ", " + Mathf.Round(q[3]) + ", " + Mathf.Round(q[4]) + ", " + Mathf.Round(q[5]));
         Debug.Log("Target: " + target.transform.localPosition);
+
+        if (ur.collisionMsg != null)
+        {
+            Debug.Log("\nCollision check: " + ur.collisionMsg);
+        }
+        else
+        {
+            Debug.Log("\nCollision check: ");
+        }
 
     }
 

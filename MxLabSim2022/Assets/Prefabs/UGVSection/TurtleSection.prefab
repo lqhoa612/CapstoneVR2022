@@ -82,7 +82,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40592005}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &959727427
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,11 +856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201603965268667211, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5201603965268667211, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5201603965268667211, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
       propertyPath: m_LocalRotation.z
@@ -868,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201603965268667211, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5409997024615940265, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
       propertyPath: m_Name
@@ -903,19 +903,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5409997024615940265, guid: 3cda352a183c3444f8e0181bf3ab3d86, type: 3}
   m_PrefabInstance: {fileID: 2366661129414922783}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1854681250
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603828488123738735}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3518061, y: 0.124312, z: 0.3499941}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1854681252
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -932,7 +919,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2865037789162784940
+--- !u!65 &1854681250
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

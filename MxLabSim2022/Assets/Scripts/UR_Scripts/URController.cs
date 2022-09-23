@@ -13,6 +13,7 @@ public class URController : MonoBehaviour
     [HideInInspector] public ControlMode mode;
     [HideInInspector] public bool ready = true;
     [HideInInspector] public float[] q = null;
+    [HideInInspector] public string collisionMsg = null;
 
     public ControlType control = ControlType.PositionControl;
     public float stiffness = 10000;

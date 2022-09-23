@@ -12,6 +12,7 @@ public class CollisionDetector : MonoBehaviour
         if (!other.CompareTag("robot")) return;
         publisher.safeToPublish = false;
         control.mode = URController.ControlMode.Stopped;
+        control.collisionMsg = "DETECTED";
         Debug.LogWarning("Collision Detected.");
     }
 
@@ -19,6 +20,7 @@ public class CollisionDetector : MonoBehaviour
     {
         if (!other.CompareTag("robot")) return;
         publisher.safeToPublish = true;
+        control.collisionMsg = null;
         Debug.LogWarning("No Collision.");
     }
 }
