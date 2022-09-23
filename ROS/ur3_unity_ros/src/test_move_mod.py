@@ -21,6 +21,7 @@ JOINT_NAMES = [
     "wrist_3_joint",
 ]
 
+# lab_ur_data = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 def send_joint_trajectory(dp):
     # Make sure the controller is loaded and activated
@@ -65,8 +66,14 @@ def UnityJSCallback(data):
     rospy.loginfo(Deg2RadData(dp))
     send_joint_trajectory(Deg2RadData(dp))
 
-def GetUnityJPos():
-    trajectory_sub = rospy.Subscriber("unity_joint_state", JointPosition, UnityJSCallback, queue_size=1) 
+def LabURJSCallback(data):
+    dp = Rad2DegData(data.position)
+    # rospy.loginfo(data.position)
+    trajectory_pub.publish(dp)
+
+def SubInit():
+    tr_ur_trajectory_sub = rospy.Subscriber("unity_joint_state", JointPosition, UnityJSCallback, queue_size=1)
+    lab_ur_trajectory_sub = rospy.Subscriber("joint_states", JointState, LabURJSCallback, queue_size=1)
 
 def RoundData(dp):
     rounded_dp = [np.round(dp[0], 2), np.round(dp[1], 2), np.round(dp[2], 2), np.round(dp[3], 2), np.round(dp[4], 2), np.round(dp[5], 2)]
@@ -80,7 +87,9 @@ def Rad2DegData(dp):
 
 if __name__ == "__main__":
     rospy.init_node("test_move")
-    GetUnityJPos()
+    rospy.loginfo("Ready!")
+    SubInit()
+    trajectory_pub = rospy.Publisher("lab_ur_joint_state", JointPosition, queue_size=10000)
     rate = rospy.Rate(20)
     while not rospy.is_shutdown():
         # send_joint_trajectory()
