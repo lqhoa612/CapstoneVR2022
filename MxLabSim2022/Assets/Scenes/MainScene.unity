@@ -300,128 +300,6 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!1001 &110825173
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1031396446}
-    m_Modifications:
-    - target: {fileID: 2162876133884279435, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: speed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162876133884279435, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: xrRig
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2162876133884279435, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834369870252256520, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834369870252256520, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: xrRig
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5834369870252256520, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9091295473725513580, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-      propertyPath: m_Name
-      value: Input Manager
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5834369870252256520, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-    - {fileID: 2162876133884279435, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
---- !u!4 &110825174 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9091295473725513578, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-  m_PrefabInstance: {fileID: 110825173}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &110825175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9091295473725513580, guid: 29dd25a006022d749ba3270a4dc5f4af, type: 3}
-  m_PrefabInstance: {fileID: 110825173}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &110825177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110825175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b751c90477a2c3418b31d787c34d245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AisPressed: 0
-  BisPressed: 0
-  XisPressed: 0
-  YisPressed: 0
-  leftGrip: 0
-  rightGrip: 0
-  leftTrigger: 0
-  rightTrigger: 0
-  menuIsPressed: 0
-  joyRightPressed: 0
-  joyLeftPressed: 0
-  leftJoy: {x: 0, y: 0}
-  rightJoy: {x: 0, y: 0}
-  leftGripF: 0
-  rightGripF: 0
-  leftTriggerF: 0
-  rightTriggerF: 0
 --- !u!1 &243027159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5952210215612967072, guid: 59d57f10fcbe47044aa9894d36735fa5, type: 3}
@@ -1183,7 +1061,6 @@ Transform:
   m_Children:
   - {fileID: 876257749}
   - {fileID: 1735700560}
-  - {fileID: 110825174}
   - {fileID: 989258199}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1385,7 +1262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455719902191207676, guid: 6609c67f88706fc458ebdfb3a2a9f905, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2455719902191207676, guid: 6609c67f88706fc458ebdfb3a2a9f905, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1830,6 +1707,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1735700562}
+    - target: {fileID: 1897975749, guid: 369a4c326614a5e4f83c92a682f8e070, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7425683388038884872, guid: 369a4c326614a5e4f83c92a682f8e070, type: 3}
       propertyPath: m_Name
       value: UGVSection
