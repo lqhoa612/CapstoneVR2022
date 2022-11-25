@@ -11,7 +11,7 @@ public class CollisionDetector : MonoBehaviour
     {
         if (!other.CompareTag("robot")) return;
         publisher.safeToPublish = false;
-        control.mode = URController.ControlMode.Stopped;
+        control.mode = URController.ControlMode.Pause;
         control.collisionMsg = "DETECTED";
         Debug.LogWarning("Collision Detected.");
     }

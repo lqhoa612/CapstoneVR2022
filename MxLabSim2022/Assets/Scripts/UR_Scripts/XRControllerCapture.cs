@@ -6,7 +6,7 @@ using Unity.Robotics;
 
 public class XRControllerCapture : MonoBehaviour
 {
-    // Quest controller's properties
+    // Quest controller's buttons
     [HideInInspector] public bool AisPressed, BisPressed, XisPressed, YisPressed, 
                                     leftGrip, rightGrip, leftTrigger, rightTrigger, 
                                     menuIsPressed, joyRightPressed, joyLeftPressed;
@@ -15,9 +15,6 @@ public class XRControllerCapture : MonoBehaviour
 
     private InputDevice leftController;
     private InputDevice rightController;
-
-    //public UR3TrajectoryPlanner m_publisher;
-    //public SourceDestinationPublisher m_publisher;
 
     void OnEnable()
     {

@@ -38,7 +38,7 @@ def send_joint_trajectory(dp):
     goal.trajectory.joint_names = JOINT_NAMES
 
     # Note the joint position:  [3, 2, 1, 4, 5, 6]
-    # position = [0, -m.pi/2, 0, -m.pi/2, 0, -m.pi/2] # rad
+    # test_position = [0, -m.pi/2, 0, -m.pi/2, 0, -m.pi/2] # rad
     position = [dp[0], dp[1], dp[2], dp[3], dp[4], dp[5]]
     duration = 3.0
 

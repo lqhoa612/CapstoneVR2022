@@ -1,5 +1,5 @@
-using UnityEngine;
 using Unity.Robotics.UrdfImporter.Control;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class URController : MonoBehaviour
@@ -7,9 +7,11 @@ public class URController : MonoBehaviour
     public XRControllerCapture xrCapture;
     public CloneController cloneController;
 
-    [HideInInspector] public float jointInput; //, gripInput;
+    [HideInInspector] public float jointInput;
     [HideInInspector] public int selectedIndex;
+
     [InspectorReadOnly(hideInEditMode = true)] public string selectedJoint;
+
     [HideInInspector] public ControlMode mode;
     [HideInInspector] public bool ready = true;
     [HideInInspector] public float[] q = null;
@@ -33,7 +35,7 @@ public class URController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "URScene") mode = ControlMode.Manual;
         else if (SceneManager.GetActiveScene().name == "URAutoScene") mode = ControlMode.Auto;
-        else mode = ControlMode.Immovable;
+        else mode = ControlMode.Stop;
         this.gameObject.AddComponent<FKRobot>();
         artiBodies = this.GetComponentsInChildren<ArticulationBody>();
         int defDynamicVal = 10;
@@ -46,7 +48,7 @@ public class URController : MonoBehaviour
             currentDrive.forceLimit = forceLimit;
             joint.xDrive = currentDrive;
         }
-        
+
     }
 
     void Update()
@@ -54,25 +56,13 @@ public class URController : MonoBehaviour
         switch (mode)
         {
             case ControlMode.Manual:
-                //speed = 10f;
                 jointInput = xrCapture.rightJoy.x;
                 JointIndexNav();
                 DisplaySelectedJoint(selectedIndex);
                 JointMover(selectedIndex);
-
-                //gripInput = xrCapture.rightGripF;
-                //GripMover();
-
-                //for testing
-                //TrajExecute(test_q);
-                //selectedIndex = 5;
                 break;
 
             case ControlMode.Auto:
-                //if (xrCapture.AisPressed == true)
-                //{
-                //    TrajExecute(cloneController.GetJointAngles());
-                //}
                 if (q != null)
                 {
                     TrajExecute(q);
@@ -84,7 +74,7 @@ public class URController : MonoBehaviour
 
                 break;
 
-            case ControlMode.Stopped:
+            case ControlMode.Pause:
                 StopAll();
                 if (xrCapture.AisPressed == true)
                 {
@@ -97,7 +87,7 @@ public class URController : MonoBehaviour
                 }
                 break;
 
-            case ControlMode.Immovable:
+            case ControlMode.Stop:
                 StopAll();
                 break;
 
@@ -115,7 +105,7 @@ public class URController : MonoBehaviour
         {
             timerB += Time.deltaTime;
             selectedIndex++;
-        } 
+        }
         if (xrCapture.BisPressed == false) timerB = 0;
 
         if (xrCapture.AisPressed == true && timerA == 0.00f)
@@ -198,27 +188,14 @@ public class URController : MonoBehaviour
             else speed = 10f;
             joint.direction = RotationDirection.Positive;
         }
-            
+
         else if (current > target)
         {
             if (Mathf.Abs(current - target) > 30f) speed = 50f;
             else speed = 10f;
             joint.direction = RotationDirection.Negative;
-            // q lim
-            switch (jointIndex)
-            {
-                case 1:
-                    if (current < -90 || current > 90)
-                    {
-                        joint.direction = RotationDirection.None;
-                        Debug.LogWarning("At limit.");
-                    }
-                    break;
-                default:
-                    break;
-            }
         }
-            
+
         else
             joint.direction = RotationDirection.None;
     }
@@ -288,8 +265,8 @@ public class URController : MonoBehaviour
     {
         Manual,
         Auto,
-        Stopped,
-        Immovable
+        Pause,
+        Stop
     }
 
     public void SetControlMode(string modeName)
